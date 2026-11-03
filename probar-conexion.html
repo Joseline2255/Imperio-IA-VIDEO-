@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Prueba segura · IMPERIO AI VIDEO</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#090b18;color:#f6f5ff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:20px;display:grid;place-items:center;background:radial-gradient(circle at 75% 0%,#35235d 0,transparent 35%),#090b18}
+main{width:min(100%,600px);background:#171b33;border:1px solid #373c64;border-radius:24px;padding:28px}
+h1{margin:0 0 8px;font-size:clamp(1.5rem,5vw,2rem)}p{line-height:1.55;color:#b8bfd8}.tag{color:#6de7dc;font-weight:800;font-size:.8rem;letter-spacing:.1em}
+button{border:0;border-radius:14px;padding:15px 20px;font-size:1rem;font-weight:750;cursor:pointer;background:linear-gradient(90deg,#a98afd,#6ce3da);color:#091022;width:100%;margin:12px 0}
+button:disabled{opacity:.5;cursor:not-allowed}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#090b18;padding:16px;border:1px solid #363c62;border-radius:14px;min-height:90px;font-size:.87rem}
+a{color:#8fe8e1}.hint{font-size:.84rem;color:#b8bfd8}
+</style>
+</head>
+<body>
+<main>
+<div class="tag">IMPERIO AI VIDEO · PRUEBA SIN COSTO</div>
+<h1>Comprobar conexión de Supabase</h1>
+<p>Esta página solamente comprueba el inicio de sesión, tu rol de administrador y si existe el secreto FAL_KEY. No genera videos ni realiza solicitudes de pago a fal.ai.</p>
+<p id="account">Comprobando sesión...</p>
+<button id="test" disabled>Verificar conexión sin generar video</button>
+<pre id="output" aria-live="polite">Cargando...</pre>
+<p class="hint">Si no hay sesión, abre <a href="./index.html">IMPERIO AI VIDEO</a> en este mismo navegador, inicia sesión y vuelve aquí.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// Solo contiene la clave publica de Supabase, nunca la clave privada fal.ai.
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+const PUBLISHABLE_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const FUNCTION_SLUG='rapid-action'; // slug real indicado en Supabase Overview.
+const account=document.getElementById('account');
+const test=document.getElementById('test');
+const output=document.getElementById('output');
+let client;
+(async()=>{
+  if(!window.supabase?.createClient){account.textContent='No se pudo cargar Supabase';output.textContent='Revisa internet y vuelve a abrir esta pagina.';return}
+  client=window.supabase.createClient(PROJECT_URL,PUBLISHABLE_KEY);
+  const {data,error}=await client.auth.getUser();
+  if(error||!data.user){account.textContent='No hay una sesión iniciada en este navegador.';output.textContent='Entra en Mi cuenta desde index.html y vuelve aquí.';return}
+  account.textContent='Sesión activa: '+data.user.email;
+  test.disabled=false;
+  output.textContent='Listo para verificar. La función no generará videos.';
+})().catch(err=>{output.textContent='Error inicial: '+(err?.message||String(err))});
+test.addEventListener('click',async()=>{
+  test.disabled=true;output.textContent='Verificando...';
+  try{
+    const {data,error}=await client.functions.invoke(FUNCTION_SLUG,{method:'POST',body:{}});
+    if(error){
+      let message=error.message;
+      try{const more=await error.context?.json?.();if(more)message+='\n'+JSON.stringify(more,null,2)}catch{}
+      output.textContent='No se completó la comprobación.\n'+message+'\nSi aparece 401 o 403, revisaremos la sesión y permisos; no desactives Verify JWT.';
+    }else{
+      output.textContent=JSON.stringify(data,null,2);
+    }
+  }catch(err){output.textContent='Error de conexión: '+(err?.message||String(err))}
+  finally{test.disabled=false}
+});
+</script>
+</body>
+</html>
