@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#090b18" />
+<title>Prueba de conexión v2 | IMPERIO AI VIDEO</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--muted:#afb6d0;--cyan:#63ddd6}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 85% 0%,#302054 0%,transparent 55%),#090b18;color:#f5f5ff;display:grid;place-items:center;padding:22px}
+main{width:min(100%,640px);background:linear-gradient(145deg,#1a203c,#13172b);border:1px solid #333b62;border-radius:22px;padding:clamp(22px,6vw,36px);box-shadow:0 24px 60px #0004}
+.kicker{color:var(--cyan);text-transform:uppercase;letter-spacing:.11em;font-size:12px;font-weight:850}
+h1{font-size:clamp(27px,6vw,36px);line-height:1.15;margin:10px 0 18px}p{color:var(--muted);line-height:1.55}label{display:block;font-weight:650;font-size:14px;margin:15px 0 7px}
+input{width:100%;border:1px solid #434c72;border-radius:12px;background:#0d1123;padding:14px 15px;color:white;font-size:16px;outline-offset:2px}button{display:block;width:100%;border:0;border-radius:13px;padding:14px 16px;font:inherit;font-weight:800;margin:17px 0 0;cursor:pointer;background:linear-gradient(100deg,#b69aff,#66e2da);color:#10142a}button.secondary{background:#293351;color:#fff;border:1px solid #434c72}button:disabled{opacity:.55;cursor:wait}
+.hidden{display:none!important}.sub{font-size:13px}.status{color:#e0e6fb;font-weight:650;margin:16px 0}.message{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e3e9ff;border-radius:13px;background:#0b1020;border:1px solid #343c5c;padding:16px;min-height:62px;margin-top:15px}a{color:#71e3dc}
+</style>
+</head>
+<body>
+<main>
+<div class="kicker">IMPERIO AI VIDEO · PRUEBA 2 · SIN COSTO</div>
+<h1>Verificar conexión de Supabase</h1>
+<p>Esta versión permite iniciar sesión directamente aquí. Comprueba el permiso de administrador y el secreto <code>FAL_KEY</code>, sin solicitar videos ni gastar créditos de fal.ai.</p>
+<p id="account" class="status" aria-live="polite">Comprobando sesión…</p>
+<form id="loginForm" class="hidden">
+<label for="email">Correo de tu cuenta</label>
+<input id="email" type="email" autocomplete="email" required />
+<label for="password">Contraseña</label>
+<input id="password" type="password" autocomplete="current-password" required />
+<button type="submit" id="signInButton">Entrar y verificar mi sesión</button>
+</form>
+<div id="signedInActions" class="hidden">
+<button id="testButton" type="button">Verificar conexión sin generar video</button>
+<button class="secondary" id="signOutButton" type="button">Cerrar sesión de esta prueba</button>
+</div>
+<pre id="output" class="message" aria-live="polite">Cargando…</pre>
+<p class="sub">La contraseña se envía únicamente a tu proyecto de Supabase mediante la conexión segura del navegador. Nunca la compartas en ChatGPT ni en una fotografía.</p>
+<p class="sub"><a href="./index.html">Volver a IMPERIO AI VIDEO</a></p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+// Solo la clave PUBLICA del proyecto. NO se publica FAL_KEY ni ninguna clave de administrador.
+const SUPABASE_URL = 'https://xmxirddbswlcgirtqzfj.supabase.co';
+const SUPABASE_PUBLIC_KEY = 'sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+// En Overview, Supabase mostró el slug REAL rapid-action para la función Generar-video.
+const FUNCTION_SLUG = 'rapid-action';
+const $ = (id) => document.getElementById(id);
+let client;
+const show = (id, visible) => $(id).classList.toggle('hidden', !visible);
+const message = (text) => { $('output').textContent = text; };
+async function refreshSession() {
+  const { data: { user }, error } = await client.auth.getUser();
+  if (error || !user) {
+    $('account').textContent = 'Inicia sesión aquí para probar la conexión.';
+    show('loginForm', true);
+    show('signedInActions', false);
+    message('Escribe tu correo y contraseña. No hace falta volver a la página principal.');
+    return;
+  }
+  $('password').value = '';
+  show('loginForm', false);
+  show('signedInActions', true);
+  $('account').textContent = 'Sesión activa: ' + user.email;
+  message('Sesión iniciada. Comprobando el rol…');
+  const { data: roleData, error: roleError } = await client.from('admin_users')
+    .select('role').eq('user_id', user.id).maybeSingle();
+  if (roleError) message('Sesión activa. No pude leer el rol: ' + roleError.message + '\nPuedes probar la función, que volverá a verificar el acceso.');
+  else message('Rol en la tabla admin_users: ' + (roleData?.role || 'sin registro') + '\nAhora pulsa «Verificar conexión sin generar video».');
+}
+$('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const button = $('signInButton'); button.disabled = true;
+  message('Iniciando sesión…');
+  try {
+    const { error } = await client.auth.signInWithPassword({
+      email: $('email').value.trim(), password: $('password').value
+    });
+    if (error) { message('No se pudo entrar: ' + error.message + '\nComprueba la contraseña o utiliza la página recuperar.html.'); return; }
+    await refreshSession();
+  } catch (err) { message('Error de conexión: ' + (err?.message || String(err))); }
+  finally { button.disabled = false; }
+});
+$('testButton').addEventListener('click', async () => {
+  const button = $('testButton'); button.disabled = true;
+  message('Consultando la función de Supabase…');
+  try {
+    const { data, error } = await client.functions.invoke(FUNCTION_SLUG, {method: 'POST', body: {}});
+    if (error) {
+      let details = error.message;
+      try {
+        if (error.context && typeof error.context.clone === 'function') {
+          const response = error.context.clone();
+          const body = await response.text();
+          details += '\nEstado HTTP: ' + response.status + '\nRespuesta: ' + body.slice(0,1800);
+        }
+      } catch (_) { /* no exponer tokens ni cabeceras */ }
+      message('La función respondió con un error:\n' + details + '\nNo hemos llamado a fal.ai.');
+    } else message('Resultado de la función:\n' + JSON.stringify(data, null, 2));
+  } catch(err) { message('No se pudo conectar: ' + (err?.message || String(err))); }
+  finally { button.disabled = false; }
+});
+$('signOutButton').addEventListener('click', async () => {
+  await client.auth.signOut(); await refreshSession();
+});
+(async () => {
+  if (!window.supabase?.createClient) throw new Error('No se cargó la biblioteca pública de Supabase.');
+  client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY);
+  await refreshSession();
+})().catch(err => {
+  $('account').textContent = 'No se pudo iniciar la prueba.';
+  message('Error: ' + (err?.message || String(err)));
+});
+</script>
+</body>
+</html>
