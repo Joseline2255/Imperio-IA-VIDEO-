@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recuperar video | IMPERIO AI VIDEO</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b0e1d;color:white;font:16px/1.5 system-ui,Arial;padding:18px}
+main{max-width:660px;margin:auto}h1{color:#66dfd5}section{background:#19213b;border:1px solid #3b466b;border-radius:18px;padding:22px;margin:20px 0}
+input{width:100%;padding:13px;border-radius:10px;border:1px solid #4b5574;background:#0d1326;color:white;font:inherit;margin:8px 0 14px}
+button{background:linear-gradient(90deg,#a48eff,#5ce2d6);color:#091328;border:0;border-radius:10px;padding:13px;font-weight:700;margin:5px;cursor:pointer}button:disabled{opacity:.5}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}video{width:100%;border-radius:12px;margin-top:15px}a{color:#66dfd5}
+</style>
+</head>
+<body><main>
+<h1>IMPERIO AI VIDEO</h1><p>Recuperar un video anterior sin generar otro ni gastar nuevos créditos.</p>
+<p><a href="estudio-video-5s.html">Volver al estudio</a></p>
+<section id="login" hidden>
+<h2>Iniciar sesión</h2>
+<input id="email" type="email" placeholder="Correo de administrador" autocomplete="username">
+<input id="password" type="password" placeholder="Contraseña" autocomplete="current-password">
+<button id="enter">Entrar</button>
+</section>
+<section id="recover" hidden>
+<h2>Tu video anterior</h2><p id="account"></p>
+<label for="request">Número de solicitud (request_id)</label>
+<input id="request" spellcheck="false" autocapitalize="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+<button id="status">Consultar estado</button>
+<button id="get">Ver video</button>
+<button id="exit">Cerrar sesión</button>
+<video id="player" controls playsinline hidden></video>
+<p id="download" hidden><a id="videoLink" href="#" target="_blank" rel="noopener">Abrir video para guardarlo</a></p>
+</section>
+<section><h2>Resultado</h2><pre id="output">Preparando...</pre></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const el=id=>document.getElementById(id);
+const out=v=>el('output').textContent=typeof v==='string'?v:JSON.stringify(v,null,2);
+const db=window.supabase.createClient(
+ 'https://xmxirddbswlcgirtqzfj.supabase.co',
+ 'sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO'
+);
+function showUser(user){
+ el('login').hidden=!!user;
+ el('recover').hidden=!user;
+ if(user)el('account').textContent='Sesión: '+user.email;
+}
+async function call(action){
+ const request_id=el('request').value.trim();
+ if(!/^[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(request_id)){
+  out('Escribe el identificador completo de tu video anterior.');return;
+ }
+ localStorage.setItem('imperio_ultimo_video_id',request_id);
+ out('Consultando la solicitud anterior...');
+ const {data,error}=await db.functions.invoke('crear-video-5s',{
+  body:{action,request_id}
+ });
+ if(error){
+  let msg=error.message;
+  try{if(error.context)msg+=': '+JSON.stringify(await error.context.json())}catch(_e){}
+  out('La consulta devolvió un error: '+msg);return;
+ }
+ if(action==='status'){out(data);return;}
+ if(!data||!data.video_url){out('Todavía no hay video disponible. Pulsa Consultar estado.');return;}
+ el('player').src=data.video_url;
+ el('player').hidden=false;
+ el('videoLink').href=data.video_url;
+ el('download').hidden=false;
+ out('¡Video recuperado! Reprodúcelo o abre el enlace para guardarlo.');
+}
+el('status').onclick=()=>call('status').catch(e=>out('Error: '+e.message));
+el('get').onclick=()=>call('result').catch(e=>out('Error: '+e.message));
+el('enter').onclick=async()=>{
+ try{
+  const {data,error}=await db.auth.signInWithPassword({email:el('email').value.trim(),password:el('password').value});
+  if(error)throw error;
+  el('password').value='';showUser(data.user);out('Sesión iniciada. Puedes recuperar tu video anterior.');
+ }catch(e){out('No se pudo iniciar sesión: '+e.message)}
+};
+el('exit').onclick=async()=>{await db.auth.signOut();showUser(null);out('Sesión cerrada.');};
+(async()=>{
+ const previous=localStorage.getItem('imperio_ultimo_video_id');
+ if(previous)el('request').value=previous;
+ const {data,error}=await db.auth.getUser();
+ showUser(error?null:data.user);
+ out(data.user?'Sesión activa. Escribe o pega el número de solicitud y pulsa Consultar estado.':'Inicia sesión para recuperar el video.');
+})().catch(e=>out('Error de conexión: '+e.message));
+</script>
+</body></html>
