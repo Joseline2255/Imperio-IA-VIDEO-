@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IMPERIO AI VIDEO - Estudio 5s</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090b18;color:white;
+font-family:Arial,sans-serif;padding:18px}
+main{max-width:650px;margin:auto}
+h1{color:#66dfd5}
+section{background:#171d35;border:1px solid #394365;
+border-radius:18px;padding:22px;margin:20px 0}
+input,textarea,select{width:100%;padding:14px;
+margin:9px 0 16px;background:#0e1225;color:white;
+border:1px solid #4b5274;border-radius:10px;font:inherit}
+button{padding:15px;border:0;border-radius:10px;
+background:linear-gradient(90deg,#a68cf5,#5de3d6);
+font-weight:bold;cursor:pointer;margin:7px 4px}
+button:disabled{opacity:.4}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+video{width:100%;margin-top:15px}
+a{color:#70e5d8}
+</style>
+</head>
+<body>
+<main>
+<h1>IMPERIO AI VIDEO</h1>
+<p>Estudio de videos de 5 segundos</p>
+<a href="index.html">Volver a la plataforma</a>
+
+<section id="loginBox">
+<h2>Mi cuenta</h2>
+<input id="email" type="email" placeholder="Correo">
+<input id="password" type="password" placeholder="Contraseña">
+<button onclick="login()">Entrar</button>
+</section>
+
+<section id="studio" hidden>
+<h2>Crear video con IA</h2>
+<p id="account"></p>
+<button onclick="check()">Comprobar conexión (sin costo)</button>
+<button onclick="logout()">Cerrar sesión</button>
+
+<h3>Describe tu video</h3>
+<textarea id="prompt" maxlength="1000"
+placeholder="Describe la escena que deseas crear..."></textarea>
+
+<select id="ratio">
+<option value="16:9">Horizontal 16:9</option>
+<option value="9:16">Vertical 9:16</option>
+</select>
+
+<p>Duración: 5 segundos</p>
+
+<label>
+<input type="checkbox" id="consent" style="width:auto">
+Autorizo una generación que puede consumir créditos de fal.ai.
+</label>
+
+<button id="generate" onclick="generateVideo()" disabled>
+Generar video de 5 segundos
+</button>
+<button id="statusButton" onclick="statusVideo()" disabled>
+Consultar estado
+</button>
+<button id="resultButton" onclick="resultVideo()" disabled>
+Ver video
+</button>
+
+<video id="player" controls hidden></video>
+</section>
+
+<section>
+<h2>Resultado</h2>
+<pre id="output">Preparando conexión...</pre>
+</section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const db=window.supabase.createClient(
+'https://xmxirddbswlcgirtqzfj.supabase.co',
+'sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO'
+);
+
+let allowed=false;
+let requestId='';
+
+function message(value){
+document.getElementById('output').textContent=
+typeof value==='string'?value:JSON.stringify(value,null,2);
+}
+
+async function callFunction(body){
+const {data,error}=await db.functions.invoke(
+'crear-video-5s',{body}
+);
+if(error)throw error;
+return data;
+}
+
+async function login(){
+try{
+const email=document.getElementById('email').value.trim();
+const password=document.getElementById('password').value;
+const {data,error}=await db.auth.signInWithPassword(
+{email,password}
+);
+if(error)throw error;
+document.getElementById('password').value='';
+showAccount(data.user);
+await check();
+}catch(e){message('Error: '+e.message)}
+}
+
+function showAccount(user){
+document.getElementById('loginBox').hidden=!!user;
+document.getElementById('studio').hidden=!user;
+if(user)document.getElementById('account').textContent=
+'Sesión: '+user.email;
+}
+
+async function logout(){
+await db.auth.signOut();
+allowed=false;
+requestId='';
+showAccount(null);
+document.getElementById('generate').disabled=true;
+message('Sesión cerrada');
+}
+
+async function check(){
+try{
+allowed=false;
+document.getElementById('generate').disabled=true;
+const data=await callFunction({action:'check'});
+message(data);
+if(data.ok&&data.role==='super_admin'&&
+data.fal_key_configured&&data.generation_enabled){
+allowed=true;
+document.getElementById('generate').disabled=false;
+}else if(data.ok){
+message('Conexión correcta. La generación de pago sigue desactivada.');
+}
+}catch(e){message('Error de conexión: '+e.message)}
+}
+
+async function generateVideo(){
+if(!allowed)return;
+const prompt=document.getElementById('prompt').value.trim();
+if(prompt.length<12){message('Describe mejor tu video.');return}
+if(!document.getElementById('consent').checked){
+message('Debes autorizar el uso de créditos.');return;
+}
+if(!confirm('Esta generación puede tener un costo. ¿Confirmas?'))return;
+document.getElementById('generate').disabled=true;
+try{
+const data=await callFunction({
+action:'start',
+prompt,
+aspect_ratio:document.getElementById('ratio').value,
+confirm_paid_generation:true
+});
+message(data);
+if(data.request_id){
+requestId=data.request_id;
+document.getElementById('statusButton').disabled=false;
+document.getElementById('resultButton').disabled=false;
+}
+}catch(e){message('Error: '+e.message)}
+document.getElementById('generate').disabled=!allowed;
+}
+
+async function statusVideo(){
+try{
+const data=await callFunction({
+action:'status',request_id:requestId
+});
+message(data);
+}catch(e){message('Error: '+e.message)}
+}
+
+async function resultVideo(){
+try{
+const data=await callFunction({
+action:'result',request_id:requestId
+});
+message(data);
+if(data.video_url){
+const player=document.getElementById('player');
+player.src=data.video_url;
+player.hidden=false;
+}
+}catch(e){message('Video no disponible: '+e.message)}
+}
+
+(async()=>{
+try{
+const {data}=await db.auth.getUser();
+showAccount(data.user);
+if(data.user)await check();
+else message('Inicia sesión para continuar.');
+}catch(e){message('Error: '+e.message)}
+})();
+</script>
+</body>
+</html>
