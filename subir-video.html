@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0e1d">
+  <title>Guardar MP4 privado | IMPERIO AI VIDEO</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#312154,#080c19 58%);color:#f6f6ff;font:16px/1.5 system-ui,-apple-system,Arial,sans-serif}main{max-width:720px;margin:auto;padding:24px 17px 70px}h1{font-size:clamp(28px,6vw,42px);color:#66dfd5;margin:12px 0 2px}h2{font-size:23px;margin:0 0 10px}p{color:#cbd0df}a{color:#7ee7dc;text-underline-offset:4px}.nav{display:flex;flex-wrap:wrap;gap:16px;margin:20px 0 25px}.panel{background:#191f38;border:1px solid #3d486d;border-radius:20px;padding:23px;margin:20px 0}.muted{color:#bbc5da}.small{font-size:13px}label{display:block;font-weight:650;margin:16px 0 7px}input,select{display:block;width:100%;border:1px solid #445277;border-radius:12px;background:#0b1227;color:#fff;padding:14px;font:inherit}input[type=file]{color:#d4dded}button{border:0;border-radius:13px;padding:13px 18px;background:linear-gradient(100deg,#b69aff,#5adfd2);color:#091125;font:700 15px system-ui;cursor:pointer;margin:12px 8px 2px 0}button:disabled{opacity:.55;cursor:wait}.secondary{background:#303b60;color:white}.hidden{display:none!important}#notice{white-space:pre-wrap;overflow-wrap:anywhere}video{width:100%;max-height:430px;margin-top:14px;background:#02050b;border-radius:12px}.info{padding:12px 14px;background:#0e152c;border-radius:12px;border:1px solid #394363}.success{color:#86f1c3}.warning{color:#ffd69a}
+  </style>
+</head>
+<body><main>
+  <h1>IMPERIO AI VIDEO</h1>
+  <p>Guardar un video MP4 en tu espacio privado</p>
+  <nav class="nav"><a href="./biblioteca.html">Mi biblioteca</a><a href="./recuperar-video-5s.html">Recuperar video</a><a href="./index.html">Inicio</a></nav>
+
+  <section class="panel hidden" id="loginPanel">
+    <h2>Iniciar sesión</h2><p>Usa la misma cuenta de IMPERIO AI VIDEO.</p>
+    <label for="email">Correo electrónico</label><input type="email" id="email" autocomplete="username">
+    <label for="password">Contraseña</label><input type="password" id="password" autocomplete="current-password">
+    <button id="loginBtn" type="button">Entrar</button>
+  </section>
+
+  <section class="panel hidden" id="uploadPanel">
+    <h2>Subir mi MP4</h2>
+    <p class="small" id="account"></p>
+    <p class="info">Tu archivo se guardará en <strong>videos-privados</strong>, dentro de una carpeta asociada a tu cuenta. No se utilizará fal.ai ni se solicitará una generación nueva.</p>
+    <label for="videoRecord">Video registrado en tu biblioteca</label>
+    <select id="videoRecord"><option value="">Cargando videos...</option></select>
+    <label for="mp4File">Seleccionar archivo MP4 del teléfono</label>
+    <input id="mp4File" type="file" accept="video/mp4,.mp4">
+    <p class="small muted">Límite de esta página: 45 MB. El video de prueba de 5 segundos tiene aproximadamente 1.76 MB.</p>
+    <button type="button" id="uploadBtn">Guardar video en Supabase</button>
+    <button type="button" id="checkBtn" class="secondary">Comprobar si ya está guardado</button>
+    <button type="button" id="logoutBtn" class="secondary">Cerrar sesión</button>
+  </section>
+
+  <section class="panel">
+    <h2>Resultado</h2>
+    <p id="notice" role="status">Preparando conexión...</p>
+    <div id="view" class="hidden">
+      <p class="success">Archivo disponible en tu almacenamiento privado.</p>
+      <video id="player" controls playsinline preload="metadata"></video>
+      <p><a id="openVideo" href="#" target="_blank" rel="noopener noreferrer">Abrir video</a></p>
+      <p class="small warning">El enlace temporal dura 1 hora. No lo compartas: cualquier persona que tenga ese enlace puede abrir el video hasta que venza.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>¿Qué guarda este paso?</h2>
+    <p>El archivo MP4 se guarda en Supabase Storage con el nombre de su solicitud original. El registro de la biblioteca ya existe; la integración automática con el reproductor de la biblioteca será el siguiente paso.</p>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+const db=window.supabase.createClient('https://xmxirddbswlcgirtqzfj.supabase.co','sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO');
+const $=id=>document.getElementById(id);
+let user=null;
+let records=[];
+const validId=id=>/^[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(id||'');
+function message(s){$('notice').textContent=s;}
+function loggedIn(u){user=u||null;$('loginPanel').classList.toggle('hidden',!!user);$('uploadPanel').classList.toggle('hidden',!user);$('account').textContent=user?'Sesión: '+user.email:'';}
+function clearPlayer(){const p=$('player');p.pause();p.removeAttribute('src');p.load();$('view').classList.add('hidden');$('openVideo').removeAttribute('href');}
+function currentPath(){const id=$('videoRecord').value;if(!user||!validId(id))throw new Error('Selecciona un video registrado en tu biblioteca.');return `${user.id}/${id}.mp4`;}
+function busy(on){$('uploadBtn').disabled=on;$('checkBtn').disabled=on;$('videoRecord').disabled=on;}
+async function loadRecords(){
+ const {data,error}=await db.from('video_generations').select('request_id,prompt,status,created_at').eq('user_id',user.id).order('created_at',{ascending:false}).limit(100);
+ if(error)throw error;
+ records=data||[];
+ const select=$('videoRecord');select.replaceChildren();
+ if(!records.length){const option=new Option('Todavía no hay videos registrados','');select.add(option);$('uploadBtn').disabled=true;$('checkBtn').disabled=true;message('Tu biblioteca aún no tiene registros. Primero registra el video en la biblioteca.');return;}
+ for(const r of records){if(!validId(r.request_id))continue;const option=new Option((r.prompt||'Video').slice(0,65)+' · '+r.request_id.slice(0,8),r.request_id);select.add(option)}
+ if(select.options.length){message('Sesión conectada. Elige tu MP4 y pulsa Guardar video en Supabase.');}
+}
+async function showPrivateVideo(path){
+ const {data,error}=await db.storage.from('videos-privados').createSignedUrl(path,3600);
+ if(error||!data?.signedUrl)throw new Error('El MP4 se guardó, pero no se pudo crear un enlace de reproducción: '+(error?.message||'Error desconocido'));
+ $('player').src=data.signedUrl;$('openVideo').href=data.signedUrl;$('view').classList.remove('hidden');
+}
+async function stored(path){
+ const name=path.split('/').pop();
+ const {data,error}=await db.storage.from('videos-privados').list(user.id,{limit:100,search:name});
+ if(error)throw error;
+ return !!data?.some(item=>item.name===name);
+}
+$('uploadBtn').onclick=async()=>{
+ clearPlayer();
+ const file=$('mp4File').files[0];
+ if(!file){message('Selecciona el archivo MP4 descargado en tu teléfono.');return;}
+ if(!file.name.toLowerCase().endsWith('.mp4')||!['video/mp4','application/octet-stream',''].includes(file.type)){message('Solo se permiten archivos MP4.');return;}
+ if(file.size>45*1024*1024){message('Este archivo supera el límite de 45 MB de esta página.');return;}
+ if(file.size===0){message('El archivo está vacío.');return;}
+ let path;
+ try{path=currentPath()}catch(e){message(e.message);return}
+ busy(true);message('Comprobando si el video ya existe...');
+ try{
+   if(await stored(path)){
+    await showPrivateVideo(path);message('Este MP4 ya está guardado. No fue necesario subirlo otra vez.');return;
+   }
+   message('Subiendo el MP4 privado a Supabase... No cierres esta página durante la subida.');
+   const {error}=await db.storage.from('videos-privados').upload(path,file,{contentType:'video/mp4',cacheControl:'3600',upsert:false});
+   if(error)throw error;
+   await showPrivateVideo(path);
+   message('¡MP4 guardado correctamente! Ruta privada: '+path+'\nEsta operación no utilizó fal.ai ni gastó créditos de generación.');
+ }catch(e){message('No fue posible guardar o abrir el archivo: '+(e.message||String(e)))}finally{busy(false)}
+};
+$('checkBtn').onclick=async()=>{
+ clearPlayer();let path;
+ try{path=currentPath()}catch(e){message(e.message);return}
+ busy(true);message('Consultando tu carpeta privada...');
+ try{if(await stored(path)){await showPrivateVideo(path);message('El video está guardado en Supabase Storage.');}else{message('Este video aún no tiene un MP4 guardado en Supabase Storage. Selecciónalo desde tu teléfono y pulsa Guardar.')}}
+ catch(e){message('No se pudo comprobar el archivo: '+e.message)}finally{busy(false)}
+};
+$('videoRecord').onchange=clearPlayer;
+$('loginBtn').onclick=async()=>{
+ const b=$('loginBtn');b.disabled=true;message('Iniciando sesión...');
+ try{const {data,error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;$('password').value='';loggedIn(data.user);await loadRecords();}
+ catch(e){message('No se pudo iniciar sesión: '+e.message)}finally{b.disabled=false}
+};
+$('logoutBtn').onclick=async()=>{await db.auth.signOut();loggedIn(null);clearPlayer();message('Sesión cerrada.');};
+(async()=>{try{const {data,error}=await db.auth.getUser();loggedIn(error?null:data.user);if(data?.user&&!error)await loadRecords();else message('Inicia sesión para guardar tu video.')}catch(e){loggedIn(null);message('Error de conexión: '+e.message)}})();
+</script>
+</body></html>
