@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b18">
+<title>Créditos de prueba | IMPERIO AI VIDEO</title>
+<style>
+:root{color-scheme:dark;--muted:#c5c9de;--line:#3a4568;--cyan:#6fe8de}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 90% 0,#352054 0,transparent 38%),#090b18;color:#f4f6ff;font:16px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif}main{max-width:760px;margin:auto;padding:25px 17px 70px}h1{color:var(--cyan);font-size:clamp(30px,6vw,43px);margin:8px 0}h2{font-size:23px;margin:0 0 12px}p{color:var(--muted)}nav{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0 22px}a{color:#86ece3;text-underline-offset:4px}.panel{background:#171d35;border:1px solid var(--line);border-radius:20px;padding:23px;margin:18px 0}.test{display:inline-block;border:1px solid #9173db;border-radius:99px;padding:5px 11px;color:#e3d9ff;font-size:12px;font-weight:800}.price{font-size:30px;font-weight:800}.balance{font-size:35px;font-weight:800;color:var(--cyan)}.note{background:#0e1429;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:14px}button{border:0;border-radius:12px;background:linear-gradient(100deg,#b19aff,#5fe4d7);color:#111326;padding:14px 18px;font:750 15px system-ui;cursor:pointer;margin:8px 8px 8px 0}button.secondary{background:#303a60;color:#fff}button:disabled{opacity:.55;cursor:not-allowed}label{display:block;font-weight:700;font-size:14px;margin:12px 0 6px}input{display:block;width:100%;font:inherit;padding:13px;border:1px solid #566181;border-radius:11px;background:#0b1124;color:white}.hidden{display:none!important}.entry{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 0;font-size:13px}.entry span{overflow-wrap:anywhere}.notice{white-space:pre-wrap;overflow-wrap:anywhere}@media(max-width:500px){.panel{padding:17px}.entry{flex-direction:column;gap:2px}}
+</style>
+</head>
+<body><main>
+<h1>IMPERIO AI VIDEO</h1><span class="test">Stripe Sandbox · solo pruebas</span>
+<p>Paquetes de créditos para la plataforma. Por ahora, únicamente se permiten pagos simulados del administrador principal.</p>
+<nav><a href="./index.html">Inicio</a><a href="./biblioteca-v2.html">Mi biblioteca</a><a href="./estudio-video-5s.html">Estudio 5 segundos</a></nav>
+<section class="panel hidden" id="loginPanel">
+<h2>Iniciar sesión</h2><p>Utiliza tu cuenta existente de IMPERIO AI VIDEO.</p>
+<label for="email">Correo electrónico</label><input id="email" type="email" autocomplete="username">
+<label for="password">Contraseña</label><input id="password" type="password" autocomplete="current-password">
+<button type="button" id="loginBtn">Entrar</button>
+</section>
+<section class="panel hidden" id="accountPanel">
+<h2>Mi cuenta</h2><p id="accountName"></p>
+<button type="button" id="logoutBtn" class="secondary">Cerrar sesión</button>
+</section>
+<section class="panel">
+<h2>Paquete de créditos de prueba</h2>
+<div class="price">$10 USD <small>· pago único simulado</small></div>
+<div class="balance">10 créditos</div>
+<p>Prueba de compra con Stripe. No se cobra dinero real y los créditos acreditados son solo de prueba.</p>
+<button type="button" id="buyBtn" disabled>Comprar 10 créditos — $10 (prueba)</button>
+<p class="note">Stripe confirmará el pago al servidor. Volver a esta página no agrega créditos por sí mismo. La generación de video con estos créditos aún no está habilitada para el público.</p>
+</section>
+<section class="panel">
+<h2>Mi saldo</h2><div class="balance" id="balance">—</div>
+<p id="totals"></p>
+<button type="button" id="refreshBtn" class="secondary" disabled>Actualizar saldo</button>
+<h2 style="margin-top:24px">Últimos movimientos</h2><div id="transactions" aria-live="polite"><p>Inicia sesión para consultar tus movimientos.</p></div>
+</section>
+<section class="panel"><h2>Estado</h2><p id="notice" class="notice" role="status" aria-live="polite">Comprobando sesión...</p></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+const db=window.supabase.createClient('https://xmxirddbswlcgirtqzfj.supabase.co','sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO');
+const $=id=>document.getElementById(id);
+let currentUser=null;
+const notice=s=>{$('notice').textContent=s;};
+function showUser(u){currentUser=u||null;$('loginPanel').classList.toggle('hidden',!!u);$('accountPanel').classList.toggle('hidden',!u);$('accountName').textContent=u?'Sesión: '+u.email:'';$('buyBtn').disabled=!u;$('refreshBtn').disabled=!u;if(!u){$('balance').textContent='—';$('totals').textContent='';$('transactions').replaceChildren();}}
+async function updateBalance(){
+ if(!currentUser)return;
+ $('refreshBtn').disabled=true;notice('Consultando tus créditos...');
+ try{
+   const userId=currentUser.id;
+   const [wallet,history]=await Promise.all([
+     db.from('credit_wallets').select('balance,total_credited,total_spent').eq('user_id',userId).maybeSingle(),
+     db.from('credit_transactions').select('amount_delta,kind,created_at').eq('user_id',userId).order('created_at',{ascending:false}).limit(10)
+   ]);
+   if(wallet.error)throw wallet.error;if(history.error)throw history.error;
+   $('balance').textContent=String(wallet.data?.balance??0)+' créditos';
+   $('totals').textContent='Recibidos: '+String(wallet.data?.total_credited??0)+' · Gastados: '+String(wallet.data?.total_spent??0);
+   const root=$('transactions');root.replaceChildren();
+   if(!history.data?.length){const p=document.createElement('p');p.textContent='Sin movimientos todavía.';root.appendChild(p);}
+   for(const item of history.data||[]){
+     const row=document.createElement('div');row.className='entry';
+     const label=document.createElement('span');label.textContent=(item.kind==='purchase'?'Compra de prueba':(item.kind||'Movimiento'))+' · '+(item.created_at?new Date(item.created_at).toLocaleString('es'):'');
+     const amount=document.createElement('strong');amount.textContent=(item.amount_delta>0?'+':'')+String(item.amount_delta)+' créditos';
+     row.append(label,amount);root.appendChild(row);
+   }
+   notice('Saldo actualizado. Si acabas de completar un pago simulado, puedes actualizar nuevamente en unos segundos.');
+ }catch(e){notice('Error consultando los créditos: '+(e?.message||'Error de conexión'));}
+ finally{$('refreshBtn').disabled=!currentUser;}
+}
+$('loginBtn').onclick=async()=>{
+ $('loginBtn').disabled=true;notice('Iniciando sesión...');
+ try{const {data,error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;$('password').value='';showUser(data.user);await updateBalance();}
+ catch(e){notice('No se pudo entrar: '+(e?.message||'Error'));}
+ finally{$('loginBtn').disabled=false;}
+};
+$('logoutBtn').onclick=async()=>{await db.auth.signOut();showUser(null);notice('Sesión cerrada.');};
+$('refreshBtn').onclick=updateBalance;
+$('buyBtn').onclick=async()=>{
+ if(!currentUser)return;
+ $('buyBtn').disabled=true;notice('Preparando Stripe Checkout Sandbox...');
+ try{
+   const {data,error}=await db.functions.invoke('imperio-crear-checkout-test',{body:{}});
+   if(error){let code='';try{code=(await error.context?.json?.())?.error||'';}catch{}
+     if(code==='SANDBOX_ADMIN_ONLY')throw Error('La compra Sandbox es solo para el administrador principal.');
+     throw Error(code||error.message||'Error de pago');}
+   if(!data?.ok||typeof data.url!=='string')throw Error('Stripe no devolvió un enlace válido.');
+   const url=new URL(data.url);
+   if(url.protocol!=='https:'||url.hostname!=='checkout.stripe.com')throw Error('El enlace no pertenece a Stripe Checkout.');
+   window.location.assign(url.href);
+ }catch(e){notice('No se pudo iniciar el Checkout de prueba: '+(e?.message||'Error de conexión'));}
+ finally{$('buyBtn').disabled=!currentUser;}
+};
+(async()=>{
+ try{const {data,error}=await db.auth.getUser();showUser(error?null:data.user);
+   const checkout=new URLSearchParams(location.search).get('checkout');
+   if(checkout==='success')notice('Volviste de Stripe. Esto no prueba que el pago se haya confirmado: consulta tu saldo.');
+   else if(checkout==='cancel')notice('Compra de prueba cancelada.');
+   else notice('Conexión lista. Inicia sesión para continuar.');
+   if(currentUser)await updateBalance();
+ }catch(e){showUser(null);notice('Error de conexión: '+(e?.message||'Error'));}
+})();
+</script>
+</body></html>
