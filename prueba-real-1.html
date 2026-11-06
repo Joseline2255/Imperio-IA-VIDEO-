@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1228">
+<meta name="description" content="IMPERIO AI VIDEO: una prueba real de 5 segundos, solo para el administrador.">
+<title>IMPERIO AI VIDEO · Una prueba real</title>
+<style>
+:root{color-scheme:dark;--bg:#090f22;--card:#18213a;--line:#394a6b;--text:#f6f8ff;--muted:#bfcbe0;--cyan:#72e7dc;--violet:#b6a4ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 82% -15%,#3d2a6b,transparent 42%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--cyan);text-underline-offset:4px}main{max-width:820px;margin:auto;padding:22px 17px 75px}
+header{display:flex;justify-content:space-between;align-items:center;gap:13px;flex-wrap:wrap;padding:10px 0 26px}header a{text-decoration:none}.brand{font-weight:900;font-size:19px;color:var(--text);letter-spacing:.04em}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.19em;color:var(--cyan);font-weight:850}
+h1{font-size:clamp(31px,6vw,49px);line-height:1.1;margin:10px 0 12px}h2{font-size:22px;margin:0 0 11px}.card{padding:23px;margin:18px 0;border-radius:21px;background:var(--card);border:1px solid var(--line)}p{color:var(--muted);margin:8px 0 14px}.pill{display:inline-block;padding:6px 12px;background:#343155;color:#e9e2ff;border-radius:30px;font-size:12px;font-weight:800}.row{display:flex;align-items:center;gap:11px;flex-wrap:wrap}.spread{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+label{display:block;margin:14px 0 8px;font-weight:720}textarea,select{width:100%;background:#0e1831;border:1px solid #536484;color:var(--text);border-radius:12px;padding:13px 15px;font:inherit}textarea{min-height:155px;resize:vertical}textarea:focus,select:focus{outline:2px solid var(--cyan)}button{border:0;border-radius:13px;padding:13px 18px;font:750 15px system-ui;cursor:pointer;background:linear-gradient(105deg,var(--violet),var(--cyan));color:#13182e}button.secondary{background:#2e3d60;color:var(--text)}button:disabled{opacity:.5;cursor:not-allowed}.notice{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;background:#0b172e;border:1px solid #4a5b7b;padding:13px;border-radius:13px;min-height:48px}ul{padding-left:20px;margin:12px 0;color:var(--muted)}li{margin:6px 0}.good{color:var(--cyan)}.bad{color:#ffb7ae}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.metric{padding:13px;background:#0e1831;border-radius:12px;border:1px solid var(--line)}.metric strong{font-size:23px;display:block;color:var(--cyan)}small{color:var(--muted)}#gates{padding:0;list-style:none}#gates li{padding:7px 0;border-bottom:1px solid #35445f}footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:17px;margin-top:26px}@media(max-width:560px){.card{padding:17px}.grid{grid-template-columns:1fr}header{align-items:flex-start}}
+</style>
+</head>
+<body><main>
+<header><a href="./app.html" class="brand">▶ IMPERIO AI VIDEO</a><a href="./app.html">Volver al estudio</a></header>
+<span class="eyebrow">Prueba controlada del administrador</span>
+<h1>Crear nuestro primer video de prueba</h1>
+<p>Esta página permite enviar <strong>una sola generación real</strong> de PixVerse C1. El permiso caduca el 13 de noviembre de 2026. No habilita la generación pública ni los pagos de clientes.</p>
+<span class="pill">1 video · 5 s · 720p · con audio</span>
+<section class="card"><h2>1. Cuenta y protecciones</h2>
+<p id="account">Comprobando tu sesión de Supabase...</p>
+<div class="grid"><div class="metric"><small>Cargo estimado del proveedor</small><strong>US$0.325</strong></div><div class="metric"><small>Reserva del ensayo</small><strong>10 créditos</strong></div></div>
+<p><small>Límite configurado para esta única solicitud: US$0.330. No garantiza por sí solo la factura final de fal.ai. La aplicación bloqueará cualquier segunda solicitud.</small></p>
+<ul id="gates"><li>Comprobando las protecciones...</li></ul>
+<div class="row"><button class="secondary" id="verify" type="button">Comprobar requisitos</button><a href="./app.html">Ir a mi cuenta</a></div>
+</section>
+<section class="card"><h2>2. Video de prueba</h2>
+<label for="prompt">Descripción</label>
+<textarea id="prompt" maxlength="1000">Un león majestuoso camina lentamente por la sabana africana al amanecer. Plano cinematográfico suave, iluminación natural cálida, árboles al fondo, movimiento realista y sonidos suaves de la naturaleza.</textarea>
+<small id="counter">0/1000 caracteres</small>
+<label for="ratio">Formato</label><select id="ratio"><option value="16:9">Horizontal 16:9</option><option value="9:16">Vertical 9:16</option></select>
+<p><small>El modelo genera 720p; mencionar 4K en la descripción no cambia la resolución.</small></p>
+<button id="start" type="button" disabled>Crear UNA prueba real · US$0.325 aprox.</button>
+<p id="startHint"><small>Solo se habilita si el servidor confirma sesión, permisos, saldo, límite y clave del proveedor.</small></p>
+</section>
+<section class="card"><div class="spread"><h2>3. Seguimiento y resultado</h2><button id="refresh" class="secondary" type="button" disabled>Actualizar estado</button></div>
+<p id="result" role="status" class="notice">No hay ningún trabajo enviado desde esta pantalla.</p>
+<div class="row"><button id="recover" type="button" class="secondary">Recuperar solicitud previa</button><a href="./app.html#biblioteca">Abrir mi biblioteca privada</a></div>
+<p><small>Si el proveedor acepta la generación pero aparece algún error, NO vuelvas a pulsar «Crear». El sistema permite consultar y recuperar el mismo trabajo, sin enviarlo nuevamente.</small></p>
+</section>
+<footer>IMPERIO AI VIDEO · Piloto exclusivo del administrador · Las compras y la generación para clientes siguen desactivadas.</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+const project='https://xmxirddbswlcgirtqzfj.supabase.co';
+const key='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const $=id=>document.getElementById(id);
+const db=window.supabase?.createClient(project,key);
+let user=null, jobId=null,reqId=null,polling=false,pollCount=0,inspection=null;
+let pollTimer=null;
+const codeName={code_review_released:'Piloto autorizado',account_authorized:'Administrador principal',one_test_available:'Una prueba disponible',public_generation_disabled:'Generación pública bloqueada',public_payments_disabled:'Pagos públicos bloqueados',public_model_disabled:'Modelo público bloqueado',cost_within_single_trial:'Límite de costo del ensayo',enough_credits:'10 créditos disponibles',provider_key_configured:'Clave de fal.ai configurada'};
+function say(s){$('result').textContent=s}
+function who(s){$('account').textContent=s}
+function safeError(r){return r?.message||r?.error||r?.code||'No disponible'}
+function storageKey(k){return 'imperio-pilot-one-'+(user?.id||'guest')+'-'+k}
+function put(k,v){try{localStorage.setItem(storageKey(k),v)}catch{}}
+function get(k){try{return localStorage.getItem(storageKey(k))}catch{return null}}
+function validUUID(x){return /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(x||'')}
+function count(){const x=$('prompt').value;$('counter').textContent=x.length+'/1000 caracteres'}
+async function api(fn,body){
+ try{
+  const {data,error}=await db.functions.invoke(fn,{body});
+  if(error){let info=null;try{info=await error.context?.json()}catch{};
+   return {ok:false,...(info||{}),code:info?.code||error.message||'API_ERROR'};
+  }
+  return data&&typeof data==='object'?data:{ok:false,code:'INVALID_SERVER_RESPONSE'};
+ }catch(e){return {ok:false,code:e?.message||String(e)}}
+}
+function showGates(data){
+ inspection=data;
+ const root=$('gates');root.replaceChildren();
+ if(!data?.ok){const li=document.createElement('li');li.textContent='✕ No fue posible verificar el piloto: '+safeError(data);root.append(li);$('start').disabled=true;return}
+ for(const [name,value] of Object.entries(data.gates||{})){
+  const li=document.createElement('li');li.textContent=(value?'✓ ':'✕ ')+(codeName[name]||name);li.className=value?'good':'bad';root.append(li);
+ }
+ const permitted=Object.values(data.gates||{}).length>=8&&Object.values(data.gates).every(v=>v===true);
+ const previouslyStarted=Boolean(get('attempted'));
+ $('start').disabled=!permitted||previouslyStarted||Boolean(jobId);
+ $('startHint').textContent=previouslyStarted?'Ya se registró un intento de envío. Para evitar un segundo cargo, consulta la solicitud existente.':
+ permitted?'Listo: puedes ejecutar tu única prueba aprobada.':
+ 'La prueba no se puede ejecutar hasta que todos los requisitos sean correctos.';
+}
+async function inspect(){
+ $('verify').disabled=true;const r=await api('imperio-pixverse-piloto',{action:'inspect'});
+ showGates(r);$('verify').disabled=false;return r;
+}
+async function recover(){
+ if(!user)return;
+ const prior=get('job');if(validUUID(prior)){jobId=prior;$('refresh').disabled=false;say('Solicitud encontrada. Consultando estado...');await readStatus();return}
+ const r=await api('imperio-solicitudes',{action:'my_jobs'});
+ if(!r.ok){say('No se pudo recuperar el historial: '+safeError(r));return}
+ const saved=get('request');const match=(r.jobs||[]).find(j=>j.client_request_id===saved)||
+ (r.jobs||[]).find(j=>j.sku==='pixverse-c1-5s-audio-720p');
+ if(match&&validUUID(match.id)){
+  jobId=match.id;put('job',jobId);$('refresh').disabled=false;
+  say('Trabajo recuperado ('+match.status+'). Consultando...');await readStatus();
+ }else if(get('attempted')){
+  say('Existe un intento previo, pero todavía no se encontró su identificador. No envíes otro video. Revisa el diagnóstico en Supabase.');
+ }else say('No hay un trabajo previo de PixVerse registrado en esta cuenta.');
+}
+async function start(){
+ if(!user||!inspection?.ok||Object.values(inspection.gates||{}).some(x=>x!==true))return;
+ if(get('attempted')||jobId){say('Ya existe un intento; consulta su estado.');return}
+ const prompt=$('prompt').value.trim();
+ if(prompt.length<12||prompt.length>1000||new TextEncoder().encode(prompt).length>2048){say('Descripción no válida (12–1000 caracteres, máximo 2048 bytes).');return}
+ if(!window.confirm('Autorizas enviar UNA generación real PixVerse de 5 segundos con audio, con costo estimado US$0.325 y reserva de 10 créditos. ¿Enviar ahora?'))return;
+ $('start').disabled=true;$('verify').disabled=true;
+ reqId=validUUID(get('request'))?get('request'):crypto.randomUUID();
+ put('request',reqId);put('attempted','yes');put('prompt',prompt);
+ say('Enviando UNA solicitud real a fal.ai. No cierres este proceso hasta recibir una respuesta; si falla, no repitas el envío.');
+ const r=await api('imperio-pixverse-piloto',{
+  action:'start',prompt,aspect_ratio:$('ratio').value,
+  client_request_id:reqId,confirm_real_provider_charge:true
+ });
+ if(validUUID(r.job_id)){jobId=r.job_id;put('job',jobId);$('refresh').disabled=false}
+ if(r.ok){
+  say('Solicitud aceptada ('+(r.status||r.state||'En proceso')+').\nID: '+(jobId||'no disponible')+'\nEsperando el resultado sin enviar otra generación...');
+  schedulePoll();await readStatus();
+ }else{
+  say('Servidor: '+safeError(r)+'\n'+(jobId?'ID: '+jobId+'\n':'')+'No reintentar el envío. Usa «Recuperar solicitud previa».');
+  if(jobId)await readStatus();
+ }
+ $('verify').disabled=false;
+}
+function schedulePoll(){if(pollTimer)clearInterval(pollTimer);pollTimer=setInterval(async()=>{
+ if(document.visibilityState==='visible'&&jobId&&pollCount<35&&!polling){pollCount++;await readStatus()}
+},12000)}
+async function readStatus(){
+ if(!jobId||!user||polling)return;
+ polling=true;$('refresh').disabled=true;
+ try{
+  const r=await api('imperio-pixverse-piloto',{action:'status',job_id:jobId});
+  if(!r.ok){say('Estado temporalmente no disponible: '+safeError(r)+'\nID: '+jobId+'\nNo vuelvas a generar. Usa «Actualizar estado».');return}
+  const state=r.job_status||r.status||'En curso';
+  if(state==='COMPLETED'||r.next_step==='library'||r.saved_to_private_library){
+   say('¡VIDEO COMPLETADO Y GUARDADO!\nID: '+jobId+'\nAbre «Mi biblioteca privada» para reproducirlo.');
+   if(pollTimer)clearInterval(pollTimer);return;
+  }
+  if(r.next_step==='collect'||r.provider_status==='COMPLETED'){
+   say('Video generado. Guardando MP4 privado y cerrando créditos...\nID: '+jobId);
+   const done=await api('imperio-pixverse-piloto',{action:'collect',job_id:jobId});
+   if(done.ok&&done.status==='COMPLETED'){
+    say('¡VIDEO COMPLETADO Y GUARDADO!\nID: '+jobId+'\nYa puedes abrir la biblioteca.');
+    if(pollTimer)clearInterval(pollTimer);
+   }else say('Generación terminada; entrega en proceso o revisión: '+safeError(done)+'\nID: '+jobId+'\nActualiza el estado, sin generar otro video.');
+  }else{
+   say('Generación en curso: '+(r.provider_status||state)+'\nID: '+jobId+'\nLa entrega automática está habilitada.');
+  }
+ }finally{polling=false;$('refresh').disabled=false}
+}
+$('prompt').addEventListener('input',count);$('verify').onclick=inspect;
+$('start').onclick=start;$('refresh').onclick=readStatus;$('recover').onclick=recover;
+(async()=>{
+ count();if(!db){who('Error: no se cargó Supabase.');return}
+ try{
+  const {data,error}=await db.auth.getUser();
+  if(error||!data?.user){who('Inicia sesión primero desde el estudio.');
+   say('Necesitas una sesión activa. Abre app.html, inicia sesión y regresa a esta página.');return}
+  user=data.user;who('Conectado como '+user.email);
+  reqId=get('request');jobId=get('job');
+  if(validUUID(jobId)){$('refresh').disabled=false;schedulePoll()}
+  await inspect();
+  if(get('attempted'))await recover();
+ }catch(e){who('Error de conexión: '+(e?.message||String(e)))}
+})();
+</script>
+</body>
+</html>
