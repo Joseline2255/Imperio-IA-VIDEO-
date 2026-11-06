@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0c1024">
+<meta name="description" content="IMPERIO AI VIDEO: estudio de video y consulta segura de créditos.">
+<title>Estudio de validación V2 | IMPERIO AI VIDEO</title>
+<style>
+:root{color-scheme:dark;--bg:#090d1f;--panel:#1a2240;--line:#3d456b;--muted:#b9c4dd;--aqua:#62e5d4;--violet:#ad93ff;--ink:#f8f8ff}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:radial-gradient(ellipse at top right,#30234f 0,transparent 35%),var(--bg);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}
+main{max-width:950px;margin:0 auto;padding:23px 18px 72px}
+h1{color:var(--aqua);font-size:clamp(29px,6vw,44px);margin:6px 0 0;line-height:1.12;letter-spacing:-.8px}
+h2{font-size:23px;line-height:1.25;margin:0 0 13px}
+h3{font-size:17px;margin:0 0 12px}
+p{color:var(--muted);margin:10px 0 15px}
+nav{display:flex;flex-wrap:wrap;gap:10px 22px;margin:20px 0 28px}
+a{color:#83e9de;text-underline-offset:4px}
+.card{padding:24px;border-radius:22px;background:var(--panel);border:1px solid var(--line);margin-bottom:19px}
+.hero{background:linear-gradient(135deg,#21214b,#19223e 75%)}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.3px;padding:6px 11px;background:#35335c;color:#e0dbff;border-radius:100px;margin-top:12px}
+.notice{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #526087;padding:13px 14px;border-radius:13px;background:#0f172e;margin:17px 0 0;color:#edf4ff}
+.notice.error{border-color:#c56c76;background:#382333}
+label{display:block;font-weight:650;font-size:14px;margin:14px 0 6px}
+input,textarea,select{width:100%;border:1px solid #566287;border-radius:12px;background:#0c142d;color:white;font:inherit;padding:12px 13px;outline-offset:3px}
+textarea{min-height:138px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--aqua)}
+button{background:linear-gradient(98deg,var(--violet),var(--aqua));color:#10152b;font:750 15px system-ui;border:none;border-radius:12px;padding:13px 18px;cursor:pointer;min-height:47px}
+button.secondary{background:#303b63;color:white;border:1px solid #4b5983}
+button:disabled{opacity:.48;cursor:not-allowed}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0 3px}
+.actions button{max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.big{font-size:36px;font-weight:850;color:var(--aqua);line-height:1.18;letter-spacing:-.6px}
+.price{font-size:28px;font-weight:800}
+.small{font-size:13px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.hidden{display:none!important}
+.counter{font-size:13px;color:var(--muted);text-align:right}
+.pill{border:1px solid #ab9156;border-radius:15px;padding:5px 9px;font-size:12px;color:#ffe3a9}
+.preview{background:#0d142b;border:1px solid #3c486a;border-radius:12px;padding:16px;overflow-wrap:anywhere;min-height:80px;white-space:pre-wrap}
+.job{padding:12px 0;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding-top:10px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:19px}main{padding:18px 14px 60px}.big{font-size:32px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>IMPERIO AI VIDEO</h1>
+<span class="tag">VALIDACIÓN SEGURA · VERSIÓN 2</span>
+<p>Describe tu video y comprueba formato, precio y saldo en Supabase sin enviar trabajos a fal.ai.</p>
+<nav aria-label="Navegación">
+<a href="index.html">Inicio</a>
+<a href="comprar-creditos-1.html">Comprar créditos</a>
+<a href="biblioteca-v2.html">Mis videos</a>
+<a href="estudio-video-5s.html">Estudio anterior</a>
+</nav>
+</header>
+<section class="card hidden" id="loginBox">
+<h2>Iniciar sesión</h2>
+<p>Utiliza tu cuenta de IMPERIO AI VIDEO para consultar tu saldo y precios. No necesitamos tus claves de Stripe ni de fal.ai.</p>
+<form id="loginForm">
+<label for="email">Correo</label><input id="email" type="email" autocomplete="username" required placeholder="correo@ejemplo.com">
+<label for="password">Contraseña</label><input id="password" type="password" autocomplete="current-password" required>
+<div class="actions"><button id="login" type="submit">Entrar</button></div>
+</form>
+</section>
+<section class="card hidden" id="userBox">
+<div class="row"><div><h2>Mi cuenta</h2><p id="username"></p></div><button class="secondary" id="logout" type="button">Cerrar sesión</button></div>
+</section>
+<div class="grid">
+<section class="card" aria-label="Saldo">
+<h2>Mis créditos</h2>
+<div class="big" id="balance">—</div>
+<p id="walletDetail">Inicia sesión para consultar el saldo.</p>
+<button type="button" id="refresh" class="secondary" disabled>Actualizar saldo</button>
+</section>
+<section class="card" aria-label="Precio">
+<h2>Precio del video</h2>
+<div class="price" id="quotePrice">—</div>
+<p class="small" id="quoteDetail">Costo por 5 segundos. La tarifa está pendiente de activación definitiva.</p>
+<div id="quoteFlag" class="pill">Generación todavía no habilitada</div>
+<div class="actions"><button type="button" id="quote" class="secondary" disabled>Consultar precio</button></div>
+</section>
+</div>
+<section class="card hero">
+<h2>Describe tu próximo video</h2>
+<form id="draftForm">
+<label for="prompt">Descripción del video</label>
+<textarea id="prompt" required minlength="12" maxlength="1000" placeholder="Ejemplo: Amanecer cinematográfico en una playa del Caribe, palmeras moviéndose con la brisa, olas suaves y cámara avanzando lentamente hacia el mar."></textarea>
+<div class="counter" id="count">0 / 1000 caracteres</div>
+<div class="grid">
+<div><label for="ratio">Formato</label><select id="ratio"><option value="16:9">Horizontal 16:9</option><option value="9:16">Vertical 9:16</option></select></div>
+<div><label for="seconds">Duración disponible</label><select id="seconds" disabled><option value="5">5 segundos (prueba)</option></select></div>
+</div>
+<p class="small">Las duraciones de 10 a 60 segundos se incorporarán cuando estén implementados y validados sus modelos y precios.</p>
+<div class="actions">
+<button type="submit" id="saveDraft">Guardar borrador en este dispositivo</button>
+<button type="button" id="copyDraft" class="secondary">Copiar descripción</button>
+</div>
+</form>
+<hr>
+<h3>Vista previa del borrador</h3>
+<div id="preview" class="preview">Todavía no has escrito un video. Aquí aparecerán el texto y el formato que elijas.</div>
+</section>
+<section class="card" id="preflightPanel">
+<div class="row"><h2>Validar sin gastar créditos</h2><span class="pill">Solo prueba</span></div>
+<p>Comprueba la descripción, el formato y el saldo con el servidor. Esta validación no crea videos, no reserva ni descuenta créditos y no contacta a fal.ai.</p>
+<div class="actions"><button id="preflightBtn" type="button" disabled>Validar mi video</button></div>
+<div class="notice" id="preflightResult" role="status" aria-live="polite">Inicia sesión y escribe una descripción de al menos 12 caracteres.</div>
+</section>
+<section class="card">
+<div class="row"><h2>¿Se puede generar?</h2><span class="pill">Protección activada</span></div>
+<p id="capacity">La disponibilidad se consulta directamente en Supabase. No se inicia ningún trabajo ni se hace una llamada a fal.ai desde esta página.</p>
+<div class="actions"><button id="generate" type="button" disabled>Generar video (pendiente de habilitación)</button></div>
+<p class="small">El servidor mantiene bloqueadas las generaciones nuevas mientras se verifican los costos del proveedor, los límites diarios y el proceso de reembolso. Tu saldo no cambia por guardar un borrador ni validar la descripción.</p>
+<p class="small">Nota técnica: el modelo Wan 2.2 5B usado para la primera prueba tiene retirada anunciada para el 4 de enero de 2027. Se migrará el motor antes de habilitar nuevas generaciones.</p>
+</section>
+<section class="card">
+<h2>Mis solicitudes</h2>
+<div id="jobs"><p>Inicia sesión para consultar tus solicitudes.</p></div>
+<div class="actions"><button id="checkJobs" class="secondary" type="button" disabled>Actualizar solicitudes</button></div>
+</section>
+<section class="card">
+<h2>Resultado</h2>
+<div id="message" class="notice" role="status" aria-live="polite">Cargando conexión...</div>
+</section>
+<footer>IMPERIO AI VIDEO · Validación sin consumos · Noviembre 2026</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+'use strict';
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+const PUBLISHABLE_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const DRAFT_KEY='imperio-creditos-studio-draft-v1';
+const $=id=>document.getElementById(id);
+let sb,user=null,quoteData=null;
+function status(message,problem=false){$('message').textContent=message;$('message').classList.toggle('error',problem)}
+function signedIn(u){user=u||null;$('loginBox').classList.toggle('hidden',!!user);$('userBox').classList.toggle('hidden',!user);$('username').textContent=user?'Sesión: '+user.email:'';for(const id of ['refresh','quote','checkJobs','preflightBtn'])$(id).disabled=!user;if(!user){quoteData=null;$('balance').textContent='—';$('quotePrice').textContent='—';$('capacity').textContent='Inicia sesión para consultar disponibilidad.';}}
+function draw(){const prompt=$('prompt').value.trim(),ratio=$('ratio').value;$('count').textContent=$('prompt').value.length+' / 1000 caracteres';$('preview').textContent=prompt?'Video de 5 segundos · Formato '+ratio+'\n\n'+prompt:'Todavía no has escrito un video. Aquí aparecerán el texto y el formato que elijas.';$('preflightResult').textContent='Borrador cambiado. Valida esta versión antes de continuar.';}
+function readDraft(){try{const d=JSON.parse(localStorage.getItem(DRAFT_KEY)||'null');if(d&&typeof d.prompt==='string'&&d.prompt.length<=1000){$('prompt').value=d.prompt;$('ratio').value=d.ratio==='9:16'?'9:16':'16:9';}}catch{}draw();}
+function lockMessage(){if(!quoteData){$('capacity').textContent='Consulta tu saldo y el precio para comprobar la disponibilidad.';return}if(!quoteData.enough_credits){$('capacity').textContent='Saldo insuficiente para la tarifa provisional. No puedes iniciar una solicitud.';return}$('capacity').textContent='Saldo suficiente para la tarifa provisional, pero la generación todavía está desactivada en el servidor. No se descontarán créditos desde este estudio.';}
+async function queryCredit(){if(!user)return;$('quote').disabled=true;status('Consultando precio y saldo de forma segura...');try{
+ const [res,wal]=await Promise.all([
+ sb.functions.invoke('imperio-creditos',{body:{action:'quote'}}),
+ sb.from('credit_wallets').select('balance,total_credited,total_spent').eq('user_id',user.id).maybeSingle()
+ ]);
+ if(res.error){let detail='';try{detail=(await res.error.context?.json())?.error||''}catch{}throw new Error(detail||res.error.message)}
+ if(!res.data?.ok)throw new Error(res.data?.error||'El servidor no devolvió una cotización válida.');
+ if(wal.error)throw wal.error;
+ quoteData=res.data;
+ $('balance').textContent=String(wal.data?.balance??res.data.balance_credits??0)+' créditos';
+ $('walletDetail').textContent='Recibidos: '+(wal.data?.total_credited??0)+' · Gastados: '+(wal.data?.total_spent??0);
+ $('quotePrice').textContent=String(quoteData.cost_credits)+' créditos';
+ $('quoteDetail').textContent='Tarifa provisional por '+quoteData.duration_seconds+' segundos. Modelo: '+quoteData.model;
+ $('quoteFlag').textContent=quoteData.generation_allowed?'Revisar condiciones':'Generación todavía no habilitada';
+ lockMessage();
+ status('Cotización actualizada desde Supabase. No se han consumido créditos.');
+ }catch(e){status('Error consultando el servidor: '+(e.message||String(e)),true)}finally{$('quote').disabled=!user;}
+}
+async function preflight(){
+ if(!user){status('Inicia sesión antes de validar.',true);return;}
+ const prompt=$('prompt').value.trim(),aspect_ratio=$('ratio').value;
+ if(prompt.length<12||prompt.length>1000){status('Escribe entre 12 y 1000 caracteres antes de validar.',true);$('preflightResult').textContent='La descripción debe tener entre 12 y 1000 caracteres.';return;}
+ $('preflightBtn').disabled=true;$('preflightResult').textContent='Comprobando con Supabase, sin gasto...';
+ try{
+   const {data,error}=await sb.functions.invoke('imperio-solicitudes',{body:{action:'preflight',prompt,aspect_ratio}});
+   if(error){let detail='';try{detail=(await error.context?.json())?.error||''}catch{}throw new Error(detail||error.message)}
+   if(!data?.ok)throw new Error(data?.error||'No se pudo validar.');
+   const lines=['Validación completada sin gasto.',
+     'Descripción: '+data.description_length+' caracteres · Formato '+data.aspect_ratio,
+     'Precio provisional: '+data.cost_credits+' créditos · Saldo: '+data.balance_credits+' créditos.',
+     data.enough_credits?'Saldo suficiente para la tarifa provisional.':'Saldo insuficiente para la tarifa provisional.',
+     'Generación: BLOQUEADA. No se creó video ni se llamó al proveedor.',
+     data.model_needs_migration?'Pendiente: migrar el modelo Wan 2.2 5B.':'Pendiente: completar la habilitación técnica.'];
+   $('preflightResult').textContent=lines.join('\n');
+   status('Validación terminada: saldo intacto, sin generar videos.');
+ }catch(e){$('preflightResult').textContent='No se completó la validación: '+(e.message||String(e));status('No se pudo validar el video.',true)}
+ finally{$('preflightBtn').disabled=!user;}
+}
+async function queryJobs(){if(!user)return;$('checkJobs').disabled=true;try{
+ const {data,error}=await sb.functions.invoke('imperio-solicitudes',{body:{action:'my_jobs'}});
+ if(error){let detail='';try{detail=(await error.context?.json())?.error||''}catch{}throw new Error(detail||error.message)}
+ if(!data?.ok)throw new Error(data?.error||'No se encontraron solicitudes.');
+ const root=$('jobs');root.replaceChildren();
+ if(!data.jobs?.length){const p=document.createElement('p');p.textContent='Todavía no tienes solicitudes nuevas. Tu video anterior está en «Mis videos».';root.append(p)}
+ for(const job of data.jobs||[]){const row=document.createElement('div');row.className='job';const title=document.createElement('strong');title.textContent=job.sku+' · '+job.status;const info=document.createElement('p');info.className='small';info.textContent='Formato '+job.aspect_ratio+' · '+new Date(job.created_at).toLocaleString('es');row.append(title,info);root.append(row)}
+ }catch(e){status('Error consultando solicitudes: '+(e.message||String(e)),true)}finally{$('checkJobs').disabled=!user;}
+}
+async function init(){readDraft();$('prompt').addEventListener('input',draw);$('ratio').addEventListener('change',draw);
+ $('draftForm').addEventListener('submit',e=>{e.preventDefault();const prompt=$('prompt').value.trim();if(prompt.length<12||prompt.length>1000){status('Escribe una descripción entre 12 y 1000 caracteres.',true);return}try{localStorage.setItem(DRAFT_KEY,JSON.stringify({prompt,ratio:$('ratio').value}));status('Borrador guardado en este dispositivo. No se han usado créditos.')}catch{status('Este navegador no permitió guardar el borrador.',true)}});
+ $('copyDraft').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('prompt').value);status('Descripción copiada.')}catch{status('No se pudo copiar automáticamente. Selecciona el texto para copiarlo.',true)}});
+ $('loginForm').addEventListener('submit',async e=>{e.preventDefault();$('login').disabled=true;try{const {data,error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;$('password').value='';signedIn(data.user);await queryCredit();await queryJobs()}catch(e){status('No se pudo iniciar sesión: '+e.message,true)}finally{$('login').disabled=false}});
+ $('logout').addEventListener('click',async()=>{await sb.auth.signOut();signedIn(null);$('jobs').textContent='Inicia sesión para ver tus solicitudes.';status('Sesión cerrada.')});
+ $('preflightBtn').addEventListener('click',preflight);
+ $('quote').addEventListener('click',queryCredit);$('refresh').addEventListener('click',queryCredit);$('checkJobs').addEventListener('click',queryJobs);
+ if(!window.supabase){status('No se cargó Supabase. Revisa la conexión y recarga esta página.',true);return}
+ try{sb=window.supabase.createClient(PROJECT_URL,PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true}});const {data,error}=await sb.auth.getUser();signedIn(error?null:data.user);if(user){await queryCredit();await queryJobs()}else status('Inicia sesión para consultar el costo real de prueba. Guardar borradores no gasta créditos.')}catch(e){status('No fue posible conectar con Supabase: '+e.message,true)}
+}
+init();
+})();
+</script>
+</body>
+</html>
