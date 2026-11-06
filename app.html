@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<meta name="description" content="IMPERIO AI VIDEO · Estudio creativo de videos con inteligencia artificial.">
+<title>IMPERIO AI VIDEO — Estudio</title>
+<style>
+:root{color-scheme:dark;--bg:#0a1022;--card:#17213a;--stroke:#344262;--text:#f8f9ff;--muted:#c3cee3;--aqua:#6de6da}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 88% -7%,#3e235f,transparent 38%),var(--bg);color:var(--text);font:16px/1.5 system-ui,"Segoe UI",sans-serif}
+a{color:var(--aqua)}button,input,select,textarea{font:inherit}
+button{border:0;border-radius:12px;background:linear-gradient(110deg,#b8a5ff,#6ae2d6);color:#0d152a;font-weight:750;padding:12px 17px;cursor:pointer}
+button.secondary{background:#293957;color:var(--text)}button:disabled{opacity:.55;cursor:not-allowed}
+input,textarea,select{border:1px solid #586986;background:#0d1731;color:var(--text);border-radius:12px;padding:12px 14px;width:100%}
+textarea{min-height:152px;resize:vertical}label{display:block;margin:14px 0 7px;font-weight:700}
+h1{font-size:clamp(32px,5vw,51px);line-height:1.12;margin:8px 0}h2{font-size:22px;margin:0 0 12px}
+p{color:var(--muted);margin:7px 0 14px}.shell{max-width:1110px;padding:22px 17px 70px;margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:28px}
+.brand{font-size:20px;font-weight:900;letter-spacing:.06em;text-decoration:none;color:inherit}.brand small{display:block;color:var(--muted);letter-spacing:.2em;font-weight:500;font-size:11px}
+nav{display:flex;flex-wrap:wrap;gap:8px}nav a{border:1px solid var(--stroke);border-radius:999px;padding:7px 12px;text-decoration:none;color:var(--text);font-size:14px}nav a.active{color:var(--aqua);border-color:var(--aqua)}
+.eyebrow{color:var(--aqua);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.hero{margin-bottom:23px}.hero p{max-width:720px}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.9fr);gap:18px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--stroke);border-radius:19px;padding:21px;margin-bottom:17px}.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spread{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.kicker{display:inline-block;padding:5px 10px;border-radius:999px;background:#352e57;color:#ede4ff;font-size:12px;font-weight:700}
+.status{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #46587c;border-radius:12px;background:#0d1830;padding:12px;color:#e7effe;font-size:14px}.sub{font-size:13px}.balance{font-size:38px;font-weight:800;color:var(--aqua)}
+.item{background:#0d1830;border:1px solid #3a4868;border-radius:13px;padding:14px;margin:12px 0;overflow-wrap:anywhere}.item h3{font-size:15px;margin:0 0 5px}.item video{width:100%;max-height:380px;background:#000;border-radius:12px;margin-top:12px}
+.hidden{display:none!important}footer{margin-top:15px;border-top:1px solid var(--stroke);padding-top:20px;color:var(--muted);font-size:12px}
+@media(max-width:760px){.layout,.two{grid-template-columns:1fr}.panel{padding:17px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+<a class="brand" href="./index.html">▶ IMPERIO AI VIDEO<small>ESTUDIO CREATIVO</small></a>
+<nav aria-label="Secciones"><a class="active" href="#estudio">Crear</a><a href="#biblioteca">Biblioteca</a><a href="#creditos">Créditos</a><a href="./index.html">Inicio</a></nav>
+</header>
+<div class="hero"><span class="eyebrow">Acceso anticipado</span><h1>Tus ideas, en video.</h1>
+<p>Un solo lugar para gestionar tus ideas, tus créditos y tu biblioteca privada. Motor piloto PixVerse C1: 5 segundos, 720p, audio.</p>
+<span class="kicker">Las generaciones y los pagos reales aún están bloqueados</span></div>
+<section class="panel" aria-labelledby="accountTitle"><div class="spread"><h2 id="accountTitle">Cuenta</h2>
+<div class="row hidden" id="logged"><span id="who" class="sub"></span><button class="secondary" type="button" id="logout">Salir</button></div></div>
+<form id="auth" class="two"><div><label for="email">Correo</label><input type="email" id="email" autocomplete="email" required></div>
+<div><label for="password">Contraseña</label><input type="password" id="password" minlength="6" autocomplete="current-password" required></div>
+<div class="row"><button type="submit" id="login">Iniciar sesión</button><button type="button" class="secondary" id="signup">Registrarse</button></div>
+</form><p role="status" id="authMsg" class="sub">Inicia sesión para usar tu biblioteca y validar tus ideas.</p></section>
+<div class="layout"><main>
+<section class="panel" id="estudio"><div class="spread"><h2>Crear video</h2><span class="kicker">5 s · 720p</span></div>
+<label for="prompt">Describe tu video</label>
+<textarea id="prompt" maxlength="1000" placeholder="Un león majestuoso camina por la sabana al amanecer, luz cinematográfica y sonidos naturales."></textarea>
+<p class="sub" id="chars">0 de 1000 caracteres</p><label for="ratio">Proporción</label>
+<select id="ratio"><option value="16:9">Horizontal · 16:9</option><option value="9:16">Vertical · 9:16</option></select>
+<div class="row" style="margin-top:16px"><button id="check" type="button" disabled>Validar idea y créditos</button>
+<button id="simulate" type="button" class="secondary" disabled>Simular (administrador)</button></div>
+<p role="status" class="status" id="result">Inicia sesión para comenzar.</p>
+<button disabled type="button" title="Bloqueado hasta completar las pruebas reales">Generar video · próximamente</button>
+<p class="sub">Validar y simular no generan videos, no consumen créditos y no realizan cargos a fal.ai.</p></section>
+<section class="panel" id="biblioteca"><div class="spread"><h2>Biblioteca privada</h2><button class="secondary" type="button" id="refreshVideos" disabled>Actualizar</button></div>
+<p class="sub">Los videos se reproducen mediante enlaces temporales de almacenamiento privado.</p><div id="videos">Inicia sesión para ver tus MP4.</div></section>
+<section class="panel"><div class="spread"><h2>Solicitudes recientes</h2><button class="secondary" type="button" id="refreshJobs" disabled>Actualizar</button></div>
+<div id="jobs">No hay solicitudes nuevas.</div></section></main>
+<aside><section class="panel" id="creditos"><h2>Créditos</h2><div id="balance" class="balance">—</div><p>Créditos disponibles</p><p id="modelQuote">PixVerse C1 · precio provisional de 10 créditos.</p>
+<button id="refreshBalance" class="secondary" type="button" disabled>Actualizar saldo</button>
+<hr style="border:0;border-top:1px solid var(--stroke);margin:18px 0"><h2>Comprar créditos</h2>
+<p>Los pagos de producción están desactivados.</p><a href="./comprar-creditos-1.html">Página de pagos de prueba (Stripe Sandbox)</a></section>
+<section class="panel"><h2>Seguridad</h2><p>Solamente el dueño de la cuenta puede consultar sus videos privados.</p>
+<p class="status" id="security">Sin sesión. Generación y pagos bloqueados.</p></section>
+<section class="panel hidden" id="admin"><h2>Panel del administrador</h2><p>Diagnóstico del motor piloto sin gastar créditos.</p><button type="button" id="inspect" disabled>Comprobar protecciones</button><pre class="status" id="adminResult"></pre></section>
+</aside></div>
+<footer>IMPERIO AI VIDEO · Estudio unificado 1.0 · Versión de acceso anticipado. No se admiten operaciones de pago reales.</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+"use strict";
+const DB_URL="https://xmxirddbswlcgirtqzfj.supabase.co",DB_PUBLIC_KEY="sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO";
+const el=id=>document.getElementById(id),db=window.supabase?.createClient(DB_URL,DB_PUBLIC_KEY);
+let user=null,admin=false;
+const protectedBtns=["check","simulate","refreshVideos","refreshJobs","refreshBalance"];
+const status=(id,msg)=>{el(id).textContent=msg};
+const fail=e=>e?.message||String(e);
+function sessionView(current){
+ user=current||null;
+ el("auth").classList.toggle("hidden",!!user);el("logged").classList.toggle("hidden",!user);
+ el("who").textContent=user?.email||"";
+ for(const id of protectedBtns)el(id).disabled=!user;
+ el("inspect").disabled=!user||!admin;
+ if(!user){el("admin").classList.add("hidden");el("balance").textContent="—";
+  status("videos","Inicia sesión para ver tus videos.");status("jobs","Sin sesión.");
+  status("security","Sin sesión. Generación y pagos reales desactivados.");
+ }else status("security","Cuenta conectada. Generación y pagos reales desactivados.");
+}
+async function call(name,payload={}){
+ const {data,error}=await db.functions.invoke(name,{body:payload});
+ if(error){let detail="";try{const d=await error.context?.json();detail=d?.error||d?.message||d?.code||""}catch{}
+  throw Error(detail||error.message||"Error del servidor");}
+ if(data?.ok!==true)throw Error(data?.code||data?.error||"Respuesta inválida");return data;
+}
+function promptValue(){return el("prompt").value.trim()}
+function validatePrompt(){const value=promptValue();
+ if(value.length<12||value.length>1000||new TextEncoder().encode(value).byteLength>2048){
+ status("result","La descripción debe tener entre 12 y 1000 caracteres y como máximo 2048 bytes UTF-8.");return false;}return true;}
+async function getAdmin(){admin=false;
+ try{const {data}=await db.from("admin_users").select("role").eq("user_id",user.id).maybeSingle();admin=data?.role==="super_admin";}catch{}
+ el("admin").classList.toggle("hidden",!admin);el("inspect").disabled=!admin;}
+async function refreshQuote(){if(!user)return;
+ try{const d=await call("imperio-solicitudes",{action:"model_quote"});
+ el("balance").textContent=String(d.balance_credits??0);
+ status("modelQuote",(d.cost_credits||10)+" créditos provisionales · 5 segundos / 720p.");}
+ catch(e){status("modelQuote","Cotización temporalmente no disponible: "+fail(e));}}
+async function preflight(){if(!user||!validatePrompt())return;el("check").disabled=true;status("result","Validando parámetros...");
+ try{const d=await call("imperio-solicitudes",{action:"model_preflight",prompt:promptValue(),aspect_ratio:el("ratio").value});
+ status("result","Descripción válida · "+d.duration_seconds+" s · "+d.resolution+" · "+d.cost_credits+
+ " créditos provisionales.\nSaldo actual: "+d.balance_credits+".\nGeneración real: BLOQUEADA. No se han realizado cargos.");}
+ catch(e){status("result","Validación fallida: "+fail(e))}finally{el("check").disabled=!user;}}
+async function simulate(){if(!user||!validatePrompt())return;
+ if(!admin){status("result","Simulación reservada al administrador. Puedes usar Validar idea y créditos.");return}
+ el("simulate").disabled=true;
+ try{const d=await call("imperio-pixverse-piloto",{action:"simulate",prompt:promptValue(),aspect_ratio:el("ratio").value});
+  status("result","SIMULACIÓN SIN GASTO\n"+JSON.stringify(d.request_payload,null,2)+"\nCoste provisional: "+d.credits_required+" créditos.\nGeneración bloqueada.");}
+ catch(e){status("result","Simulación fallida: "+fail(e))}finally{el("simulate").disabled=!user;}}
+async function inspect(){if(!admin)return;el("inspect").disabled=true;
+ try{const d=await call("imperio-pixverse-piloto",{action:"inspect"});
+ status("adminResult",JSON.stringify({gates:d.gates,balance:d.available_credits,estimate:d.provider_cost_estimated_usd},null,2))}
+ catch(e){status("adminResult","Diagnóstico fallido: "+fail(e))}finally{el("inspect").disabled=!admin;}}
+function safeSignedUrl(value){try{const url=new URL(value);
+ return url.protocol==="https:"&&url.hostname===new URL(DB_URL).hostname?url.href:null;}catch{return null}}
+async function refreshVideos(){if(!user)return;el("refreshVideos").disabled=true;
+ try{const {data,error}=await db.from("video_generations")
+ .select("request_id,prompt,status,duration_seconds,created_at").eq("user_id",user.id).order("created_at",{ascending:false}).limit(50);
+ if(error)throw error;const root=el("videos");root.replaceChildren();if(!data?.length){root.textContent="Todavía no tienes videos guardados.";return}
+ const uid=user.id;
+ for(const entry of data){const card=document.createElement("article");card.className="item";
+  const title=document.createElement("h3");title.textContent=(entry.prompt||"Video generado").slice(0,160);
+  const details=document.createElement("p");details.className="sub";
+  details.textContent=(entry.status||"Pendiente")+" · "+(entry.duration_seconds||5)+" s · "+new Date(entry.created_at).toLocaleString();
+  const play=document.createElement("button");play.type="button";play.className="secondary";play.textContent="▶ Ver MP4 privado";
+  const viewer=document.createElement("div");play.onclick=async()=>{play.disabled=true;viewer.replaceChildren();
+   try{const req=entry.request_id;
+    if(!/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(req))throw Error("Identificador inválido");
+    const {data:link,error:linkError}=await db.storage.from("videos-privados").createSignedUrl(uid+"/"+req+".mp4",3600);
+    if(linkError||!link?.signedUrl)throw Error("MP4 no disponible en la biblioteca privada");
+    const safe=safeSignedUrl(link.signedUrl);if(!safe)throw Error("Enlace de video no verificado");
+    const video=document.createElement("video");video.src=safe;video.controls=true;video.playsInline=true;
+    const linkEl=document.createElement("a");linkEl.href=safe;linkEl.target="_blank";linkEl.rel="noopener noreferrer";linkEl.textContent="Abrir MP4";
+    viewer.append(video,linkEl);}catch(e){viewer.textContent="No disponible: "+fail(e)}finally{play.disabled=false}};
+  card.append(title,details,play,viewer);root.append(card);}}
+ catch(e){status("videos","Error de biblioteca: "+fail(e))}finally{el("refreshVideos").disabled=!user;}}
+async function refreshJobs(){if(!user)return;el("refreshJobs").disabled=true;
+ try{const d=await call("imperio-solicitudes",{action:"my_jobs"});const root=el("jobs");root.replaceChildren();
+ if(!d.jobs?.length){root.textContent="Sin solicitudes nuevas.";return}
+ for(const entry of d.jobs){const item=document.createElement("article");item.className="item";
+  const title=document.createElement("h3");title.textContent=entry.sku||"Video";
+  const detail=document.createElement("p");detail.className="sub";detail.textContent="Estado: "+entry.status+" · "+new Date(entry.created_at).toLocaleString();
+  item.append(title,detail);root.append(item);}}
+ catch(e){status("jobs","Error consultando historial: "+fail(e))}finally{el("refreshJobs").disabled=!user;}}
+async function refreshAll(){if(!user)return;await getAdmin();await Promise.all([refreshQuote(),refreshVideos(),refreshJobs()])}
+el("auth").onsubmit=async e=>{e.preventDefault();el("login").disabled=true;
+ try{const {data,error}=await db.auth.signInWithPassword({email:el("email").value.trim(),password:el("password").value});
+  if(error)throw error;el("password").value="";sessionView(data.user);await refreshAll();status("authMsg","Sesión iniciada.");}
+ catch(e){status("authMsg","No se pudo iniciar sesión: "+fail(e))}finally{el("login").disabled=false}};
+el("signup").onclick=async()=>{if(!el("email").value.trim()||el("password").value.length<6){
+ status("authMsg","Escribe un correo y una contraseña de al menos 6 caracteres.");return}
+ el("signup").disabled=true;
+ try{const {data,error}=await db.auth.signUp({email:el("email").value.trim(),password:el("password").value});
+  if(error)throw error;el("password").value="";status("authMsg",data.session?"Cuenta creada.":"Consulta tu correo para confirmar tu cuenta.");
+  if(data.session){sessionView(data.user);await refreshAll()}}
+ catch(e){status("authMsg","Error registrando cuenta: "+fail(e))}finally{el("signup").disabled=false}};
+el("logout").onclick=async()=>{await db.auth.signOut();admin=false;sessionView(null);status("authMsg","Sesión cerrada.")};
+el("prompt").oninput=()=>status("chars",el("prompt").value.length+" de 1000 caracteres");
+el("check").onclick=preflight;el("simulate").onclick=simulate;el("inspect").onclick=inspect;
+el("refreshBalance").onclick=refreshQuote;el("refreshVideos").onclick=refreshVideos;el("refreshJobs").onclick=refreshJobs;
+(async()=>{if(!db){status("authMsg","No se pudo cargar la conexión con Supabase.");return}
+ try{const {data,error}=await db.auth.getUser();if(error&&error.name!=="AuthSessionMissingError")throw error;
+ sessionView(data.user||null);if(data.user)await refreshAll();
+ db.auth.onAuthStateChange((_event,session)=>{if(session?.user?.id===user?.id)return;
+  admin=false;sessionView(session?.user||null);if(session?.user)Promise.resolve().then(refreshAll);});}
+ catch(e){status("authMsg","Problema de conexión: "+fail(e))}})();
+</script>
+</body></html>
