@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<meta name="robots" content="noindex,nofollow">
+<title>Recuperar cuenta · IMPERIO AI VIDEO</title>
+<style>
+:root{color-scheme:dark;--bg:#0a1022;--card:#17213a;--line:#344262;--text:#f8f9ff;--muted:#c3cee3;--aqua:#6de6da}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#392053,transparent 40%),var(--bg);font:16px/1.5 system-ui,Segoe UI,sans-serif;color:var(--text)}
+main{max-width:580px;margin:0 auto;padding:28px 18px 60px}header a{color:var(--text);font-weight:850;text-decoration:none;letter-spacing:.035em}
+section{margin-top:34px;border:1px solid var(--line);border-radius:20px;background:var(--card);padding:23px}h1{font-size:clamp(26px,5vw,34px);margin:0 0 6px}p{color:var(--muted)}label{display:block;margin:18px 0 8px;font-weight:650}
+input{width:100%;border:1px solid #586986;border-radius:12px;background:#0d1731;color:var(--text);font:inherit;padding:13px}
+button{background:linear-gradient(110deg,#b8a5ff,#6ae2d6);color:#0d152a;padding:13px 20px;font:inherit;font-weight:750;border:0;border-radius:12px;margin-top:18px;cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}.hidden{display:none}#message{white-space:pre-wrap;background:#0d1830;padding:12px;border-radius:12px;border:1px solid #46587c;margin-top:20px}a{color:var(--aqua)}
+</style>
+</head>
+<body><main>
+<header><a href="./app.html">▶ IMPERIO AI VIDEO</a></header>
+<section><h1>Recuperar contraseña</h1>
+<p>Utiliza el correo con el que te registraste. No necesitamos tus claves privadas.</p>
+<form id="requestForm">
+<label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" required>
+<button id="send" type="submit">Enviar enlace de recuperación</button>
+</form>
+<form id="resetForm" class="hidden">
+<p>Has abierto un enlace de recuperación válido. Introduce tu nueva contraseña.</p>
+<label for="password">Nueva contraseña (mínimo 8 caracteres)</label>
+<input id="password" type="password" autocomplete="new-password" minlength="8" required>
+<label for="confirm">Repite la contraseña</label>
+<input id="confirm" type="password" autocomplete="new-password" minlength="8" required>
+<button id="update" type="submit">Guardar nueva contraseña</button>
+</form>
+<p id="message" role="status" aria-live="polite">Iniciando conexión segura…</p>
+<p><a href="./app.html">Volver al estudio</a></p>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{
+'use strict';
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+const PUBLIC_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const $=id=>document.getElementById(id);
+const msg=text=>{$('message').textContent=text;};
+if(!window.supabase){msg('No se pudo cargar la conexión segura. Comprueba internet e inténtalo de nuevo.');return;}
+const db=window.supabase.createClient(PROJECT_URL,PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+let recovery=false;
+function displayRecovery(){recovery=true;$('requestForm').classList.add('hidden');$('resetForm').classList.remove('hidden');msg('Enlace de recuperación aceptado. Escribe tu nueva contraseña.');}
+db.auth.onAuthStateChange((event)=>{
+ if(event==='PASSWORD_RECOVERY')displayRecovery();
+});
+$('requestForm').addEventListener('submit',async event=>{
+ event.preventDefault();const email=$('email').value.trim();if(!$('email').checkValidity())return;
+ $('send').disabled=true;
+ try{
+  const redirectTo=location.origin+location.pathname;
+  const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo});
+  if(error)throw error;
+  msg('Si la cuenta existe, recibirás un mensaje para restablecer tu contraseña. Revisa también la carpeta de correo no deseado.');
+ }catch(error){msg('No se pudo enviar la solicitud: '+(error?.message||'error de conexión')+'. Comprueba la URL permitida en Supabase Auth.');}
+ finally{$('send').disabled=false;}
+});
+$('resetForm').addEventListener('submit',async event=>{
+ event.preventDefault();if(!recovery){msg('Abre el enlace de recuperación recibido por correo.');return;}
+ const password=$('password').value;
+ if(password.length<8){msg('Utiliza al menos 8 caracteres.');return;}
+ if(password!==$('confirm').value){msg('Las contraseñas no coinciden.');return;}
+ $('update').disabled=true;
+ try{const {error}=await db.auth.updateUser({password});if(error)throw error;
+  $('password').value='';$('confirm').value='';
+  $('resetForm').classList.add('hidden');
+  msg('Contraseña actualizada. Ya puedes volver al estudio e iniciar sesión.');
+ }catch(error){msg('No se pudo actualizar la contraseña: '+(error?.message||'error de conexión'));}
+ finally{$('update').disabled=false;}
+});
+msg('Escribe tu correo para solicitar el enlace de recuperación.');
+})();
+</script>
+</body></html>
