@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<title>IMPERIO AI VIDEO · Identificador de proveedor</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 100% 0,#41214e,transparent 56%),#0a1022;color:#f7f8ff;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:720px;margin:auto;padding:28px 19px 75px}.brand{font-weight:850;font-size:21px;letter-spacing:.07em}.kicker{color:#67e1d2;font-weight:750;letter-spacing:.12em;font-size:13px;margin-top:4px}h1{font-size:clamp(28px,6vw,40px);line-height:1.12;margin:28px 0 16px}p{color:#c5d0e5}.panel{padding:24px;background:#1a2540;border:1px solid #455575;border-radius:22px;margin-top:22px}.status{background:#0e1930;border:1px solid #405374;border-radius:15px;padding:16px 17px;margin:17px 0;overflow-wrap:anywhere}button{display:inline-block;color:#101b2d;border:0;background:linear-gradient(100deg,#b9a1f9,#66dfd5);padding:15px 20px;border-radius:13px;font:700 17px system-ui;cursor:pointer}button:disabled{opacity:.5;cursor:wait}a{color:#6ee0d1}code{color:#92f2db;font-weight:750;font-size:20px;word-break:break-all}.small{font-size:14px}footer{margin-top:32px;color:#a5b4c9;font-size:13px}
+</style>
+</head>
+<body><main>
+<div class="brand">▶ IMPERIO AI VIDEO</div><div class="kicker">ADMINISTRACIÓN · SOLO LECTURA</div>
+<h1>Identificar la cuenta de fal.ai</h1>
+<p>Esta herramienta consulta la función de diagnóstico ya instalada en Supabase. Solo enseña los últimos ocho caracteres del <strong>identificador</strong> de la clave utilizada por el servidor, nunca la contraseña de la clave.</p>
+<section class="panel"><h2>Comprobación de acceso</h2><div id="access" class="status" role="status">Verificando tu sesión…</div><button type="button" id="check" disabled>Consultar identificador · sin gasto</button>
+<div id="result" class="status" aria-live="polite">La consulta no genera videos y no activa pagos.</div>
+<p class="small">La autorización de administrador se comprueba en Supabase. Si tu sesión ha expirado, inicia sesión en el estudio y vuelve aquí.</p></section>
+<section class="panel"><h2>Protección</h2><p>Esta página solicita únicamente <code>action: inspect</code> y no incluye ninguna llamada para generar videos. El código de generación y los pagos públicos permanecen bloqueados en el servidor.</p><p><a href="./app.html">← Volver al estudio</a></p></section>
+<footer>IMPERIO AI VIDEO · Diagnóstico del proveedor · noviembre de 2026</footer></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{'use strict';
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+// Supabase publishable key; not a service-role key or a fal.ai secret.
+const PUBLIC_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const access=document.getElementById('access');
+const output=document.getElementById('result');
+const btn=document.getElementById('check');
+const db=window.supabase?.createClient(PROJECT_URL,PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+function set(node,message){node.textContent=message}
+async function ready(){
+ if(!db){set(access,'No se pudo cargar la conexión segura. Comprueba tu internet y vuelve a abrir esta página.');return}
+ try{
+  const {data,error}=await db.auth.getUser();
+  if(error||!data?.user){set(access,'Sesión no disponible. Abre el estudio, inicia sesión y vuelve aquí.');return}
+  const {data:role,error:roleErr}=await db.from('admin_users').select('role').eq('user_id',data.user.id).maybeSingle();
+  if(roleErr||role?.role!=='super_admin'){set(access,'La sesión existe, pero no se pudo confirmar el permiso de administrador.');return}
+  set(access,'Administrador principal autenticado. Puedes realizar una consulta sin gastos.');
+  btn.disabled=false;
+ }catch{set(access,'No se pudo verificar la sesión en este momento.')}
+}
+btn.addEventListener('click',async()=>{
+ btn.disabled=true;set(output,'Consultando el diagnóstico de solo lectura…');
+ try{
+  const {data,error}=await db.functions.invoke('imperio-pixverse-piloto',{body:{action:'inspect'}});
+  if(error||!data?.ok){set(output,'No se completó la consulta. Regresa al estudio, inicia sesión y prueba de nuevo.');return}
+  const suffix=data.provider_key_id_tail;
+  if(typeof suffix==='string'&&/^[a-z0-9]{8}$/i.test(suffix)){
+   set(output,'Identificador parcial de la clave del servidor: '+suffix+'\n\nEstado: consulta de solo lectura completada. No se envió ningún video.');
+   output.style.whiteSpace='pre-line';
+  }else {set(output,'Conexión comprobada, pero el identificador parcial no está disponible. No reveles ni copies la clave completa.');}
+ }catch{set(output,'Error de conexión. No se ha solicitado ninguna generación.');}
+ finally{btn.disabled=false}
+});
+ready();
+})();
+</script>
+</body></html>
