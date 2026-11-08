@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<meta name="description" content="IMPERIO AI VIDEO: estudio de videos, borradores privados y biblioteca personal.">
+<title>IMPERIO AI VIDEO — Estudio seguro</title>
+<style>
+:root{color-scheme:dark;--bg:#0a1022;--panel:#18233d;--surface:#0e1730;--border:#394868;--text:#f7f9ff;--sub:#b9c8df;--mint:#69e2d4;--lilac:#b9a7ff;--error:#ffb3b9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font:16px/1.55 system-ui,Segoe UI,Arial,sans-serif;background:radial-gradient(ellipse at 85% -10%,#42265c,transparent 40%),var(--bg)}
+.container{max-width:1100px;margin:auto;padding:24px 16px 50px}header{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:5px 0 25px}.brand{font-weight:900;font-size:21px;letter-spacing:.07em;color:white;text-decoration:none}.brand small{display:block;font-size:11px;font-weight:500;letter-spacing:.18em;color:var(--sub)}nav{display:flex;gap:7px;flex-wrap:wrap}nav a{font-size:13px;padding:7px 12px;text-decoration:none;border:1px solid var(--border);border-radius:50px;color:#f6f7ff}
+.hero{margin:2px 0 23px}.eyebrow{font-weight:800;letter-spacing:.14em;color:var(--mint);font-size:12px;text-transform:uppercase}.hero h1{font-size:clamp(32px,6vw,48px);line-height:1.14;margin:9px 0}.hero p{max-width:710px;color:var(--sub);margin:7px 0}.pill{display:inline-block;padding:8px 12px;background:#322747;border:1px solid #51446f;border-radius:25px;color:#f0e6ff;font-size:13px;margin-top:11px}
+.columns{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(270px,.95fr);gap:18px;align-items:start}.panel{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:21px;margin:0 0 18px;min-width:0}.panel h2{font-size:22px;margin:0 0 7px}.panel h3{font-size:16px;margin:14px 0 8px}.sub{font-size:13px;color:var(--sub);margin:6px 0 13px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.spread{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+label{display:block;font-size:14px;font-weight:750;margin:13px 0 7px}input,textarea,select{width:100%;background:var(--surface);border:1px solid #607090;border-radius:12px;font:inherit;color:var(--text);padding:12px 13px}textarea{min-height:140px;resize:vertical}input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--mint);outline-offset:3px}button{background:linear-gradient(100deg,var(--lilac),var(--mint));border:0;border-radius:12px;padding:11px 15px;font:inherit;font-weight:800;color:#10192e;cursor:pointer}button.alt{background:#2b3d5e;color:var(--text)}button:disabled{opacity:.55;cursor:not-allowed}.hidden{display:none!important}.feedback{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface);border:1px solid #445777;border-radius:12px;padding:13px;margin:14px 0 0;color:#ebf4ff;font-size:14px;min-height:45px}.feedback.error{border-color:#c4758a;color:#ffd0d4}.small{font-size:12px;color:var(--sub)}a{color:var(--mint)}a:not(nav a):hover{text-decoration:underline}.item{border:1px solid #465575;background:var(--surface);border-radius:13px;padding:14px;margin:12px 0}.item h3{margin:0 0 6px;font-size:15px;overflow-wrap:anywhere}.item video{width:100%;max-height:370px;border-radius:12px;background:black;margin:12px 0 4px}.big{font-size:40px;color:var(--mint);font-weight:850}.metric{border-top:1px solid #384661;padding:9px 0;display:flex;justify-content:space-between;gap:10px}.metric strong{font-size:13px}.code{font:12px/1.6 ui-monospace,Consolas,monospace;overflow:auto;white-space:pre-wrap;max-height:370px;word-break:break-word}.actionline{margin:15px 0}.separator{border:0;border-top:1px solid #3a4766;margin:21px 0}.badge{background:#372c53;border-radius:30px;padding:4px 10px;font-size:12px;white-space:nowrap}.mark{font-weight:800;color:var(--mint)}footer{border-top:1px solid var(--border);margin-top:24px;padding-top:17px;color:var(--sub);font-size:12px}
+@media(max-width:760px){.columns{grid-template-columns:1fr}.container{padding:18px 13px 45px}.panel{padding:17px}header{padding-bottom:15px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<a href="./index.html" class="brand">▶ IMPERIO AI VIDEO<small>ESTUDIO CREATIVO · VERSIÓN 1.1</small></a>
+<nav aria-label="Navegación del estudio"><a href="#crear">Crear</a><a href="#biblioteca">Biblioteca</a><a href="#creditos">Créditos</a><a href="./index.html">Inicio</a></nav>
+</header>
+<section class="hero"><span class="eyebrow">Acceso anticipado</span><h1>De la idea al video.</h1><p>Guarda tus descripciones en tu cuenta, consulta tus videos privados y prepara nuevas creaciones. Piloto actual: PixVerse C1, 5 segundos, 720p con audio.</p><div class="pill">Generación nueva y pagos reales desactivados: sin gastos</div></section>
+<section class="panel" id="cuenta" aria-labelledby="cuentaH"><div class="spread"><h2 id="cuentaH">Tu cuenta</h2><div class="row hidden" id="logged"><span id="who" class="small"></span><button type="button" class="alt" id="logout">Salir</button></div></div>
+<form id="authForm"><label for="email">Correo electrónico</label><input id="email" type="email" required autocomplete="email"><label for="password">Contraseña</label><input id="password" type="password" minlength="6" autocomplete="current-password" required><div class="row actionline"><button id="login" type="submit">Iniciar sesión</button><button id="signup" type="button" class="alt">Crear cuenta</button></div></form>
+<p class="sub"><a href="./recuperar-cuenta.html">¿Olvidaste tu contraseña?</a></p><div role="status" aria-live="polite" class="feedback" id="authMsg">Conectando con Supabase…</div>
+</section>
+<div class="columns"><main>
+<section class="panel" id="crear"><div class="spread"><h2>Crear video</h2><span class="badge">PixVerse C1 · 5 s · 720p</span></div>
+<p class="sub">Puedes preparar y guardar tus instrucciones desde cualquier dispositivo. La producción nueva permanece bloqueada hasta completar las pruebas.</p>
+<label for="prompt">Describe tu video</label><textarea id="prompt" maxlength="1000" placeholder="Ejemplo: Un león majestuoso camina por la sabana africana al amanecer. Luz cinematográfica, movimiento realista y sonidos de la naturaleza."></textarea>
+<div class="spread"><span class="small" id="chars">0 / 1000 caracteres</span><span class="small">Mínimo 12 caracteres</span></div>
+<label for="ratio">Proporción del video</label><select id="ratio"><option value="16:9">Horizontal · 16:9</option><option value="9:16">Vertical · 9:16</option></select>
+<div class="row actionline"><button type="button" id="saveDraft" class="alt" disabled>Guardar borrador en mi cuenta</button><button type="button" id="loadDraft" class="alt" disabled>Recuperar mi borrador</button></div>
+<div class="row actionline"><button type="button" id="check" disabled>Validar idea y créditos</button><button type="button" id="simulate" class="alt hidden" disabled>Simular (administrador)</button></div>
+<p class="feedback" id="result" role="status" aria-live="polite">Inicia sesión para validar tu idea.</p>
+<div class="actionline"><button type="button" disabled title="La generación real está bloqueada por seguridad">Generar video · próximamente</button></div>
+<p class="sub">Guardar borradores, validar y simular no generan videos, no gastan créditos de la aplicación ni realizan cargos a fal.ai.</p>
+</section>
+<section class="panel" id="biblioteca"><div class="spread"><h2>Biblioteca privada</h2><button type="button" id="refreshVideos" class="alt" disabled>Actualizar</button></div><p class="sub">Tus MP4 están protegidos mediante enlaces temporales y políticas de almacenamiento. No compartas esos enlaces.</p><div id="videos" role="status">Inicia sesión para ver tus videos.</div></section>
+<section class="panel"><div class="spread"><h2>Solicitudes recientes</h2><button type="button" class="alt" id="refreshJobs" disabled>Actualizar</button></div><div id="jobs">Inicia sesión para ver tus solicitudes.</div></section>
+</main><aside>
+<section class="panel" id="creditos"><h2>Créditos</h2><div id="balance" class="big">—</div><p class="sub">Saldo de la cuenta</p><div class="metric"><span>Precio del piloto</span><strong id="modelQuote">—</strong></div><div class="metric"><span>Generación pública</span><strong>Desactivada</strong></div><div class="metric"><span>Pagos reales</span><strong>Desactivados</strong></div><div class="actionline"><button class="alt" type="button" id="refreshBalance" disabled>Actualizar saldo</button></div><p class="small">Los créditos del prototipo son provisionales; no equivalen automáticamente al saldo o al precio facturado por fal.ai.</p><a href="./comprar-creditos-1.html">Prueba de pago (solo Stripe Sandbox)</a></section>
+<section class="panel"><h2>Seguridad</h2><p class="sub">Solo verás tus borradores, solicitudes y videos. La comprobación de administrador se realiza mediante el rol guardado en Supabase.</p><p id="security" class="feedback">Sin sesión.</p></section>
+<section class="panel hidden" id="adminPanel"><h2>Diagnóstico del administrador</h2><p class="sub">Consulta la configuración del piloto sin iniciar generación ni gastar dinero.</p><button type="button" id="inspect" disabled>Comprobar protecciones</button><pre id="adminResult" class="feedback code" aria-live="polite">Sin diagnóstico.</pre></section>
+</aside></div>
+<footer>IMPERIO AI VIDEO · Estudio unificado 1.1 · Acceso anticipado · La función de generar videos sigue inactiva.</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{
+'use strict';
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+// Clave publicable, no clave privada. Las reglas RLS y las funciones protegen los datos.
+const PUBLIC_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const $=id=>document.getElementById(id);
+const db=window.supabase?.createClient(PROJECT_URL,PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+let user=null,admin=false,sessionEpoch=0;
+const protectedButtons=['saveDraft','loadDraft','check','refreshBalance','refreshVideos','refreshJobs'];
+function notice(id,message,error=false){const node=$(id);node.textContent=message;node.classList.toggle('error',error)}
+function errorText(error){return (error?.message||String(error||'Error desconocido')).slice(0,280)}
+function safeVideoId(value){return /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(value||'')}
+function safeUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&u.hostname===new URL(PROJECT_URL).hostname?u.href:null}catch{return null}}
+function promptValue(){return $('prompt').value.trim()}
+function validPrompt(){const v=promptValue();if(v.length<12||v.length>1000||new TextEncoder().encode(v).byteLength>2048){notice('result','La descripción debe tener 12 a 1000 caracteres y no superar 2048 bytes en UTF-8.',true);return false}return true}
+function resetPrivateData(){ $('balance').textContent='—';$('modelQuote').textContent='—';$('videos').textContent='Inicia sesión para ver tus videos.';$('jobs').textContent='Inicia sesión para consultar solicitudes.';$('prompt').value='';$('ratio').value='16:9';$('chars').textContent='0 / 1000 caracteres';notice('result','Inicia sesión para validar tu idea.');notice('adminResult','Sin diagnóstico.');}
+function sessionView(current){
+ user=current||null;
+ $('authForm').classList.toggle('hidden',!!user);$('logged').classList.toggle('hidden',!user);
+ $('who').textContent=user?.email||'';
+ protectedButtons.forEach(id=>$(id).disabled=!user);
+ $('simulate').disabled=!user||!admin;
+ $('inspect').disabled=!user||!admin;
+ $('simulate').classList.toggle('hidden',!admin);
+ $('adminPanel').classList.toggle('hidden',!admin);
+ notice('security',user?'Cuenta conectada. Generación y pagos reales desactivados.':'Sin sesión. Generación y pagos reales desactivados.');
+ if(!user)resetPrivateData();
+}
+async function invoke(name,body){
+ const {data,error}=await db.functions.invoke(name,{body});
+ if(error){let detail='';try{const info=await error.context?.json();detail=info?.error||info?.message||info?.code||''}catch{}
+  throw new Error(detail||error.message||'No se pudo contactar el servidor');}
+ if(data?.ok!==true)throw new Error(data?.error||data?.code||'Respuesta del servidor no válida');
+ return data;
+}
+async function getAdmin(){
+ if(!user)return;
+ const currentId=user.id;
+ admin=false;
+ try{const {data,error}=await db.from('admin_users').select('role').eq('user_id',currentId).maybeSingle();if(error)throw error;if(user?.id===currentId)admin=data?.role==='super_admin'}
+ catch{admin=false}
+ if(user?.id===currentId)sessionView(user);
+}
+async function refreshQuote(){
+ if(!user)return;
+ $('refreshBalance').disabled=true;
+ try{const d=await invoke('imperio-solicitudes',{action:'model_quote'});
+  $('balance').textContent=String(d.balance_credits??0);
+  $('modelQuote').textContent=(d.cost_credits??'—')+' créditos provisionales · 5 s / 720p';
+ }catch(e){$('modelQuote').textContent='Consulta no disponible';notice('security','Error de créditos: '+errorText(e),true)}
+ finally{$('refreshBalance').disabled=!user}
+}
+async function saveDraft(){
+ if(!user||!validPrompt())return;
+ $('saveDraft').disabled=true;
+ const thisUser=user.id;
+ try{const {error}=await db.from('video_drafts').upsert({user_id:thisUser,prompt:promptValue(),aspect_ratio:$('ratio').value,duration_seconds:5,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error)throw error;
+  if(user?.id===thisUser)notice('result','Borrador guardado en tu cuenta de Supabase. Podrás recuperarlo desde otro teléfono o computadora. No se enviaron videos ni hubo gastos.');
+ }catch(e){notice('result','No se pudo guardar el borrador: '+errorText(e),true)}
+ finally{$('saveDraft').disabled=!user}
+}
+async function loadDraft(quiet=false){
+ if(!user)return;
+ $('loadDraft').disabled=true;
+ const thisUser=user.id;
+ try{const {data,error}=await db.from('video_drafts').select('prompt,aspect_ratio,updated_at').eq('user_id',thisUser).maybeSingle();if(error)throw error;if(user?.id!==thisUser)return;
+  if(!data){if(!quiet)notice('result','Todavía no tienes un borrador guardado en esta cuenta.');return}
+  $('prompt').value=data.prompt||'';$('ratio').value=data.aspect_ratio==='9:16'?'9:16':'16:9';$('chars').textContent=$('prompt').value.length+' / 1000 caracteres';
+  if(!quiet)notice('result','Borrador recuperado desde tu cuenta (último guardado: '+new Date(data.updated_at).toLocaleString()+').');
+ }catch(e){notice('result','Error recuperando borrador: '+errorText(e),true)}
+ finally{$('loadDraft').disabled=!user}
+}
+async function checkIdea(){
+ if(!user||!validPrompt())return;
+ $('check').disabled=true;notice('result','Validando idea, saldo y modelo en Supabase…');
+ try{const d=await invoke('imperio-solicitudes',{action:'model_preflight',prompt:promptValue(),aspect_ratio:$('ratio').value});
+  notice('result','Descripción válida · '+d.duration_seconds+' s · '+d.resolution+' · '+d.cost_credits+' créditos provisionales.\nSaldo: '+d.balance_credits+' créditos.\nGeneración nueva: BLOQUEADA. No hubo cargos.');
+ }catch(e){notice('result','No se pudo validar: '+errorText(e),true)}
+ finally{$('check').disabled=!user}
+}
+async function simulate(){
+ if(!user||!admin||!validPrompt())return;
+ $('simulate').disabled=true;notice('result','Preparando simulación sin gasto…');
+ try{const d=await invoke('imperio-pixverse-piloto',{action:'simulate',prompt:promptValue(),aspect_ratio:$('ratio').value});
+  notice('result','SIMULACIÓN · SIN GASTO\n'+JSON.stringify(d.request_payload,null,2)+'\nCréditos provisionales: '+(d.credits_required??'—')+'\nGeneración bloqueada.');
+ }catch(e){notice('result','Error en simulación: '+errorText(e),true)}finally{$('simulate').disabled=!user||!admin}
+}
+async function inspect(){
+ if(!user||!admin)return;
+ $('inspect').disabled=true;notice('adminResult','Consultando protecciones…');
+ try{const d=await invoke('imperio-pixverse-piloto',{action:'inspect'});
+  notice('adminResult',JSON.stringify({gates:d.gates,provider_cost_estimated_usd:d.provider_cost_estimated_usd,credits:d.available_credits,provider_generation_submitted:d.provider_generation_submitted},null,2));
+ }catch(e){notice('adminResult','Error de diagnóstico: '+errorText(e),true)}finally{$('inspect').disabled=!user||!admin}
+}
+async function refreshVideos(){
+ if(!user)return;
+ const thisUser=user.id;$('refreshVideos').disabled=true;
+ try{const {data,error}=await db.from('video_generations').select('request_id,prompt,status,duration_seconds,created_at').eq('user_id',thisUser).order('created_at',{ascending:false}).limit(50);
+  if(error)throw error;if(user?.id!==thisUser)return;
+  const root=$('videos');root.replaceChildren();if(!data?.length){root.textContent='Aún no hay videos guardados.';return}
+  for(const entry of data){
+   const item=document.createElement('article');item.className='item';const h=document.createElement('h3');h.textContent=(entry.prompt||'Video generado').slice(0,160);
+   const p=document.createElement('p');p.className='sub';p.textContent=(entry.status||'Pendiente')+' · '+(entry.duration_seconds||5)+' s · '+new Date(entry.created_at).toLocaleString();item.append(h,p);
+   if(entry.status==='COMPLETED'&&safeVideoId(entry.request_id)){
+    const button=document.createElement('button');button.type='button';button.className='alt';button.textContent='▶ Ver MP4 privado';
+    const content=document.createElement('div');item.append(button,content);
+    button.onclick=async()=>{button.disabled=true;content.replaceChildren();
+     try{if(user?.id!==thisUser)throw new Error('Cuenta cambiada');
+      const {data:link,error:linkError}=await db.storage.from('videos-privados').createSignedUrl(thisUser+'/'+entry.request_id+'.mp4',3600);
+      if(linkError||!link?.signedUrl)throw linkError||new Error('MP4 privado no encontrado');
+      const src=safeUrl(link.signedUrl);if(!src)throw new Error('Enlace privado no verificado');
+      const video=document.createElement('video');video.src=src;video.controls=true;video.playsInline=true;video.preload='metadata';
+      const a=document.createElement('a');a.href=src;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir MP4 · enlace válido por una hora';
+      content.append(video,a);
+     }catch(e){content.textContent='No se pudo reproducir: '+errorText(e)}finally{button.disabled=false}
+    };
+   }
+   root.append(item);
+  }
+ }catch(e){notice('security','Error en la biblioteca: '+errorText(e),true)}finally{$('refreshVideos').disabled=!user}
+}
+async function refreshJobs(){
+ if(!user)return;$('refreshJobs').disabled=true;
+ const thisUser=user.id;
+ try{const d=await invoke('imperio-solicitudes',{action:'my_jobs'});if(user?.id!==thisUser)return;
+  const root=$('jobs');root.replaceChildren();if(!d.jobs?.length){root.textContent='No hay solicitudes recientes.';return}
+  for(const j of d.jobs){const item=document.createElement('article');item.className='item';const h=document.createElement('h3');h.textContent=j.sku||'Video';const p=document.createElement('p');p.className='sub';p.textContent='Estado: '+(j.status||'—')+' · '+new Date(j.created_at).toLocaleString();item.append(h,p);root.append(item)}
+ }catch(e){$('jobs').textContent='No se pudieron consultar las solicitudes: '+errorText(e)}finally{$('refreshJobs').disabled=!user}
+}
+async function loadAccount(current){
+ if((user?.id||null)!==(current?.id||null))resetPrivateData();
+ sessionEpoch++;const epoch=sessionEpoch;admin=false;sessionView(current);
+ if(!user)return;
+ await getAdmin();if(epoch!==sessionEpoch)return;
+ await Promise.all([refreshQuote(),refreshVideos(),refreshJobs(),loadDraft(true)]);
+}
+$('authForm').onsubmit=async e=>{e.preventDefault();if(!db)return;
+ $('login').disabled=true;
+ try{const {data,error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;
+  $('password').value='';await loadAccount(data.user);notice('authMsg','Sesión iniciada. Puedes guardar y recuperar borradores.');
+ }catch(e){notice('authMsg','No se pudo iniciar sesión: '+errorText(e),true)}finally{$('login').disabled=false}
+};
+$('signup').onclick=async()=>{if(!db)return;
+ const email=$('email').value.trim(),password=$('password').value;
+ if(!$('email').checkValidity()||password.length<6){notice('authMsg','Introduce un correo válido y una contraseña de al menos 6 caracteres.',true);return}
+ $('signup').disabled=true;
+ try{const {data,error}=await db.auth.signUp({email,password,options:{emailRedirectTo:new URL('./app.html',location.href).href}});if(error)throw error;
+  $('password').value='';if(data.session)await loadAccount(data.user);notice('authMsg',data.session?'Cuenta creada e iniciada.':'Revisa tu correo y confirma tu cuenta para poder iniciar sesión.');
+ }catch(e){notice('authMsg','No se pudo crear la cuenta: '+errorText(e),true)}finally{$('signup').disabled=false}
+};
+$('logout').onclick=async()=>{if(!db)return;try{const {error}=await db.auth.signOut();if(error)throw error;await loadAccount(null);notice('authMsg','Sesión cerrada.');}catch(e){notice('authMsg','No se pudo salir: '+errorText(e),true)}};
+$('prompt').oninput=()=>$('chars').textContent=$('prompt').value.length+' / 1000 caracteres';
+$('saveDraft').onclick=saveDraft;$('loadDraft').onclick=()=>loadDraft(false);$('check').onclick=checkIdea;$('simulate').onclick=simulate;$('inspect').onclick=inspect;$('refreshVideos').onclick=refreshVideos;$('refreshJobs').onclick=refreshJobs;$('refreshBalance').onclick=refreshQuote;
+(async()=>{if(!db){notice('authMsg','No fue posible cargar Supabase. Comprueba tu conexión a internet.',true);return}
+ try{const {data,error}=await db.auth.getUser();if(error&&error.name!=='AuthSessionMissingError')throw error;await loadAccount(data.user||null);
+  notice('authMsg',data.user?'Sesión activa. Tus datos se guardan en tu cuenta.':'Inicia sesión para gestionar tus videos y borradores.');
+  db.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){
+   notice('authMsg','Si estás recuperando tu contraseña, abre el enlace de recuperación de esta página.');return;
+  }if(session?.user?.id!==user?.id){Promise.resolve().then(()=>loadAccount(session?.user||null))}});
+ }catch(e){notice('authMsg','Error al comprobar la sesión: '+errorText(e),true)}
+})();
+})();
+</script>
+</body>
+</html>
