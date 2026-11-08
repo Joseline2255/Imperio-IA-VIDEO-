@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<meta name="description" content="Centro privado de diagnósticos de IMPERIO AI VIDEO, sin generación ni cobros.">
+<title>IMPERIO AI VIDEO · Centro de diagnóstico</title>
+<style>
+:root{color-scheme:dark;--bg:#0a1022;--panel:#18233d;--sub:#b9c8df;--text:#f7f9ff;--border:#394868;--mint:#69e2d4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#30204d 0,transparent 52%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+main{max-width:850px;margin:0 auto;padding:24px 17px 75px}header{padding:12px 0 26px}.brand{font-weight:900;letter-spacing:.08em;font-size:22px}h1{font-size:clamp(29px,6vw,43px);line-height:1.1;margin:0 0 15px}h2{font-size:21px;margin:0 0 9px}p{margin:7px 0 15px;color:var(--sub)}.eyebrow{font-weight:800;letter-spacing:.15em;color:var(--mint);font-size:12px}
+.panel{padding:24px;background:var(--panel);border:1px solid var(--border);border-radius:20px;margin-bottom:18px}.status{padding:17px;background:#0e1730;border:1px solid var(--border);border-radius:12px;white-space:pre-line;margin:16px 0}.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.link{color:var(--text);text-decoration:none;display:block;border:1px solid #566687;border-radius:13px;padding:15px;min-height:95px;background:#263654}.link strong{display:block;color:#79e7dc;margin-bottom:4px}.link span{color:#e0e8f7;font-size:13px}.link:hover,.link:focus-visible{border-color:var(--mint);outline:2px solid transparent}.back{color:var(--mint)}.hidden{display:none!important}footer{color:var(--sub);font-size:12px;margin-top:23px}button{padding:12px 18px;border:0;border-radius:12px;background:linear-gradient(95deg,#b9a7ff,#69e2d4);font:inherit;font-weight:750;color:#10203c;cursor:pointer}
+</style>
+</head>
+<body><main>
+<header><div class="brand">▶ IMPERIO AI VIDEO</div><p class="eyebrow">ADMINISTRACIÓN · MODO SEGURO</p></header>
+<h1>Centro de diagnóstico</h1>
+<p>Accesos a las herramientas ya existentes en tu proyecto. Esta página solo consulta la sesión y los permisos; no envía nuevas generaciones, no descuenta créditos ni inicia pagos.</p>
+<section class="panel" aria-labelledby="accessTitle">
+<h2 id="accessTitle">Comprobar acceso</h2>
+<div id="status" class="status" role="status" aria-live="polite">Comprobando tu sesión…</div>
+<button type="button" id="check">Volver a comprobar</button>
+</section>
+<section class="panel hidden" id="adminLinks" aria-labelledby="toolsTitle">
+<h2 id="toolsTitle">Herramientas privadas</h2>
+<div class="links">
+<a class="link" href="./diagnostico-piloto.html"><strong>1 · Estado del piloto</strong><span>Comprueba bloqueos, créditos y permisos de una sola prueba.</span></a>
+<a class="link" href="./diagnostico-error-pixverse.html"><strong>2 · Error anterior</strong><span>Consulta el fallo ya registrado y su estado de reembolso.</span></a>
+<a class="link" href="./auditoria-fal.html"><strong>3 · Auditoría de fal.ai</strong><span>Investiga la solicitud anterior sin enviar otra al proveedor.</span></a>
+</div>
+</section>
+<section class="panel">
+<h2>Protección de gastos</h2>
+<p>Este centro no habilita el motor. La generación real y el cobro público deben permanecer bloqueados hasta confirmar la cuenta del proveedor, la clave, el presupuesto y la autorización expresa de una sola prueba.</p>
+<a class="back" href="./app.html">← Volver al estudio</a>
+</section>
+<footer>IMPERIO AI VIDEO · Centro de diagnóstico de solo lectura · 2026</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{'use strict';
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+// Clave PUBLICABLE, no es una clave privada.
+const PUBLIC_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const status=document.getElementById('status');
+const links=document.getElementById('adminLinks');
+const button=document.getElementById('check');
+async function check(){
+ button.disabled=true;links.classList.add('hidden');status.textContent='Comprobando tu sesión…';
+ try{
+  if(!window.supabase)throw Error('No se pudo cargar Supabase. Comprueba tu conexión.');
+  const db=window.supabase.createClient(PROJECT_URL,PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  const {data,error}=await db.auth.getUser();if(error||!data?.user){status.textContent='Sin sesión. Inicia sesión en el estudio y vuelve a esta página.';return;}
+  const {data:admin,error:roleError}=await db.from('admin_users').select('role').eq('user_id',data.user.id).maybeSingle();
+  if(roleError||admin?.role!=='super_admin'){status.textContent='Sesión activa, pero sin acceso de administrador principal.';return;}
+  status.textContent='Administrador principal autenticado. Puedes abrir las herramientas de lectura.';
+  links.classList.remove('hidden');
+ }catch(e){status.textContent='No se pudo comprobar el acceso. '+(e?.message||'Error de conexión.').slice(0,170)}
+ finally{button.disabled=false;}
+}
+button.addEventListener('click',check);check();
+})();
+</script>
+</body></html>
