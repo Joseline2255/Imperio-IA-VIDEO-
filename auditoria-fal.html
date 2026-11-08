@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<title>IMPERIO AI VIDEO · Auditoría de fal.ai</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1024;--panel:#192540;--line:#405271;--txt:#f7faff;--muted:#bdc9df;--aqua:#69e0d0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#3a2357,transparent 45%),var(--bg);color:var(--txt);font:16px/1.56 system-ui,Arial,sans-serif}
+main{max-width:740px;margin:auto;padding:24px 16px 80px}.brand{font-size:20px;font-weight:900;letter-spacing:.06em}h1{font-size:clamp(28px,7vw,39px);line-height:1.2;margin:25px 0 14px}h2{font-size:22px;margin:0 0 13px}p{color:var(--muted)}
+a{color:var(--aqua)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;margin:22px 0}.notice{background:#101b36;border:1px solid var(--line);padding:16px;border-radius:14px;white-space:pre-line;overflow-wrap:anywhere}
+button{border:0;border-radius:14px;color:#111c30;background:linear-gradient(105deg,#b9a5ff,var(--aqua));font-size:17px;font-weight:800;padding:16px 21px;cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}dl{margin:0}dt{color:var(--muted);padding-top:14px;border-top:1px solid var(--line)}dd{margin:6px 0 16px;font-weight:750;overflow-wrap:anywhere}dd:last-child{margin-bottom:0}.hidden{display:none}.muted{font-size:14px;color:var(--muted)}.tag{color:var(--aqua)}
+</style>
+</head>
+<body><main>
+<div class="brand">▶ IMPERIO AI VIDEO</div>
+<h1>Auditoría del error de PixVerse</h1>
+<p>Revisión de la solicitud anterior con la clave del servidor. <strong>Solo lectura: sin nuevos videos, sin pagos, sin consumir créditos.</strong></p>
+<p><a href="./app.html">← Volver al estudio</a></p>
+<section class="panel"><h2>Acceso privado</h2><div id="access" class="notice" role="status">Comprobando sesión…</div><p><button id="audit" type="button" disabled>Investigar la solicitud anterior · gratis</button></p></section>
+<section class="panel hidden" id="panel"><h2>Resultado de la auditoría</h2><div id="status" class="notice" role="status" aria-live="polite">Consultando…</div><dl id="details"></dl><p class="muted">Un 404 no determina por sí solo por qué falló el modelo. Si una API rechaza permisos (403), indica que la clave necesita permisos de lectura para esa consulta, no necesariamente que la generación falló por eso.</p></section>
+<p class="muted">La generación pública y los pagos reales siguen bloqueados. Nunca compartas claves privadas, tokens o contraseñas por capturas.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const endpoint='https://xmxirddbswlcgirtqzfj.supabase.co';
+const publishable='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const client=window.supabase?.createClient(endpoint,publishable,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const values={
+ old_job_status:'Estado en IMPERIO AI VIDEO',old_webhook_status:'Notificación firmada anterior',
+ request_id_tail:'Últimos caracteres de la solicitud',history_http:'Respuesta HTTP del historial fal.ai',
+ history_found:'Solicitud encontrada en el historial',history_request_status_code:'Código HTTP de la generación original',
+ history_error:'Error original conservado por el proveedor',history_error_type:'Tipo de error original',
+ history_network_error:'Error al consultar historial',queue_http:'Respuesta HTTP de la cola antigua',queue_error:'Error de la cola antigua',
+ billing_http:'Respuesta HTTP de facturación fal.ai',billing_events_found:'Registros de cobros encontrados',
+ billing_total_usd:'Total facturado visible en fal.ai (USD)',billing_note:'Observación sobre facturación',
+ conclusion:'Conclusión técnica'
+};
+const pretty=v=>v===true?'Sí':v===false?'No':v===null||v===undefined?'No disponible':String(v);
+function render(data){
+ const list=$('details');list.replaceChildren();
+ for(const [key,label] of Object.entries(values)){
+  if(!(key in data))continue;
+  const dt=document.createElement('dt');dt.textContent=label;
+  const dd=document.createElement('dd');dd.textContent=pretty(data[key]);
+  list.append(dt,dd);
+ }
+ if(data.ok&&data.read_only){$('status').textContent='Auditoría terminada. No se envió ninguna generación y no hubo gastos en esta consulta.';return;}
+ $('status').textContent=data.error||data.message||'No fue posible completar la consulta.';
+}
+async function init(){
+ if(!client){$('access').textContent='Supabase no se cargó. Comprueba la conexión.';return;}
+ try{
+  const {data,error}=await client.auth.getUser();
+  if(error||!data?.user){$('access').textContent='Inicia sesión en el estudio y vuelve a esta página.';return;}
+  const {data:admin,error:roleError}=await client.from('admin_users').select('role').eq('user_id',data.user.id).maybeSingle();
+  if(roleError||admin?.role!=='super_admin'){$('access').textContent='Se requiere una cuenta de administrador principal.';return;}
+  $('access').textContent='Administrador principal autenticado. Puedes hacer la consulta de solo lectura.';
+  $('audit').disabled=false;
+ }catch{$('access').textContent='No se pudo verificar tu sesión. Vuelve al estudio e inicia sesión.';}
+}
+$('audit').onclick=async()=>{
+ if(!client)return;
+ $('audit').disabled=true;$('panel').classList.remove('hidden');$('status').textContent='Consultando historial, cola y facturación (solo lectura)…';$('details').replaceChildren();
+ try{
+  const {data,error}=await client.functions.invoke('imperio-fal-auditoria',{body:{read_only:true}});
+  if(error){let body=null;try{body=await error.context?.json?.();}catch{}
+    render(body&&typeof body==='object'?body:{error:'La auditoría no respondió: '+error.message});}
+  else render(data||{error:'Respuesta vacía del servidor.'});
+ }catch(e){render({error:'Error de conexión: '+String(e?.message||e).slice(0,200)});}
+ finally{$('audit').disabled=false;}
+};
+init();
+})();
+</script>
+</body></html>
