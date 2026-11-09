@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1022"><meta name="robots" content="noindex,nofollow">
+<title>Recuperar cuenta · IMPERIO AI VIDEO</title>
+<style>
+:root{color-scheme:dark;--bg:#0a1022;--card:#19243e;--line:#3a4b6a;--text:#f8f9ff;--muted:#c3cee3;--aqua:#6de6da}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#392053,transparent 42%),var(--bg);font:16px/1.5 system-ui,Segoe UI,sans-serif;color:var(--text)}
+main{max-width:610px;margin:auto;padding:25px 17px 60px}header a{color:var(--text);font-weight:850;text-decoration:none;letter-spacing:.035em}
+section{margin-top:32px;border:1px solid var(--line);border-radius:20px;background:var(--card);padding:23px}h1{font-size:clamp(26px,5vw,34px);margin:0 0 6px}p{color:var(--muted)}label{display:block;margin:18px 0 8px;font-weight:650}
+input{width:100%;border:1px solid #586986;border-radius:12px;background:#0d1731;color:var(--text);font:inherit;padding:13px}
+button{background:linear-gradient(110deg,#b8a5ff,#6ae2d6);color:#0d152a;padding:13px 20px;font:inherit;font-weight:750;border:0;border-radius:12px;margin-top:18px;cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}.hidden{display:none}.message{white-space:pre-wrap;background:#0d1830;padding:12px;border-radius:12px;border:1px solid #46587c;margin-top:20px}a{color:var(--aqua)}
+</style></head>
+<body><main>
+<header><a href="./estudio-v1-8.html">▶ IMPERIO AI VIDEO · Estudio 1.8</a></header>
+<section><h1>Recuperar contraseña</h1>
+<p>Utiliza el correo con el que te registraste. No necesitamos contraseñas antiguas ni claves privadas.</p>
+<p>Durante las pruebas, Supabase limita los correos salientes. Si aparece un límite temporal, no repitas el envío; inténtalo más adelante.</p>
+<form id="requestForm">
+<label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" required>
+<button id="send" type="submit">Enviar enlace de recuperación</button>
+</form>
+<form id="resetForm" class="hidden">
+<p>Has abierto el enlace de recuperación. Escribe tu nueva contraseña.</p>
+<label for="password">Nueva contraseña (12 caracteres, mayúsculas, minúsculas, número y símbolo)</label>
+<input id="password" type="password" autocomplete="new-password" minlength="12" required>
+<label for="confirm">Repite la contraseña</label>
+<input id="confirm" type="password" autocomplete="new-password" minlength="12" required>
+<button id="update" type="submit">Guardar nueva contraseña</button>
+</form>
+<p id="message" class="message" role="status" aria-live="polite">Iniciando conexión segura…</p>
+<p><a href="./estudio-v1-8.html">Volver al estudio 1.8</a></p>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{
+'use strict';
+const PROJECT_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+const PUBLIC_KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const $=id=>document.getElementById(id);
+const msg=text=>{$('message').textContent=text;};
+const strongPassword=p=>p.length>=12&&/[a-z]/.test(p)&&/[A-Z]/.test(p)&&/[0-9]/.test(p)&&/[!@#$%^&*()_+\-=\[\]{};':"\\|<>?,.\/`~]/.test(p)&&!(/\s/.test(p));
+if(!window.supabase){msg('No se pudo cargar la conexión segura. Comprueba tu conexión de internet.');return;}
+const db=window.supabase.createClient(PROJECT_URL,PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+let recovery=false;
+function displayRecovery(){recovery=true;$('requestForm').classList.add('hidden');$('resetForm').classList.remove('hidden');msg('Enlace de recuperación aceptado. Introduce tu nueva contraseña.');}
+db.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY')displayRecovery();});
+$('requestForm').addEventListener('submit',async event=>{
+ event.preventDefault();if(!$('email').checkValidity())return;
+ $('send').disabled=true;
+ try{
+  const redirectTo=location.origin+location.pathname;
+  const {error}=await db.auth.resetPasswordForEmail($('email').value.trim(),{redirectTo});
+  if(error)throw error;
+  msg('Si la cuenta existe y el servicio de correo permite el envío, recibirás un mensaje de recuperación. Revisa también la carpeta de spam.');
+ }catch(error){
+  const reason=String(error?.message||'').toLowerCase(),code=String(error?.code||'');
+  if(error?.status===429||code==='over_email_send_rate_limit'||reason.includes('rate limit')){
+   msg('Límite temporal de correos de Supabase alcanzado. El correo de prueba permite 2 envíos por hora para todo el proyecto. No pulses Enviar varias veces; prueba más adelante. Esto no elimina tu cuenta.');
+   return;
+  }
+  if(code==='email_address_not_authorized'||reason.includes('not authorized')){
+   msg('La configuración actual de Supabase no autoriza este destinatario para correos de prueba. Antes de abrir la aplicación al público será necesario un SMTP propio.');
+   return;
+  }
+  msg('No se pudo enviar el correo. Comprueba la conexión y las direcciones de redirección admitidas en Supabase Auth. No compartas contraseñas ni enlaces.');
+ }finally{$('send').disabled=false;}
+});
+$('resetForm').addEventListener('submit',async event=>{
+ event.preventDefault();if(!recovery){msg('Abre tu enlace de recuperación válido para cambiar la contraseña.');return;}
+ const password=$('password').value;
+ if(!strongPassword(password)){msg('Utiliza al menos 12 caracteres, con una mayúscula, una minúscula, un número y un símbolo; sin espacios.');return;}
+ if(password!==$('confirm').value){msg('Las contraseñas no coinciden.');return;}
+ $('update').disabled=true;
+ try{const {error}=await db.auth.updateUser({password});if(error)throw error;
+  $('password').value='';$('confirm').value='';$('resetForm').classList.add('hidden');
+  msg('Contraseña actualizada. Ya puedes volver al estudio e iniciar sesión.');
+ }catch(error){msg('No se pudo actualizar la contraseña: '+(error?.message||'problema de conexión'));}
+ finally{$('update').disabled=false;}
+});
+msg('Escribe tu correo para solicitar el enlace de recuperación.');
+})();
+</script></body></html>
