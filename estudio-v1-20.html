@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<meta name="description" content="IMPERIO AI VIDEO: estudio creativo, biblioteca de videos, movimientos privados de créditos y seguimiento de solicitudes.">
+<title>IMPERIO AI VIDEO · Estudio 1.20</title>
+<style>
+:root {color-scheme:dark;--bg:#0a1022;--panel:#19243e;--field:#0d1730;--line:#3a4b6a;--ink:#f7f9ff;--muted:#c0ccdf;--mint:#69e2d4;--lilac:#b9a7ff;--danger:#ffc0c6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(ellipse at 90% -10%,#472959,transparent 42%),var(--bg);font:16px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1130px;margin:auto;padding:16px 16px 55px}a{color:var(--mint)}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 0 16px}.logo{color:white;text-decoration:none;font-weight:900;font-size:21px;letter-spacing:.04em}.logo small{display:block;font-weight:500;color:var(--muted);font-size:11px;letter-spacing:.16em}nav{display:flex;gap:6px;flex-wrap:wrap}nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);padding:7px 11px;border-radius:22px}
+.hero{padding:8px 0 23px}.eyebrow{font-size:12px;color:var(--mint);font-weight:850;letter-spacing:.13em;text-transform:uppercase}.hero h1{font-size:clamp(29px,5.3vw,47px);line-height:1.13;margin:10px 0}.hero p{max-width:740px;margin:7px 0;color:var(--muted)}.announcement{display:inline-block;margin:12px 0 0;border:1px solid #62527e;background:#302845;border-radius:40px;padding:8px 12px;font-size:13px;color:#efe6ff}
+.columns{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(270px,.95fr);gap:18px;align-items:start}.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:18px;min-width:0}.card h2{font-size:23px;margin:0 0 8px}.card h3{font-size:16px;margin:0 0 8px}.muted{font-size:14px;color:var(--muted)}.small{font-size:12px;color:var(--muted)}.flex{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.between{justify-content:space-between}.top{margin-top:13px}.field-label{font-weight:750;font-size:14px;display:block;margin:13px 0 7px}
+input,select,textarea{display:block;width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid #697896;border-radius:12px;padding:12px}textarea{min-height:145px;resize:vertical}button{background:linear-gradient(100deg,var(--lilac),var(--mint));border:0;border-radius:12px;color:#10192e;padding:11px 15px;font:inherit;font-weight:800;cursor:pointer}button.secondary{background:#2d4266;color:white}button:disabled{opacity:.5;cursor:not-allowed}.hidden{display:none!important}.message{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--field);border:1px solid #445877;border-radius:12px;padding:12px;margin:13px 0 0;font-size:14px;min-height:45px}.message.error{border-color:#c57484;color:var(--danger)}.item{background:var(--field);border:1px solid #445877;border-radius:14px;padding:14px;margin:12px 0;overflow-wrap:anywhere}.item h3{margin:0 0 7px}.item video{width:100%;max-height:410px;border-radius:11px;background:#000;margin-top:10px}.audio-pill{display:inline-block;border:1px solid #617392;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:750;margin:8px 0}.audio-pill.with{color:#73e4d6;border-color:#438f8f}.audio-pill.silent{color:#ffcfb3;border-color:#ab815f}.audio-pill.unknown{color:#c0ccdf}.audio-filter{min-width:150px;max-width:230px;padding:8px 12px}.audio-filter-label{margin:0}.storage-audit{background:#132640;padding:11px 12px;border-radius:10px;border-left:3px solid var(--mint)}.storage-audit.error{border-left-color:#c57484}.stored-tag{margin:7px 0 0;font-size:12px;font-weight:750;color:var(--mint)}.stored-tag.missing{color:#ffcfb3}.library-explain{background:#132640;border-radius:9px;padding:9px 12px;margin:12px 0}.meta{font-size:13px;color:var(--muted)}.rowlabel{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:10px 0}.rowlabel strong{text-align:right}.balance{font-size:40px;font-weight:850;color:var(--mint)}.tag{font-size:12px;background:#352b52;border-radius:30px;padding:4px 10px}.good{color:var(--mint)}.code{font:12px/1.8 ui-monospace,Consolas,monospace;max-height:300px;overflow:auto}.statusline{border-left:4px solid var(--mint);padding:10px 12px;background:#132640;border-radius:0 9px 9px 0;margin-top:12px}footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:800px){main{padding:14px 12px 40px}.columns{grid-template-columns:1fr}.card{padding:16px}header{padding-bottom:10px}button{min-height:44px}}
+.history-list{display:grid;gap:9px;margin-top:13px}.history-row{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--field)}.history-row strong{white-space:nowrap}.history-row .small{display:block}.history-row .increase{color:var(--mint)}.history-row .decrease{color:var(--danger)}
+
+.template-box{margin:10px 0 15px;padding:14px;background:var(--field);border:1px solid var(--line);border-radius:14px}
+.template-box h3{margin:0}.template-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:7px 0 14px}
+.template-grid .field-label{margin-top:5px}.template-box .small{line-height:1.5}
+@media(max-width:560px){.template-grid{grid-template-columns:1fr}}
+
+.assembly-scene{border:1px solid var(--line);background:var(--field);border-radius:13px;padding:12px;margin:10px 0}.assembly-scene label{display:block;font-weight:750}.assembly-scene input{margin-top:8px}.assembly-scene .small{display:block}.merge-preview{display:block;max-width:100%;border:1px solid var(--line);border-radius:13px;background:#000;max-height:390px;margin-top:14px}.merge-output{padding:12px;border:1px solid var(--line);border-radius:12px;margin-top:14px;background:var(--field)}.merge-output a{font-weight:800}.merge-inputs{max-width:660px}.story-scene-list{display:grid;gap:11px;margin-top:14px}.story-scene{border:1px solid var(--line);border-radius:13px;padding:12px;background:var(--field)}.story-scene label{display:block;font-weight:750;margin:0 0 6px}.story-scene textarea{min-height:90px;background:#101e39;line-height:1.55}.story-scene small{display:block;text-align:right;color:var(--muted)}.story-progress{margin:14px 0;padding:10px 12px;border-radius:10px;background:#142b3e;border-left:3px solid var(--mint)}
+</style>
+</head>
+<body>
+<main>
+<header><a class="logo" href="./estudio-v1-20.html">▶ IMPERIO AI VIDEO<small>ESTUDIO CREATIVO · VERSIÓN 1.20</small></a><nav aria-label="Navegación"><a href="#crear">Crear</a><a href="#guion">Guion 60 s</a><a href="#estadoEscenas">Estado de escenas</a><a href="#simulacion">Simulación</a><a href="#montaje">Unir escenas</a><a href="#biblioteca">Biblioteca</a><a href="#solicitudes">Solicitudes</a><a href="#creditos">Créditos</a><a href="./app.html">Archivo 1.1</a><a class="hidden" id="adminNav" href="./imperio-panel-admin-v1-3.html">Administración</a><a href="#seguridad">Seguridad</a></nav></header>
+<section class="hero"><span class="eyebrow">Versión 1.20 · Acceso anticipado</span><h1>De la idea al video.</h1><p>Guarda ideas, consulta tus solicitudes y reproduce tus MP4 privados. La biblioteca distingue motores de video y verifica que los MP4 estén guardados. La revisión de cuenta comprueba registros y carteras sin gastos. Esta versión añade una verificación segura de requisitos para generar escenas (saldo, modelo y presupuesto), sin ejecutar generaciones. Esta versión permite guardar guiones de hasta 60 segundos y consultar en el servidor el presupuesto estimado para cada escena, con el saldo de créditos de tu cuenta. Esta versión también guarda planes de producción privados con cada escena y su presupuesto, sin generar clips ni efectuar cargos. Esta versión agrega un montaje local experimental de MP4 compatibles para probar un video final en el teléfono sin enviar clips al servidor. Esta versión permite cargar MP4 ya disponibles para cada escena de un plan y unirlos localmente en orden. Todavía no genera escenas por IA, ni obtiene automáticamente los clips de un trabajo. Stripe Sandbox sigue siendo exclusivo del administrador. Incluye también una simulación de la secuencia completa por escenas, sin gastos ni solicitudes de generación. Las cuentas siguen en acceso anticipado.</p><div class="announcement">La generación pública y los pagos reales siguen desactivados.</div></section>
+<section class="card" id="cuenta"><div class="flex between"><h2>Tu cuenta</h2><div class="flex hidden" id="logged"><span class="small" id="who"></span><button class="secondary" type="button" id="logout">Salir</button></div></div>
+<form id="loginForm"><label class="field-label" for="email">Correo electrónico</label><input id="email" type="email" required autocomplete="email"><label class="field-label" for="password">Contraseña</label><input id="password" type="password" required minlength="6" autocomplete="current-password"><p class="small">Para crear una cuenta nueva: mínimo 12 caracteres, con mayúsculas, minúsculas, números y símbolos (sin espacios). Las cuentas anteriores pueden iniciar sesión con su contraseña actual.</p><div class="flex top"><button type="submit" id="login">Iniciar sesión</button><button type="button" id="signup" class="secondary">Crear cuenta</button></div></form>
+<p class="muted"><a href="./recuperar-cuenta-v2.html">¿Olvidaste tu contraseña?</a></p><p class="small">Correo de acceso en pruebas: si Supabase informa un límite de envíos, no repitas la solicitud. La aplicación sigue disponible para cuentas que puedan iniciar sesión.</p><p id="authStatus" role="status" aria-live="polite" class="message">Verificando sesión…</p>
+<div id="clientChecklist" class="item hidden" aria-label="Comprobación de tu cuenta">
+<h3>Estado de mi cuenta</h3>
+<p class="small">Consulta tu correo confirmado, cartera, borrador y videos. Solo se leen datos de tu propia cuenta. Esta prueba no genera videos ni cobra dinero.</p>
+<button type="button" id="checkClient" class="secondary" disabled>Revisar mi cuenta · sin gasto</button>
+<p id="clientCheckResult" class="message" role="status" aria-live="polite">Pulsa el botón para comprobar tu cuenta.</p>
+</div></section>
+<div class="columns"><div>
+<section class="card" id="crear"><div class="flex between"><h2>Crear video</h2><span class="tag">PixVerse C1 · 5 s · 720p · audio</span></div><p class="muted">Puedes preparar tu idea sin gasto. La generación de pago sigue reservada a pruebas expresamente autorizadas por el administrador; no se abre desde esta página.</p>
+<div class="template-box" aria-label="Ejemplos para preparar un video">
+ <h3>Empezar con un ejemplo · gratis</h3>
+ <p class="small">Elige un tema y un idioma para preparar una descripción editable. No crea videos ni consume créditos.</p>
+ <div class="template-grid">
+  <div><label class="field-label" for="ideaCategory">Tipo de video</label><select id="ideaCategory"><option value="naturaleza">Naturaleza</option><option value="infantil">Infantil</option><option value="musical">Musical</option><option value="publicidad">Publicidad</option><option value="motivacion">Motivación</option></select></div>
+  <div><label class="field-label" for="ideaLanguage">Idioma de la descripción</label><select id="ideaLanguage"><option value="es">Español</option><option value="ht">Kreyòl ayisyen</option><option value="en">English</option><option value="fr">Français</option></select></div>
+ </div>
+ <button type="button" id="useIdea" class="secondary">Usar este ejemplo</button>
+ <p class="small">Puedes cambiar las palabras antes de guardar. La disponibilidad de idiomas en las voces dependerá del motor de video futuro.</p>
+</div>
+<label class="field-label" for="prompt">Describe tu video</label><textarea id="prompt" maxlength="1000" placeholder="Ejemplo: Una hermosa playa tropical de Haití al amanecer, palmeras, olas suaves y sonido natural."></textarea><div class="flex between"><span class="small" id="length">0 / 1000 caracteres</span><span class="small">Mínimo 12 caracteres</span></div>
+<label class="field-label" for="ratio">Proporción del video</label><select id="ratio"><option value="16:9">Horizontal · 16:9</option><option value="9:16">Vertical · 9:16</option></select>
+<div class="flex top"><button type="button" class="secondary" id="save" disabled>Guardar borrador</button><button type="button" class="secondary" id="recover" disabled>Recuperar borrador</button><button type="button" id="validate" disabled>Validar idea y créditos</button><button type="button" class="secondary" id="clearPrompt">Limpiar editor</button></div><p class="small">Limpiar el editor no borra tu borrador guardado. «Recuperar borrador» restaura la última versión que guardaste.</p>
+<div id="promptStatus" class="message" role="status" aria-live="polite">Inicia sesión para preparar un video.</div><button type="button" class="top" disabled title="La generación pública continúa desactivada">Generación pública · próximamente</button><p class="small">Estas operaciones no envían videos ni cobran dinero en fal.ai.</p></section>
+<section class="card" id="guion">
+ <div class="flex between"><h2>Guion de video · hasta 60 segundos</h2><span class="tag">Planificación gratuita</span></div>
+ <p class="muted">Prepara entre 1 y 12 escenas de 5 segundos. Puedes guardarlas en tu cuenta y continuarlas desde otro dispositivo. <strong>Esto no crea clips, no une escenas, no consume créditos ni activa la generación pública.</strong></p>
+ <label class="field-label" for="storyTitle">Nombre del proyecto</label><input id="storyTitle" maxlength="100" placeholder="Ejemplo: Mi videoclip de konpa" value="Mi video" autocomplete="off">
+ <div class="template-grid">
+  <div><label class="field-label" for="storyDuration">Duración que quieres planificar</label><select id="storyDuration"><option value="5">5 segundos · 1 escena</option><option value="10">10 segundos · 2 escenas</option><option value="15" selected>15 segundos · 3 escenas</option><option value="20">20 segundos · 4 escenas</option><option value="30">30 segundos · 6 escenas</option><option value="45">45 segundos · 9 escenas</option><option value="60">60 segundos · 12 escenas</option></select></div>
+  <div><label class="field-label" for="storyRatio">Formato del proyecto</label><select id="storyRatio"><option value="16:9">Horizontal · 16:9</option><option value="9:16">Vertical · 9:16</option></select></div>
+ </div>
+ <div class="story-progress" id="storyProgress" role="status">0 de 3 escenas con descripción · duración planificada: 15 s.</div>
+ <div id="storyScenes" class="story-scene-list" aria-label="Descripción de cada escena"></div>
+ <div class="flex top"><button id="storyUsePrompt" type="button" class="secondary">Copiar descripción a escena 1</button><button id="storySave" type="button" disabled>Guardar guion en mi cuenta</button><button id="storyLoad" type="button" class="secondary" disabled>Recuperar mi guion</button><button id="storyDelete" type="button" class="secondary" disabled>Eliminar guion guardado</button></div>
+ <p class="small">Puedes guardar un guion incompleto y terminarlo después. Máximo: 600 caracteres por escena. Si reduces la duración, revisa antes las escenas que se quitarán del editor.</p>
+ <div id="storyStatus" class="message" role="status" aria-live="polite">Inicia sesión para guardar o recuperar un guion privado.</div>
+<div class="item" id="storyQuoteBox">
+ <h3>Presupuesto de escenas · sin gasto</h3>
+ <p class="small">Calcula una estimación desde el <strong>último guion guardado</strong> en tu cuenta. Debes guardar cualquier cambio antes de consultar. Este botón no reserva créditos, no inicia pagos, no genera clips y no une videos.</p>
+ <button id="storyQuote" type="button" class="secondary" disabled>Calcular créditos del guion · gratis</button>
+ <p id="storyQuoteStatus" role="status" aria-live="polite" class="message">Guarda tu guion y consulta su presupuesto cuando quieras.</p>
+ <div id="storyQuoteDetails" aria-label="Presupuesto aproximado por escena"></div>
+ <p class="small">Es una estimación, no un precio final. No incluye almacenamiento, montaje, audio externo ni impuestos. La generación pública continúa desactivada.</p>
+</div>
+<div class="item" id="renderPlanBox">
+ <h3>Plan de producción de escenas · sin gastos</h3>
+ <p class="small">Guarda un plan privado para las escenas del último guion guardado. Cada escena queda como PLANEADA. No inicia una cola, no reserva créditos y no envía solicitudes a fal.ai. Si editaste el guion, pulsa primero «Guardar guion».</p>
+ <div class="flex top">
+  <button id="renderPlanPrepare" type="button" class="secondary" disabled>Preparar plan de escenas · gratis</button>
+  <button id="renderPlanRefresh" type="button" class="secondary" disabled>Consultar último plan</button>
+ </div>
+ <p id="renderPlanStatus" class="message" role="status" aria-live="polite">Inicia sesión para consultar tus planes.</p>
+ <div id="renderPlanDetails" aria-label="Estado de las escenas planificadas"></div>
+ <p class="small">Los planes son copias privadas del guion cuando lo preparas. Modificar el guion posteriormente no cambia los planes anteriores. La generación, unión de clips y pagos públicos continúan desactivados.</p>
+</div>
+<div class="item" id="generationPreflightBox">
+  <h3>Verificación antes de generar · sin gasto</h3>
+  <p class="small">Comprueba en el servidor si tu último plan tiene escenas válidas, créditos suficientes, modelo disponible y presupuesto autorizado. <strong>Esta consulta no genera clips, no pone trabajos en cola, no reserva créditos y no cambia los controles.</strong></p>
+  <button id="generationPreflight" type="button" class="secondary" disabled>Comprobar preparación de mi video · gratis</button>
+  <p id="generationPreflightStatus" class="message" role="status" aria-live="polite">Inicia sesión para comprobar tu plan privado.</p>
+  <div id="generationPreflightDetails" aria-label="Condiciones para generar clips"></div>
+  <p class="small">La generación real de múltiples escenas aún requiere habilitación supervisada, pruebas con el proveedor y recuperación automática. Esta consulta solo muestra los bloqueos actuales.</p>
+ </div>
+</section>
+<section class="card" id="estadoEscenas">
+ <div class="flex between"><h2>Seguimiento de escenas</h2><span class="tag">Privado · sin gasto</span></div>
+ <p class="muted">Consulta el estado de cada escena de tu último plan directamente en Supabase. <strong>No inicia generaciones ni reserva créditos.</strong> Los clips solo podrán recuperarse automáticamente si las escenas se generaron y terminaron correctamente en una etapa posterior.</p>
+ <div class="flex top">
+  <button id="sceneStatusRefresh" type="button" class="secondary" disabled>Consultar estado de mis escenas · gratis</button>
+  <button id="sceneRecoverClips" type="button" class="secondary" disabled>Importar MP4 terminados al montaje</button>
+ </div>
+ <div class="item" id="recoveryAuditBox">
+  <h3>Auditoría de errores y créditos · gratis</h3>
+  <p class="small">Revisa, en tu propia cuenta, si alguna escena tiene un trabajo que necesita comprobarse antes de volver a intentarlo o devolver sus créditos. Esta consulta no realiza reintentos, reembolsos ni solicitudes a fal.ai.</p>
+  <button id="recoveryAudit" type="button" class="secondary" disabled>Comprobar errores y créditos · gratis</button>
+  <p id="recoveryAuditStatus" class="message" role="status" aria-live="polite">Inicia sesión para revisar el estado de recuperación de tus escenas.</p>
+  <div id="recoveryAuditDetails" aria-label="Auditoría privada de recuperación"></div>
+ </div>
+ <p id="sceneMonitorStatus" class="message" role="status" aria-live="polite">Inicia sesión para consultar el estado de tu plan.</p>
+ <div id="sceneMonitorDetails" aria-label="Estado de la producción por escena"></div>
+ <p class="small">Si un trabajo requiere revisión, no lo reintentes automáticamente: la comprobación del proveedor y de los créditos debe hacerse primero. Los archivos privados nunca se publican en la página.</p>
+</section>
+
+<section class="card" id="simulacion">
+ <div class="flex between"><h2>Simulación del motor de escenas</h2><span class="tag">Gratuita · sin generación</span></div>
+ <p class="muted">Comprueba el flujo previsto de tu último plan: validar escenas, revisar créditos, reservarlos en el futuro, generar cada clip y unirlos. <strong>Esta simulación es de solo lectura: no reserva créditos, no envía nada a fal.ai y no genera MP4.</strong></p>
+ <button type="button" class="secondary" id="simulateStory" disabled>Simular mis escenas · gratis</button>
+ <p id="simulationStatus" class="message" role="status" aria-live="polite">Inicia sesión para simular el plan guardado.</p>
+ <div id="simulationDetails" aria-label="Resultados de la simulación"></div>
+ <p class="small">El resultado muestra qué se haría cuando el motor esté autorizado; no es una prueba de generación real. La generación pública sigue bloqueada.</p>
+</section>
+<section class="card" id="montaje">
+ <div class="flex between"><h2>Unir clips MP4 en tu teléfono</h2><span class="tag">Experimental · sin créditos</span></div>
+ <p class="muted">Esta herramienta intenta crear <strong>un solo MP4 descargable</strong> con clips que ya tengas en tu teléfono. No crea escenas con IA, no sube tus archivos a Supabase ni llama a fal.ai. El trabajo se hace en tu navegador. Para mejores resultados usa MP4 del mismo motor, resolución, códec y formato de audio.</p>
+ <div class="item" id="assemblyByScenes">
+  <h3>Unir MP4 por escena de tu plan · sin gasto</h3>
+  <p class="small">Carga el último plan privado de tu cuenta y elige <strong>un MP4 por cada escena</strong>. Los archivos ya deben existir en tu teléfono; esta herramienta NO los genera ni los sube a la nube. El orden lo decide el plan, no el nombre del archivo.</p>
+  <button type="button" id="sceneAssemblyLoad" class="secondary" disabled>Cargar escenas de mi último plan</button>
+  <p id="sceneAssemblyStatus" class="message" role="status" aria-live="polite">Inicia sesión y carga un plan guardado. No se enviarán videos al proveedor.</p>
+  <div id="sceneAssemblyInputs" aria-label="Un MP4 por escena del plan"></div>
+  <div class="flex top">
+    <button type="button" id="sceneAssemblyStart" disabled>Unir los MP4 de mis escenas · gratis</button>
+    <button type="button" id="sceneAssemblyClear" class="secondary" disabled>Limpiar archivos elegidos</button>
+  </div>
+  <p class="small">Los MP4 deben durar aproximadamente 5 segundos cada uno y tener resolución y códecs compatibles. Puedes elegir el mismo MP4 en varias escenas para una prueba, pero eso no crea escenas nuevas. El resultado aparecerá abajo en «Tu MP4 unido» para descargarlo.</p>
+ </div>
+ <div class="item merge-inputs">
+  <label class="field-label" for="mergeMode">Cómo quieres probar</label>
+  <select id="mergeMode">
+   <option value="repeat">Prueba de 15 s: repetir un MP4 de 5 s tres veces</option>
+   <option value="multiple">Unir de 2 a 12 archivos MP4 distintos en orden</option>
+  </select>
+  <label class="field-label" for="mergeFiles">Seleccionar MP4 desde el dispositivo</label>
+  <input id="mergeFiles" type="file" accept="video/mp4,.mp4" aria-describedby="mergeHelp">
+  <p class="small" id="mergeHelp">Para la prueba de 15 segundos, selecciona un MP4 de 5 segundos que ya hayas guardado. Para la segunda opción, selecciona varios archivos a la vez; se unirán en el orden de selección. No necesitas comprar créditos.</p>
+  <div class="flex top"><button id="mergeStart" type="button">Unir y crear MP4 · sin gasto</button><button id="mergeClear" class="secondary" type="button">Limpiar resultado</button></div>
+  <p class="small">Límite piloto: 60 segundos de material, hasta 12 fragmentos, 20 MB por archivo y 90 MB en total. Se descarga un motor de procesamiento de video (varios MB) la primera vez. Es posible que el navegador móvil no tenga memoria suficiente. No cierres la página mientras procesa.</p>
+  <p id="mergeStatus" class="message" role="status" aria-live="polite">Selecciona un MP4 guardado en tu teléfono para probar el montaje. No se generarán videos con IA.</p>
+  <div id="mergeResult" class="merge-output hidden"><h3>Tu MP4 unido</h3><video id="mergeVideo" class="merge-preview" controls playsinline preload="metadata"></video><p><a id="mergeDownload" href="#" download="IMPERIO_AI_VIDEO_montaje.mp4">Descargar MP4 unido</a></p><p class="small">El archivo existe solo en este navegador hasta que lo descargues. No se guarda automáticamente en tu biblioteca.</p></div>
+ </div>
+ <p class="small">**Compatibilidad:** el modo rápido conserva los flujos de audio y video sin recodificar. Si los MP4 tienen distintas propiedades, la unión puede fallar o el resultado puede reproducirse mal. En esta primera versión no hacemos conversiones automáticas. La prueba de repetición usa el mismo video tres veces: no representa tres escenas nuevas.</p>
+</section>
+<section class="card" id="biblioteca"><div class="flex between"><h2>Biblioteca privada</h2><button type="button" class="secondary" id="refreshLibrary" disabled>Actualizar</button></div><p class="muted">Cada video muestra su motor y si admite audio. Los motores WAN 2.2 y PixVerse C1 tienen capacidades de audio diferentes; la etiqueta es orientativa, no analiza el MP4. El enlace privado del MP4 vence después de una hora, pero el archivo permanece guardado. La verificación de MP4 es de solo lectura, sin nuevas generaciones.</p><div class="flex top"><button class="secondary" id="verifyStorage" type="button" disabled>Verificar MP4 guardados · sin gasto</button></div><p class="small storage-audit" id="storageStatus" role="status" aria-live="polite">Inicia sesión para comprobar el guardado.</p><div class="flex top"><label class="field-label audio-filter-label" for="audioFilter">Filtrar videos</label><select class="audio-filter" id="audioFilter" aria-label="Filtrar videos por sonido"><option value="all">Todos</option><option value="with">Con audio</option><option value="silent">Sin audio</option><option value="unknown">Por verificar</option></select></div><p id="librarySummary" class="small library-explain">La clasificación depende del modelo de generación; comprueba siempre el audio reproduciendo el MP4.</p><div id="library" role="status" aria-live="polite">Inicia sesión para ver tus videos.</div><p class="small"><a href="./biblioteca-v2.html">Abrir biblioteca clásica</a></p></section>
+<section class="card" id="solicitudes"><div class="flex between"><h2>Solicitudes recientes</h2><button type="button" class="secondary" id="refreshJobs" disabled>Actualizar</button></div><p class="muted">El seguimiento y la recuperación de trabajos existentes no envían nuevas generaciones.</p><div id="jobs" role="status">Inicia sesión para consultar solicitudes.</div></section>
+</div><aside>
+<section class="card" id="creditos"><h2>Créditos</h2><div class="balance" id="balance">—</div><p class="small">Saldo de créditos internos (no dólares de fal.ai)</p><div class="rowlabel"><span>Precio del piloto</span><strong id="price">—</strong></div><div class="rowlabel"><span>Generación pública</span><strong>Desactivada</strong></div><div class="rowlabel"><span>Pagos reales</span><strong>Desactivados</strong></div><div class="flex top"><button type="button" class="secondary" id="refreshBalance" disabled>Actualizar saldo</button></div><p class="small">Los créditos del prototipo no equivalen directamente al saldo de fal.ai. No se han habilitado cobros públicos.</p><p class="small hidden" id="sandboxCreditsLink"><a href="./comprar-creditos-1.html">Prueba de compra: 10 créditos por $10 en Stripe Sandbox · solo administrador, sin dinero real</a></p>
+<div class="item" id="ledger"><h3>Movimientos de créditos</h3><p class="small">Consulta privada de solo lectura. Se muestran hasta 20 movimientos recientes; las compras de prueba no son cobros reales.</p>
+<div class="rowlabel"><span>Créditos recibidos</span><strong id="totalCredited">—</strong></div>
+<div class="rowlabel"><span>Créditos gastados netos</span><strong id="totalSpent">—</strong></div>
+<button type="button" class="secondary" id="refreshHistory" disabled>Ver mis movimientos · sin gasto</button>
+<p class="small" id="historyStatus" role="status" aria-live="polite">Inicia sesión para consultar tus movimientos.</p>
+<div id="creditHistory" class="history-list" aria-label="Movimientos recientes de créditos"></div>
+</div></section>
+<section class="card" id="seguridad"><h2>Privacidad de tu cuenta</h2>
+<p class="muted">Tus borradores, solicitudes, créditos y videos se consultan con permisos de propietario. Los MP4 se guardan en un espacio privado y sus enlaces de acceso duran una hora. Nunca compartas contraseñas, tokens ni enlaces.</p>
+<button type="button" class="secondary" id="privacyCheck" disabled>Comprobar privacidad · sin gasto</button>
+<p class="small">Esta prueba comprueba si tu sesión puede ver registros de otros usuarios en cinco tablas. No muestra sus datos y no modifica ninguna cuenta. Es una comprobación parcial, no una auditoría completa.</p>
+<p id="privacyStatus" class="message" role="status" aria-live="polite">Inicia sesión para comprobar la privacidad.</p>
+<p id="securityStatus" class="message" role="status">Sin sesión.</p></section>
+<section class="card hidden" id="adminPanel"><h2>Panel del administrador</h2><p class="muted">Diagnóstico de solo lectura del motor piloto. La prueba única ya realizada no se repite desde aquí.</p><button type="button" id="inspect" disabled>Comprobar protecciones</button><div class="statusline">Generación pública y pagos reales desactivados.</div><pre class="message code" id="adminResult">Sin diagnóstico.</pre><p class="small"><a href="./imperio-panel-admin-v1-3.html">Abrir panel de administración 1.3</a> · <a href="./imperio-diagnosticos-v2-1.html">Centro de diagnósticos</a></p></section>
+</aside></div>
+<footer>IMPERIO AI VIDEO · Estudio 1.20 · Piloto privado verificado · Acceso anticipado. Sin generación pública ni pagos reales.</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(()=>{'use strict';
+const SUPABASE_URL='https://xmxirddbswlcgirtqzfj.supabase.co';
+// Esta clave es PUBLICABLE; nunca colocar secret/service_role/FAL_KEY en HTML.
+const KEY='sb_publishable_Vg109_YO0-BBegk5ZLFCRQ_8OWwcOiO';
+const $=id=>document.getElementById(id);
+const db=window.supabase?.createClient(SUPABASE_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const jobIdFormat=/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i;
+let current=null,isAdmin=false,revision=0;
+let libraryEntries=[];
+let storageChecked=false,storagePartial=false;
+const storageChecks=new Map();
+const guarded=['save','recover','validate','refreshLibrary','refreshJobs','refreshBalance','refreshHistory','verifyStorage','checkClient','storySave','storyLoad','storyDelete','storyQuote','renderPlanPrepare','renderPlanRefresh','sceneAssemblyLoad','generationPreflight','sceneStatusRefresh','simulateStory','recoveryAudit'];
+function msg(id,text,error=false){const e=$(id);e.textContent=String(text);e.classList.toggle('error',!!error)}
+function err(e){return (e?.message||String(e||'Error')).slice(0,240)}
+function authErrorMessage(e,action){
+ const code=String(e?.code||''),reason=String(e?.message||'').toLowerCase();
+ if(code==='over_email_send_rate_limit'||reason.includes('email rate limit'))
+  return 'Supabase alcanzó el límite temporal de correos de prueba. No repitas el envío ahora. La cuenta anterior no se borra ni se modifica.';
+ if(e?.status===429)return 'Demasiadas solicitudes seguidas. No vuelvas a intentarlo de inmediato; inténtalo más adelante.';
+ if(code==='email_address_not_authorized'||reason.includes('email address not authorized'))
+  return 'Supabase solo permite enviar correos de prueba a direcciones autorizadas del equipo. El SMTP propio estará pendiente para el lanzamiento.';
+ if(action==='signin'&&(code==='invalid_credentials'||reason.includes('invalid login credentials')))
+  return 'No coinciden el correo y la contraseña. Comprueba los datos; no crees otra cuenta. Si olvidaste la contraseña, usa el enlace de recuperación cuando el correo esté disponible.';
+ return action==='signin'?'No se pudo iniciar sesión: '+err(e):'No se pudo completar el registro: '+err(e);
+}
+function date(v){const d=new Date(v);return Number.isFinite(d.getTime())?d.toLocaleString('es'):'Sin fecha'}
+function strongPassword(password){return password.length>=12&&/[a-z]/.test(password)&&/[A-Z]/.test(password)&&/[0-9]/.test(password)&&/[!@#$%^&*()_+\-=\[\]{};':"\\|<>?,.\/`~]/.test(password)&&!/\s/.test(password)}
+function validIdea(){const s=$('prompt').value.trim();const bytes=new TextEncoder().encode(s).byteLength;if(s.length<12||s.length>1000||bytes>2048){msg('promptStatus','La descripción debe tener de 12 a 1000 caracteres y hasta 2048 bytes UTF-8.',true);return false}return true}
+function signedLink(value,expectedPath){if(typeof value!=='string'||!value||!expectedPath)return null;try{const u=new globalThis.URL(value,SUPABASE_URL);const base=new globalThis.URL(SUPABASE_URL);const expected='/storage/v1/object/sign/videos-privados/'+expectedPath;return u.protocol==='https:'&&u.origin===base.origin&&decodeURIComponent(u.pathname)===expected&&u.searchParams.has('token')?u.href:null}catch{return null}}
+async function call(name,body){const {data,error}=await db.functions.invoke(name,{body});if(error){let more='';try{const d=await error.context?.json();more=d?.error||d?.message||d?.code||''}catch{}throw new Error(more||err(error))}if(data?.ok!==true)throw new Error(data?.message||data?.error||data?.code||'Respuesta de servidor no válida');return data}
+function view(user){current=user||null;$('loginForm').classList.toggle('hidden',!!current);$('logged').classList.toggle('hidden',!current);$('clientChecklist').classList.toggle('hidden',!current);$('who').textContent=current?.email||'';guarded.forEach(k=>$(k).disabled=!current);$('adminPanel').classList.toggle('hidden',!current||!isAdmin);$('adminNav').classList.toggle('hidden',!current||!isAdmin);$('sandboxCreditsLink').classList.toggle('hidden',!current||!isAdmin);$('inspect').disabled=!current||!isAdmin;$('privacyCheck').disabled=!current;if(current&&$('storyStatus').textContent.startsWith('Inicia sesión'))msg('storyStatus','Sesión activa. Puedes preparar y guardar tu guion en esta cuenta. Sin gastos.');msg('securityStatus',current?'Sesión iniciada. Generación pública y pagos reales desactivados.':'Sin sesión. Generación pública y pagos reales desactivados.');if(current&&$('promptStatus').textContent.trim()==='Inicia sesión para preparar un video.'){msg('promptStatus','Sesión activa. Puedes describir tu video, guardar un borrador o validar créditos sin gasto. La generación pública sigue desactivada.')}if(!current){$('balance').textContent='—';$('price').textContent='—';$('totalCredited').textContent='—';$('totalSpent').textContent='—';$('creditHistory').replaceChildren();msg('historyStatus','Inicia sesión para consultar tus movimientos.');$('library').textContent='Inicia sesión para ver tus videos.';libraryEntries=[];storageChecked=false;storagePartial=false;storageChecks.clear();$('audioFilter').value='all';$('librarySummary').textContent='La clasificación depende del modelo de generación; comprueba siempre el audio reproduciendo el MP4.';msg('storageStatus','Inicia sesión para comprobar el guardado.');msg('clientCheckResult','Pulsa el botón para comprobar tu cuenta.');$('jobs').textContent='Inicia sesión para consultar solicitudes.';$('prompt').value='';$('length').textContent='0 / 1000 caracteres';msg('promptStatus','Inicia sesión para preparar un video.');msg('adminResult','Sin diagnóstico.');msg('privacyStatus','Inicia sesión para comprobar la privacidad.');$('storyTitle').value='Mi video';$('storyDuration').value='15';$('storyRatio').value='16:9';renderStoryScenes(['','','']);msg('storyStatus','Inicia sesión para guardar o recuperar un guion privado.');clearStoryQuote('Inicia sesión para consultar el presupuesto.');resetRenderPlan('Inicia sesión para consultar tus planes.');clearAssemblyPlan('Inicia sesión y carga un plan guardado.');resetGenerationPreflight('Inicia sesión para comprobar tu plan privado.');resetSceneMonitor('Inicia sesión para consultar tus escenas.');resetStorySimulation('Inicia sesión para simular el plan guardado.');resetRecoveryAudit('Inicia sesión para revisar el estado de recuperación.')}}
+async function account(user){const id=++revision;isAdmin=false;clearAssemblyPlan();forgetMergedResult();libraryEntries=[];storageChecked=false;storagePartial=false;storageChecks.clear();$('audioFilter').value='all';view(user);if(!current)return;const uid=current.id;try{const {data,error}=await db.from('admin_users').select('role').eq('user_id',uid).maybeSingle();if(error)throw error;if(revision===id&&current?.id===uid){isAdmin=data?.role==='super_admin';view(current)}}catch{isAdmin=false}if(revision!==id)return;await Promise.allSettled([quote(),history(),library(),jobs(),loadDraft(true),loadStoryboard(true),loadLatestRenderPlan(true),loadAssemblyPlan(true)])}
+async function checkClientReadiness(){
+ if(!current)return;
+ const uid=current.id,rev=revision,button=$('checkClient');
+ button.disabled=true;
+ msg('clientCheckResult','Consultando únicamente datos de tu cuenta en Supabase. Sin pagos ni generación de videos…');
+ try{
+  const [identity,wallet,draft,videos]=await Promise.all([
+   db.auth.getUser(),
+   db.from('credit_wallets').select('balance').eq('user_id',uid).maybeSingle(),
+   db.from('video_drafts').select('updated_at').eq('user_id',uid).maybeSingle(),
+   db.from('video_generations').select('id',{count:'exact',head:true}).eq('user_id',uid).eq('status','COMPLETED')
+  ]);
+  if(current?.id!==uid||revision!==rev)return;
+  for(const result of [identity,wallet,draft,videos])if(result.error)throw result.error;
+  if(identity.data?.user?.id!==uid)throw Error('La sesión no coincide con la cuenta; vuelve a iniciar sesión.');
+  const verified=Boolean(identity.data.user.email_confirmed_at||identity.data.user.confirmed_at);
+  const walletExists=Boolean(wallet.data);
+  const text=[
+   'Correo electrónico: '+(verified?'Confirmado':'Pendiente de confirmación'),
+   'Cartera de créditos: '+(walletExists?'Creada · saldo '+wallet.data.balance+' créditos internos':'NO ENCONTRADA · revisar el registro'),
+   'Borrador privado: '+(draft.data?'Guardado':'Ninguno todavía'),
+   'Videos completados en tu cuenta: '+(videos.count??0),
+   'Privacidad: las consultas se realizaron con tu sesión y filtro por tu ID. Esto no sustituye una auditoría completa.',
+   'No se enviaron generaciones ni se iniciaron pagos.'
+  ].join('\n');
+  msg('clientCheckResult',text,!verified||!walletExists);
+ }catch(e){if(current?.id===uid&&revision===rev)msg('clientCheckResult','No se pudo completar la revisión: '+err(e)+'. No se modificaron datos.',true)}
+ finally{if(current?.id===uid)button.disabled=false}
+}
+async function quote(){if(!current)return;const uid=current.id;$('refreshBalance').disabled=true;try{const d=await call('imperio-solicitudes',{action:'model_quote'});if(current?.id!==uid)return;$('balance').textContent=String(d.balance_credits??0);$('price').textContent=String(d.cost_credits??'—')+' créditos · 5 s';}catch(e){$('price').textContent='No disponible';msg('securityStatus','No se pudo consultar saldo: '+err(e),true)}finally{$('refreshBalance').disabled=!current}}
+async function history(){
+ if(!current)return;
+ const uid=current.id, rev=revision, button=$('refreshHistory');
+ button.disabled=true;
+ msg('historyStatus','Consultando tu cartera y movimientos. No se cobra ni descuenta nada.');
+ try{
+  const [wallet,transactions]=await Promise.all([
+   db.from('credit_wallets').select('balance,total_credited,total_spent').eq('user_id',uid).maybeSingle(),
+   db.from('credit_transactions').select('id,kind,amount_delta,created_at').eq('user_id',uid).order('created_at',{ascending:false}).limit(20)
+  ]);
+  if(wallet.error)throw wallet.error;
+  if(transactions.error)throw transactions.error;
+  if(current?.id!==uid||revision!==rev)return;
+  $('totalCredited').textContent=String(wallet.data?.total_credited??0);
+  $('totalSpent').textContent=String(wallet.data?.total_spent??0);
+  $('balance').textContent=String(wallet.data?.balance??0);
+  const host=$('creditHistory');host.replaceChildren();
+  const rows=transactions.data||[];
+  if(rows.length===0){msg('historyStatus','Todavía no hay movimientos en tu cuenta. Sin gastos.');return}
+  const names={purchase:'Créditos recibidos · prueba',refund:'Devolución de créditos',generation:'Reserva para video',adjustment:'Ajuste de saldo',promotion:'Créditos promocionales'};
+  for(const movement of rows){
+   const change=Number(movement.amount_delta);
+   const item=document.createElement('div');item.className='history-row';
+   const info=document.createElement('div');
+   const name=document.createElement('b');name.textContent=names[movement.kind]||'Movimiento de créditos';
+   const at=document.createElement('span');at.className='small';at.textContent=date(movement.created_at);
+   info.append(name,at);
+   const amount=document.createElement('strong');amount.className=change>=0?'increase':'decrease';
+   amount.textContent=(change>0?'+':'')+String(change)+' cr';
+   item.append(info,amount);host.append(item);
+  }
+  msg('historyStatus','Últimos '+rows.length+' movimientos de tu cuenta. Solo lectura; ningún cobro ni generación.');
+ }catch(e){if(current?.id===uid&&revision===rev)msg('historyStatus','No se pudieron consultar los movimientos: '+err(e),true)}
+ finally{if(current?.id===uid&&revision===rev)button.disabled=false}
+}
+async function saveDraft(){if(!current||!validIdea())return;const uid=current.id;$('save').disabled=true;try{const {error}=await db.from('video_drafts').upsert({user_id:uid,prompt:$('prompt').value.trim(),aspect_ratio:$('ratio').value,duration_seconds:5,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error)throw error;if(current?.id===uid)msg('promptStatus','Borrador guardado en tu cuenta. No hubo gasto ni generación.')}catch(e){msg('promptStatus','No se pudo guardar: '+err(e),true)}finally{$('save').disabled=!current}}
+async function loadDraft(silent=false){if(!current)return;const uid=current.id;$('recover').disabled=true;try{const {data,error}=await db.from('video_drafts').select('prompt,aspect_ratio,updated_at').eq('user_id',uid).maybeSingle();if(error)throw error;if(current?.id!==uid)return;if(data){$('prompt').value=data.prompt||'';$('ratio').value=data.aspect_ratio==='9:16'?'9:16':'16:9';$('length').textContent=$('prompt').value.length+' / 1000 caracteres';if(!silent)msg('promptStatus','Borrador recuperado. Guardado: '+date(data.updated_at))}else if(!silent)msg('promptStatus','Todavía no tienes ningún borrador.')}catch(e){msg('promptStatus','Error recuperando borrador: '+err(e),true)}finally{$('recover').disabled=!current}}
+async function validate(){if(!current||!validIdea())return;$('validate').disabled=true;msg('promptStatus','Validando sin gasto…');try{const d=await call('imperio-solicitudes',{action:'model_preflight',prompt:$('prompt').value.trim(),aspect_ratio:$('ratio').value});msg('promptStatus','Descripción válida: '+d.duration_seconds+' s · '+d.resolution+' · '+d.cost_credits+' créditos. Saldo: '+d.balance_credits+' créditos. Generación pública BLOQUEADA. No hubo gastos.')}catch(e){msg('promptStatus','No se pudo validar: '+err(e),true)}finally{$('validate').disabled=!current}}
+function audioProfile(entry){
+ const model=String(entry.model||'').toLowerCase();
+ if(model==='fal-ai/pixverse/c1/text-to-video')return {kind:'with',label:'Audio habilitado · PixVerse C1',model:'PixVerse C1'};
+ if(model==='fal-ai/wan/v2.2-5b/text-to-video')return {kind:'silent',label:'Sin audio integrado · WAN 2.2',model:'WAN 2.2'};
+ return {kind:'unknown',label:'Audio no verificado',model:entry.model||'Modelo no especificado'};
+}
+function videoCard(entry,uid){
+ const card=document.createElement('article');card.className='item';
+ const h=document.createElement('h3');h.textContent=(entry.prompt||'Video guardado').slice(0,200);
+ const detail=document.createElement('p');detail.className='meta';detail.textContent='Estado: '+(entry.status||'—')+' · '+(entry.duration_seconds||5)+' s · '+date(entry.created_at);
+ const audio=audioProfile(entry);const pill=document.createElement('span');pill.className='audio-pill '+audio.kind;pill.textContent=audio.label;
+ card.append(h,detail,pill);
+  if(entry.status==='COMPLETED'&&jobIdFormat.test(entry.request_id||'')){
+    const saved=document.createElement('p');saved.className='stored-tag';
+    const object=storageChecks.get(entry.request_id+'.mp4');
+    if(!storageChecked)saved.textContent='Guardado: pendiente de verificar';
+    else if(object){const size=Number(object.metadata?.size);saved.textContent='MP4 guardado en tu espacio privado'+(Number.isFinite(size)&&size>0?' · '+(size/1048576).toFixed(1)+' MB':'');}
+    else{saved.classList.add('missing');saved.textContent=storagePartial?'Guardado: aún no comprobado (lista parcial)':'MP4 no encontrado en tu carpeta; no generes otro video';}
+    card.append(saved);
+  }
+ if(entry.status!=='COMPLETED'||!jobIdFormat.test(entry.request_id||''))return card;
+ const button=document.createElement('button');button.className='secondary';button.type='button';button.textContent='▶ Ver MP4 privado';
+ const playback=document.createElement('div');
+ button.onclick=async()=>{
+  if(current?.id!==uid)return;button.disabled=true;playback.replaceChildren();
+  try{
+   const path=uid+'/'+entry.request_id+'.mp4';
+   const {data,error}=await db.storage.from('videos-privados').createSignedUrl(path,3600);
+   if(error||!data?.signedUrl)throw error||new Error('Archivo no disponible');
+   const url=signedLink(data.signedUrl,path);if(!url)throw new Error('Enlace no verificado');
+   const vid=document.createElement('video');vid.src=url;vid.controls=true;vid.playsInline=true;vid.preload='metadata';
+   vid.setAttribute('aria-label','Video generado: '+(entry.prompt||'video').slice(0,60));
+   const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Abrir MP4 para verlo o guardarlo (1 hora)';
+   playback.append(vid,document.createElement('p'),link);
+  }catch(e){playback.textContent='No se pudo abrir el video: '+err(e)}
+  finally{button.disabled=current?.id!==uid}
+ };
+ card.append(button,playback);return card;
+}
+function renderLibrary(uid){
+ if(current?.id!==uid)return;
+ const root=$('library'),selection=$('audioFilter').value;
+ const completed=libraryEntries.filter(v=>v.status==='COMPLETED');
+ const withAudio=completed.filter(v=>audioProfile(v).kind==='with').length;
+ const silent=completed.filter(v=>audioProfile(v).kind==='silent').length;
+ const unknown=completed.length-withAudio-silent;
+ $('librarySummary').textContent=completed.length+' completados · '+withAudio+' con audio habilitado · '+silent+' sin audio integrado'+(unknown?' · '+unknown+' por verificar':'')+'. Identificación según el motor, no análisis de pistas de audio.';
+ root.replaceChildren();
+ if(!libraryEntries.length){root.textContent='Aún no tienes MP4 registrados.';return}
+ const shown=libraryEntries.filter(v=>selection==='all'||audioProfile(v).kind===selection);
+ if(!shown.length){root.textContent='No hay videos en este filtro.';return}
+ for(const v of shown)root.append(videoCard(v,uid));
+}
+async function verifyStorage(){
+ if(!current)return;
+ const uid=current.id,rev=revision,button=$('verifyStorage');
+ button.disabled=true;
+ msg('storageStatus','Verificando archivos privados en Supabase Storage. No se genera ningún video ni se cobran créditos.');
+ try{
+  const names=new Map();
+  let offset=0,partial=false;
+  for(let page=0;page<5;page++){
+   const {data,error}=await db.storage.from('videos-privados').list(uid,{limit:100,offset,sortBy:{column:'name',order:'asc'}});
+   if(error)throw error;
+   if(current?.id!==uid||revision!==rev)return;
+   const items=Array.isArray(data)?data:[];
+   for(const item of items)if(typeof item.name==='string'&&/^([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})\.mp4$/i.test(item.name))names.set(item.name,item);
+   if(items.length<100){partial=false;break;}
+   offset+=100;partial=page===4;
+  }
+  if(current?.id!==uid||revision!==rev)return;
+  storageChecks.clear();for(const [key,value]of names)storageChecks.set(key,value);
+  storageChecked=true;storagePartial=partial;
+  const completed=libraryEntries.filter(v=>v.status==='COMPLETED'&&jobIdFormat.test(v.request_id||''));
+  const confirmed=completed.filter(v=>names.has(v.request_id+'.mp4')).length;
+  msg('storageStatus','Archivos privados confirmados: '+confirmed+' de '+completed.length+' videos completados.'+(partial?' La lista supera 500 archivos; podrían faltar comprobaciones.':'')+' Consulta de solo lectura, sin generación ni gasto.');
+  renderLibrary(uid);
+ }catch(e){
+  if(current?.id!==uid||revision!==rev)return;
+  storageChecked=false;storagePartial=false;storageChecks.clear();
+  msg('storageStatus','No fue posible verificar los archivos: '+err(e)+'. Esto no significa que se hayan borrado. No generes otro video.',true);
+  renderLibrary(uid);
+ }finally{button.disabled=!current||current.id!==uid}
+}
+async function library(){
+ if(!current)return;const uid=current.id;$('refreshLibrary').disabled=true;
+ try{
+  const {data,error}=await db.from('video_generations').select('request_id,prompt,status,duration_seconds,created_at,model').eq('user_id',uid).order('created_at',{ascending:false}).limit(50);
+  if(error)throw error;if(current?.id!==uid)return;
+  libraryEntries=data||[];renderLibrary(uid);await verifyStorage();
+ }catch(e){msg('securityStatus','Error al consultar biblioteca: '+err(e),true)}
+ finally{$('refreshLibrary').disabled=!current}
+}
+function jobCard(job,uid){const card=document.createElement('article');card.className='item';const title=document.createElement('h3');title.textContent=job.sku||'Video';const meta=document.createElement('p');meta.className='meta';meta.textContent='Estado: '+(job.status||'—')+' · '+date(job.created_at);card.append(title,meta);if(job.status==='COMPLETED'){const link=document.createElement('a');link.href='#biblioteca';link.textContent='Ver video en mi biblioteca';card.append(link)}else if(job.status==='REFUNDED'){const note=document.createElement('p');note.className='small';note.textContent='Esta solicitud terminó con reembolso de créditos internos. No la vuelvas a generar.';card.append(note)}else if(isAdmin&&jobIdFormat.test(job.id||'')){const output=document.createElement('p');output.className='message';const check=document.createElement('button');check.className='secondary';check.type='button';check.textContent='Consultar estado sin gasto';check.onclick=async()=>{if(current?.id!==uid)return;check.disabled=true;output.textContent='Consultando un trabajo ya existente…';try{const d=await call('imperio-pixverse-piloto',{action:'status',job_id:job.id});output.textContent='Estado: '+(d.job_status||d.status||'—')+' · Proveedor: '+(d.provider_status||'—')+'. No se ha solicitado otra generación.';if(d.job_status==='COMPLETED')await Promise.allSettled([library(),jobs()])}catch(e){output.textContent='Consulta sin nueva generación: '+err(e)}finally{check.disabled=current?.id!==uid}};const actions=document.createElement('div');actions.className='flex top';actions.append(check);
+if(['QUEUED','RUNNING','SUBMITTING'].includes(job.status)){
+ const recover=document.createElement('button');recover.className='secondary';recover.type='button';recover.textContent='Recuperar MP4 existente';
+ recover.onclick=async()=>{if(current?.id!==uid)return;check.disabled=true;recover.disabled=true;output.textContent='Comprobando MP4 del trabajo existente. No se envía una generación nueva…';try{const d=await call('imperio-pixverse-piloto',{action:'collect',job_id:job.id});output.textContent=d.status==='COMPLETED'?'MP4 recuperado y guardado en tu biblioteca.':'Resultado de recuperación: '+(d.status||'pendiente');await Promise.allSettled([library(),jobs()])}catch(e){output.textContent='Todavía no se pudo recuperar el MP4: '+err(e)+'. No vuelvas a generar el video.'}finally{check.disabled=current?.id!==uid;recover.disabled=current?.id!==uid}};
+ actions.append(recover);
+}
+card.append(actions,output)}return card}
+async function jobs(){if(!current)return;const uid=current.id;$('refreshJobs').disabled=true;try{const d=await call('imperio-solicitudes',{action:'my_jobs'});if(current?.id!==uid)return;const root=$('jobs');root.replaceChildren();if(!d.jobs?.length){root.textContent='Sin solicitudes recientes.';return}for(const j of d.jobs)root.append(jobCard(j,uid))}catch(e){$('jobs').textContent='No se pudieron consultar las solicitudes: '+err(e)}finally{$('refreshJobs').disabled=!current}}
+async function checkPrivacy(){
+ if(!current)return;
+ const uid=current.id,btn=$('privacyCheck');
+ btn.disabled=true;
+ msg('privacyStatus','Comprobando acceso a tus datos privados, sin gasto…');
+ try{
+  const tables=['video_drafts','video_generations','video_generation_jobs','credit_wallets','credit_transactions'];
+  const checks=await Promise.all(tables.map(async table=>{
+   const {data,error}=await db.from(table).select('user_id').neq('user_id',uid).limit(1);
+   if(error)throw error;
+   return {table,visible:!!data?.length};
+  }));
+  if(current?.id!==uid)return;
+  const exposed=checks.filter(x=>x.visible).map(x=>x.table);
+  if(exposed.length){
+   msg('privacyStatus','ATENCIÓN: hay registros de otra cuenta visibles en: '+exposed.join(', ')+'. No habilites pagos ni generación pública. Revisa las políticas de acceso de Supabase.',true);
+  }else{
+   msg('privacyStatus','Comprobación terminada: no se detectaron registros de otras cuentas visibles en las cinco tablas revisadas. No se gastaron créditos. Esto no sustituye una auditoría completa.');
+  }
+ }catch(e){
+  if(current?.id===uid)msg('privacyStatus','No se pudo completar la comprobación: '+err(e)+'. No se modificó ningún dato.',true);
+ }finally{btn.disabled=!current}
+}
+async function inspect(){if(!current||!isAdmin)return;$('inspect').disabled=true;msg('adminResult','Comprobando permisos y protecciones…');try{const d=await call('imperio-pixverse-piloto',{action:'inspect'});const g=d.gates||{};msg('adminResult','Cuenta de administrador: '+(g.account_authorized?'Autorizada':'No autorizada')+'\nPermiso de nueva prueba: '+(g.one_test_available?'Disponible':'No disponible')+'\nGeneración pública: '+(g.public_generation_disabled?'Desactivada':'REVISAR')+'\nPagos reales: '+(g.public_payments_disabled?'Desactivados':'REVISAR')+'\nClave de fal.ai: '+(g.provider_key_configured?'Configurada':'Revisar')+'\nCréditos internos: '+(d.available_credits??'—')+'\nGeneración nueva enviada desde esta consulta: No.')}catch(e){msg('adminResult','No se pudo comprobar: '+err(e),true)}finally{$('inspect').disabled=!current||!isAdmin}}
+
+// Guiones privados: un registro por cuenta en Supabase, con Row Level Security.
+// Esta función prepara textos, no realiza llamadas al proveedor de video.
+function storyValues(){return [...document.querySelectorAll('#storyScenes textarea')].map(el=>el.value)}
+function storyProgress(){const fields=[...document.querySelectorAll('#storyScenes textarea')];let filled=0;for(const [i,el] of fields.entries()){const c=el.value.trim().length;const counter=$('storyChars'+i);if(counter)counter.textContent=c+' / 600 caracteres';if(c>=12)filled++}const seconds=fields.length*5;$('storyProgress').textContent=filled+' de '+fields.length+' escenas con al menos 12 caracteres · duración planificada: '+seconds+' segundos. No se generaron videos.'}
+function renderStoryScenes(values=[]){const seconds=Number($('storyDuration').value),count=seconds/5;const root=$('storyScenes');root.replaceChildren();for(let i=0;i<count;i++){const card=document.createElement('div');card.className='story-scene';const label=document.createElement('label');label.htmlFor='storyScene'+i;label.textContent='Escena '+(i+1)+' · '+(i*5)+'–'+((i+1)*5)+' segundos';const area=document.createElement('textarea');area.id='storyScene'+i;area.maxLength=600;area.rows=3;area.placeholder=i===0?'Describe qué pasa al comienzo del video.':'Describe qué ocurre después. Puedes dejar esta escena para más tarde.';area.value=typeof values[i]==='string'?values[i].slice(0,600):'';area.addEventListener('input',()=>{storyProgress();clearStoryQuote('Cambios sin guardar: guarda el guion antes de volver a calcular.')});const countLabel=document.createElement('small');countLabel.id='storyChars'+i;card.append(label,area,countLabel);root.append(card)}storyProgress()}
+function clearStoryQuote(message='Consulta disponible para el último guion guardado.'){
+ const host=$('storyQuoteDetails');if(host)host.replaceChildren();
+ const status=$('storyQuoteStatus');if(status)msg('storyQuoteStatus',message);
+}
+async function quoteStoryCredits(){
+ if(!current)return;
+ const uid=current.id,rev=revision,button=$('storyQuote');
+ button.disabled=true;
+ clearStoryQuote('Consultando el último guion guardado y el precio del piloto. Sin gastos…');
+ try{
+  const d=await call('imperio-presupuesto-escenas',{action:'quote'});
+  if(current?.id!==uid||revision!==rev)return;
+  if(!d.read_only||!d.no_charge||d.can_generate!==false||!Array.isArray(d.scenes))throw Error('Respuesta de seguridad inesperada');
+  const n=Number(d.scene_count),price=Number(d.total_credits_estimated),balance=Number(d.current_balance_credits);
+  if(!Number.isInteger(n)||n<1||n>12||d.scenes.length!==n||!Number.isSafeInteger(price)||!Number.isSafeInteger(balance))throw Error('Presupuesto incompleto');
+  const status=d.all_scenes_valid?'Descripciones completas':'Hay escenas que necesitan al menos 12 caracteres';
+  const missing=Number(d.additional_credits_needed);
+  const estimate=d.provider_cost_estimate_usd==null?'No disponible':('$'+Number(d.provider_cost_estimate_usd).toFixed(2)+' USD');
+  msg('storyQuoteStatus',
+    'Proyecto guardado: '+String(d.project_title||'Mi video')+'. '+n+' escenas / '+d.duration_seconds+' s.\n'+
+    'Créditos estimados: '+price+' ('+d.credits_per_scene+' por escena). Saldo actual: '+balance+'.\n'+
+    'Créditos adicionales para este plan: '+(Number.isFinite(missing)?missing:'—')+'.\n'+
+    'Costo técnico aproximado de los clips en el proveedor: '+estimate+' (no es un cargo).\n'+
+    status+'. Generación y unión de escenas: NO DISPONIBLES. No hubo gasto.',!d.all_scenes_valid);
+  const root=$('storyQuoteDetails');root.replaceChildren();
+  for(const part of d.scenes){
+    const card=document.createElement('div');card.className='history-row';
+    const left=document.createElement('div');
+    const title=document.createElement('div');title.textContent='Escena '+part.number+' · '+part.from_seconds+'–'+part.to_seconds+' s';
+    const note=document.createElement('span');note.className='small';note.textContent=part.valid?'Descripción válida · pendiente':'Revisar descripción';
+    const value=document.createElement('strong');value.textContent=part.credits_estimated+' créditos';
+    left.append(title,note);card.append(left,value);root.append(card);
+  }
+ }catch(e){
+   if(current?.id===uid&&revision===rev){
+    const text=err(e); const friendly=text==='NO_SAVED_STORYBOARD'?'Primero pulsa Guardar guion en mi cuenta.':
+      text==='INVALID_STORYBOARD'?'Revisa todas las escenas: al menos 12 caracteres por escena, y guarda otra vez.':
+      'No se pudo consultar el presupuesto: '+text;
+    msg('storyQuoteStatus',friendly+' No se gastaron créditos.',true);
+   }
+ }finally{button.disabled=!current}
+}
+
+// Consulta privada: no inicia trabajos de proveedor ni reserva créditos.
+const preflightReasons={
+  PLAN_INCOMPLETE:'Hay escenas pendientes o datos inconsistentes. Revisa el plan guardado.',
+  PRICE_CHANGED:'El precio del modelo cambió desde que se creó el plan. Prepara un plan actualizado.',
+  WALLET_UNAVAILABLE:'No se pudo comprobar el saldo; la generación debe permanecer bloqueada.',
+  INSUFFICIENT_CREDITS:'El saldo de tu cuenta no alcanza para todas las escenas.',
+  COST_UNKNOWN:'No existe una estimación fiable del costo del proveedor.',
+  BUDGET_DISABLED:'El presupuesto diario del proveedor sigue fijado en cero.',
+  BUDGET_TOO_LOW:'El presupuesto diario es menor que la estimación de los clips.',
+  MODEL_DISABLED:'El modelo de generación permanece deshabilitado.',
+  GENERATION_DISABLED:'La generación pública continúa desactivada por seguridad.',
+  PRODUCTION_WORKER_NOT_IMPLEMENTED:'Falta implementar el procesamiento seguro de varias escenas y el control transaccional de créditos.'
+};
+function resetGenerationPreflight(note){
+  $('generationPreflightDetails').replaceChildren();
+  msg('generationPreflightStatus',note);
+}
+async function checkGenerationPreflight(){
+  if(!current)return;
+  const uid=current.id,rev=revision,button=$('generationPreflight');
+  button.disabled=true;
+  resetGenerationPreflight('Consultando tu plan, saldo y bloqueos de seguridad en Supabase. Sin gasto…');
+  try{
+    const d=await call('imperio-verificar-generacion',{action:'preflight'});
+    if(current?.id!==uid||revision!==rev)return;
+    if(d.read_only!==true||d.no_charge!==true||d.can_generate!==false||!Array.isArray(d.blockers))
+      throw Error('Respuesta de seguridad inesperada. No se habilitó la generación.');
+    const cents=d.estimated_provider_cost_usd;
+    const cost=typeof cents==='number'&&Number.isFinite(cents)?'$'+cents.toFixed(2)+' USD':'sin estimación disponible';
+    const missing=d.missing_credits==null?NaN:Number(d.missing_credits);
+    msg('generationPreflightStatus',
+      'Plan: '+String(d.plan_title||'Mi video')+'. '+d.scene_count+' escenas / '+d.duration_seconds+' s.\n'+
+      'Créditos necesarios: '+d.total_credits+' · saldo: '+(d.balance_credits??'no disponible')+
+      ' · faltantes: '+(Number.isFinite(missing)?missing:'—')+'.\n'+
+      'Costo estimado del proveedor: '+cost+' (no es un cobro).\n'+
+      'Resultado: GENERACIÓN NO DISPONIBLE. '+d.blockers.length+' requisitos pendientes. No hubo cargos ni solicitudes de videos.');
+    const root=$('generationPreflightDetails');root.replaceChildren();
+    for(const code of [...new Set(d.blockers)]){
+      const card=document.createElement('div');card.className='item';
+      const label=document.createElement('strong');label.textContent='Pendiente';
+      const detail=document.createElement('p');detail.className='small';
+      detail.textContent=preflightReasons[code]||'Revisión técnica pendiente: '+String(code).slice(0,90);
+      card.append(label,detail);root.append(card);
+    }
+  }catch(e){
+    if(current?.id===uid&&revision===rev){
+      const failure=err(e);
+      resetGenerationPreflight(failure.includes('NO_RENDER_PLAN')?
+        'Primero guarda tu guion y pulsa Preparar plan de escenas. No se gastaron créditos.':
+        'No se pudo comprobar la preparación: '+failure+'. La generación sigue bloqueada.');
+    }
+  }finally{button.disabled=!current}
+}
+$('generationPreflight').onclick=checkGenerationPreflight;
+
+// Monitor de trabajos: solo lectura con JWT y políticas RLS del usuario.
+// El servidor conserva bloqueado el envío a fal.ai por una bandera de código.
+let sceneMonitorState=null,sceneMonitorBusy=false,sceneImportBusy=false;
+const sceneStateLabels={
+ PLANNED:'Planeada · todavía sin generar',
+ READY:'Reservada en el servidor (no enviada)',
+ SUBMITTING:'Envío en revisión',
+ QUEUED:'En cola del proveedor',
+ RUNNING:'Generándose',
+ COMPLETED:'Completada',
+ FAILED_NO_CHARGE:'Fallida · sin cargo',
+ REVIEW:'Requiere revisión manual',
+ REFUNDED:'Créditos reembolsados'
+};
+function resetSceneMonitor(note='Consulta el estado de tu plan guardado, sin gastos.'){
+ sceneMonitorState=null;
+ $('sceneRecoverClips').disabled=true;
+ $('sceneMonitorDetails').replaceChildren();
+ msg('sceneMonitorStatus',note);
+}
+async function refreshSceneMonitor(){
+ if(!current||sceneMonitorBusy)return;
+ const uid=current.id,rev=revision;
+ sceneMonitorBusy=true;$('sceneStatusRefresh').disabled=true;
+ resetSceneMonitor('Consultando el estado privado de las escenas. Sin generación ni cobros…');
+ try{
+  const result=await call('imperio-motor-escenas-v1',{action:'status'});
+  if(current?.id!==uid||revision!==rev)return;
+  if(result?.ok!==true||result?.read_only!==true||result?.provider_called!==false||
+    !Array.isArray(result.scenes))throw Error('Respuesta de seguridad no válida.');
+  if(result.plan_exists===false){
+    msg('sceneMonitorStatus','Todavía no hay plan privado. Primero prepara el plan de tus escenas. No hubo gastos.');return;
+  }
+  const n=Number(result.scene_count);
+  if(!Number.isInteger(n)||n<1||n>12||n!==result.scenes.length||
+     result.scenes.some((x,i)=>x.scene_number!==i+1||!sceneStateLabels[x.status]))
+    throw Error('El plan contiene estados inesperados: requiere revisión.');
+  const finished=result.scenes.filter(x=>x.status==='COMPLETED').length;
+  const planned=result.scenes.filter(x=>x.status==='PLANNED').length;
+  sceneMonitorState={count:n,completed:finished,scenes:result.scenes,uid};
+  msg('sceneMonitorStatus','Plan: '+String(result.plan_title||'Mi video').slice(0,100)+
+      '. '+finished+' de '+n+' escenas completadas; '+planned+' todavía planeadas.\n'+
+      'Consulta finalizada sin gastos. Generación nueva BLOQUEADA.');
+  const root=$('sceneMonitorDetails');root.replaceChildren();
+  for(const item of result.scenes){
+    const row=document.createElement('div');row.className='history-row';
+    const left=document.createElement('div');
+    const heading=document.createElement('strong');heading.textContent='Escena '+item.scene_number+
+      ' · '+(item.scene_number-1)*5+'–'+item.scene_number*5+' segundos';
+    const detail=document.createElement('span');detail.className='small';
+    detail.textContent=sceneStateLabels[item.status];
+    left.append(heading,detail);row.append(left);root.append(row);
+  }
+  $('sceneRecoverClips').disabled=finished!==n;
+ }catch(e){
+  if(current?.id===uid&&revision===rev)
+    resetSceneMonitor('No se pudo consultar: '+err(e)+'. No se generaron videos.');
+ }finally{
+  sceneMonitorBusy=false;$('sceneStatusRefresh').disabled=!current;
+ }
+}
+$('sceneStatusRefresh').onclick=refreshSceneMonitor;
+
+// Si todas las escenas están completadas, recupera sus MP4 privados.
+// No almacena enlaces firmados; sólo carga File locales para el montaje existente.
+$('sceneRecoverClips').onclick=async()=>{
+ if(!current||!sceneMonitorState||sceneImportBusy||mergeBusy)return;
+ if(sceneMonitorState.uid!==current.id||
+    sceneMonitorState.completed!==sceneMonitorState.count)return;
+ const uid=current.id,rev=revision;
+ const existing=assemblySelectedFiles();
+ if(existing.some(Boolean)&&!window.confirm('¿Reemplazar los MP4 seleccionados en el montaje con los clips guardados?'))return;
+ sceneImportBusy=true;$('sceneRecoverClips').disabled=true;
+ msg('sceneMonitorStatus','Verificando y recuperando MP4 privados. No se envían clips a fal.ai…');
+ try{
+  await loadAssemblyPlan(true);
+  if(current?.id!==uid||revision!==rev)return;
+  if(!assemblyPlan||assemblyPlan.scene_count!==sceneMonitorState.count)
+    throw Error('El plan ha cambiado. Consulta el estado otra vez.');
+  const plan={...assemblyPlan};
+  const {data:links,error:linksErr}=await db.from('video_render_scene_jobs')
+    .select('scene_number,job_id').eq('plan_id',plan.id)
+    .eq('user_id',uid).order('scene_number',{ascending:true});
+  if(linksErr||links?.length!==plan.scene_count)throw Error('Aún no hay una generación terminada para todas las escenas.');
+  const ids=links.map(v=>v.job_id);
+  const {data:jobs,error:jobsErr}=await db.from('video_generation_jobs')
+    .select('id,user_id,status,provider_request_id')
+    .eq('user_id',uid).in('id',ids);
+  if(jobsErr||jobs?.length!==ids.length)throw Error('No se pudieron verificar los trabajos privados.');
+  const byId=new Map(jobs.map(v=>[v.id,v]));
+  const mp4s=[];
+  const fileId=/^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/i;
+  let totalBytes=0;
+  for(let i=0;i<links.length;i++){
+   const link=links[i],job=byId.get(link.job_id);
+   if(link.scene_number!==i+1||!job||job.user_id!==uid||job.status!=='COMPLETED'||
+      !fileId.test(job.provider_request_id||''))throw Error('Hay una escena sin entrega verificada.');
+   const path=uid+'/'+job.provider_request_id+'.mp4';
+   const {data:signed,error:signErr}=await db.storage.from('videos-privados')
+      .createSignedUrl(path,300);
+   if(signErr||!signed?.signedUrl)throw Error('Un MP4 privado todavía no está accesible.');
+   const response=await fetch(signed.signedUrl,{cache:'no-store',credentials:'omit'});
+   if(!response.ok)throw Error('No se pudo descargar el MP4 privado de la escena '+(i+1)+'.');
+   const blob=await response.blob();
+   if(blob.size<1024||blob.size>20*1024*1024)
+     throw Error('El MP4 de la escena '+(i+1)+' no cumple el límite de 20 MB.');
+   totalBytes+=blob.size;
+   if(totalBytes>90*1024*1024)throw Error('El montaje supera los 90 MB permitidos.');
+   mp4s.push(new File([blob],'escena-'+(i+1)+'.mp4',{type:'video/mp4'}));
+  }
+  if(current?.id!==uid||revision!==rev||assemblyPlan?.id!==plan.id)return;
+  if(typeof DataTransfer==='undefined')throw Error('Tu navegador no admite esta importación; descarga los MP4 desde Biblioteca.');
+  const inputs=[...$('sceneAssemblyInputs').querySelectorAll('input[type="file"]')];
+  if(inputs.length!==mp4s.length)throw Error('El editor de escenas cambió; vuelve a cargar el plan.');
+  for(let i=0;i<inputs.length;i++){
+   const dt=new DataTransfer();dt.items.add(mp4s[i]);inputs[i].files=dt.files;
+  }
+  updateAssemblyReady({silent:true});
+  msg('sceneMonitorStatus','Se recuperaron '+mp4s.length+' MP4 privados en el teléfono. '+
+    'Ahora pulsa «Unir los MP4 de mis escenas» en la sección Unir escenas. Sin créditos ni generaciones nuevas.');
+ }catch(e){
+  if(current?.id===uid&&revision===rev){
+   for(const input of $('sceneAssemblyInputs').querySelectorAll('input[type="file"]'))input.value='';
+   updateAssemblyReady({silent:true});
+   msg('sceneMonitorStatus','No se completó la importación: '+err(e)+
+    '. No se generaron videos ni se descontaron créditos.',true);
+  }
+ }finally{
+  sceneImportBusy=false;
+  $('sceneRecoverClips').disabled=!current||!sceneMonitorState||
+    sceneMonitorState.completed!==sceneMonitorState.count;
+ }
+};
+
+
+// Los planes se preparan en el servidor con auth.uid(), sin aceptar ID de usuario del navegador.
+function resetRenderPlan(note='Guarda tu guion para preparar un plan privado.'){
+  $('renderPlanDetails').replaceChildren();
+  msg('renderPlanStatus',note);
+}
+async function loadLatestRenderPlan(silent=false){
+  if(!current)return;
+  const uid=current.id, rev=revision, btn=$('renderPlanRefresh');
+  btn.disabled=true;
+  if(!silent)msg('renderPlanStatus','Consultando tu último plan privado, sin gasto…');
+  try{
+    const {data,error}=await db.from('video_render_plans')
+      .select('id,title,duration_seconds,scene_count,credits_per_scene,total_credits_estimated,provider_cost_estimate_usd,status,created_at')
+      .eq('user_id',uid).order('created_at',{ascending:false}).limit(1);
+    if(error)throw error;
+    if(current?.id!==uid||revision!==rev)return;
+    if(!data?.length){resetRenderPlan('Todavía no tienes un plan de producción. Guarda tu guion y pulsa Preparar plan de escenas. No se ha gastado nada.');return}
+    const plan=data[0];
+    const {data:scenes,error:partsError}=await db.from('video_render_plan_scenes')
+      .select('scene_number,duration_seconds,credits_estimated,status')
+      .eq('plan_id',plan.id).order('scene_number',{ascending:true});
+    if(partsError)throw partsError;
+    if(current?.id!==uid||revision!==rev)return;
+    if(!Array.isArray(scenes)||scenes.length!==plan.scene_count)throw Error('PLAN_INCOMPLETE');
+    msg('renderPlanStatus',
+      'Plan: '+String(plan.title||'Mi video')+'. '+plan.scene_count+' escenas / '+plan.duration_seconds+' segundos.\n'+
+      'Créditos estimados: '+plan.total_credits_estimated+'. Estado: PLANIFICADO (no en cola).\n'+
+      'Creado: '+date(plan.created_at)+'. No hubo pagos, reservas ni generación de videos.');
+    const root=$('renderPlanDetails');root.replaceChildren();
+    for(const scene of scenes){
+      const card=document.createElement('div');card.className='history-row';
+      const left=document.createElement('div');
+      const title=document.createElement('div');title.textContent='Escena '+scene.scene_number+' · '+((scene.scene_number-1)*5)+'–'+(scene.scene_number*5)+' s';
+      const sub=document.createElement('span');sub.className='small';sub.textContent='PLANEADA · sin generar';
+      const amount=document.createElement('strong');amount.textContent=scene.credits_estimated+' créditos';
+      left.append(title,sub);card.append(left,amount);root.append(card);
+    }
+  }catch(e){if(current?.id===uid&&revision===rev)msg('renderPlanStatus','No se pudo consultar el plan: '+err(e)+'. No hubo gastos.',true)}
+  finally{btn.disabled=!current}
+}
+async function prepareRenderPlan(){
+  if(!current)return;
+  const uid=current.id,rev=revision,btn=$('renderPlanPrepare');
+  btn.disabled=true;resetRenderPlan('Preparando una copia privada del guion guardado; sin créditos ni pagos…');
+  try{
+    const {data,error}=await db.rpc('prepare_video_render_plan');
+    if(error)throw error;
+    if(data?.ok!==true||data?.can_generate!==false||data?.no_charge!==true)throw Error('PLAN_RESPONSE_INVALID');
+    if(current?.id!==uid||revision!==rev)return;
+    await loadLatestRenderPlan(true);
+    if(current?.id===uid&&revision===rev&&data.created_new===false){
+      msg('renderPlanStatus',$('renderPlanStatus').textContent+'\nEste mismo guion ya tenía un plan guardado: no se creó un duplicado.');
+    }
+  }catch(e){
+    if(current?.id===uid&&revision===rev){
+      const code=err(e);
+      const friendly=code.includes('NO_SAVED_STORYBOARD')?'Primero guarda tu guion.':
+        code.includes('INCOMPLETE_SCENES')?'Completa las escenas (mínimo 12 caracteres) y guarda el guion.':
+        code.includes('PRICE_NOT_CONFIGURED')?'Todavía no está configurado el precio del modelo.':
+        'No se pudo preparar el plan: '+code;
+      msg('renderPlanStatus',friendly+' No hubo cargos ni generaciones.',true);
+    }
+  }finally{btn.disabled=!current}
+}
+$('renderPlanPrepare').onclick=prepareRenderPlan;
+$('renderPlanRefresh').onclick=()=>loadLatestRenderPlan(false);
+
+$('storyQuote').onclick=quoteStoryCredits;
+$('storyTitle').addEventListener('input',()=>clearStoryQuote('Has cambiado el proyecto. Guárdalo antes de consultar.'));
+$('storyRatio').addEventListener('change',()=>clearStoryQuote('Has cambiado el formato. Guárdalo antes de consultar.'));
+
+function storyMessage(s,error=false){msg('storyStatus',s,error)}
+$('storyDuration').addEventListener('change',()=>{const vals=storyValues();const target=Number($('storyDuration').value)/5;if(vals.length>target&&vals.slice(target).some(x=>x.trim())&&!window.confirm('¿Reducir escenas? El texto de las escenas eliminadas se perderá del editor. El guion guardado en tu cuenta no cambiará hasta que pulses Guardar.')){$('storyDuration').value=String(vals.length*5);return}renderStoryScenes(vals);clearStoryQuote('Has cambiado la duración. Guarda antes de volver a consultar.')});
+$('storyUsePrompt').onclick=()=>{const p=$('prompt').value.trim();if(!p){storyMessage('Primero escribe una descripción en Crear video o selecciona un ejemplo.',true);return}const first=$('storyScene0');if(first.value.trim()&&!window.confirm('¿Reemplazar el texto de la primera escena? No cambia tu guion guardado.'))return;first.value=p.slice(0,600);storyProgress();clearStoryQuote('Escena modificada. Guarda el guion antes de calcular.');storyMessage(p.length>600?'Copiados los primeros 600 caracteres a la escena 1. Puedes editar el resto de escenas.':'Descripción copiada a escena 1. Completa las demás escenas y guarda tu guion en tu cuenta.');};
+async function saveStoryboard(){if(!current)return;const uid=current.id,rev=revision,title=$('storyTitle').value.trim(),seconds=Number($('storyDuration').value),aspect=$('storyRatio').value,scenes=storyValues().map(s=>s.trim());if(title.length<1||title.length>100){storyMessage('Escribe un nombre de proyecto de 1 a 100 caracteres.',true);return}if(seconds<5||seconds>60||seconds%5||scenes.length!==seconds/5||scenes.some(s=>s.length>600)){storyMessage('Revisa las escenas y la duración del guion.',true);return}if(new TextEncoder().encode(JSON.stringify(scenes)).length>15000){storyMessage('El texto de las escenas supera el máximo de tamaño. Acorta algunas descripciones.',true);return}const button=$('storySave');button.disabled=true;storyMessage('Guardando tu guion privado en Supabase…');try{const {error}=await db.from('video_storyboards').upsert({user_id:uid,title,duration_seconds:seconds,aspect_ratio:aspect,scenes,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error)throw error;if(current?.id!==uid||revision!==rev)return;clearStoryQuote('Guion guardado. Pulsa Calcular créditos del guion para consultar la nueva estimación.');storyMessage('Guion guardado en tu cuenta: '+scenes.length+' escenas para '+seconds+' segundos. Podrás recuperarlo desde otro dispositivo. No se generó video.');}catch(e){if(current?.id===uid)storyMessage('No se pudo guardar el guion: '+err(e),true)}finally{button.disabled=!current}}
+async function loadStoryboard(silent=false){if(!current)return;const uid=current.id,rev=revision,button=$('storyLoad');button.disabled=true;if(!silent)storyMessage('Recuperando el último guion guardado…');try{const {data,error}=await db.from('video_storyboards').select('title,duration_seconds,aspect_ratio,scenes,updated_at').eq('user_id',uid).maybeSingle();if(error)throw error;if(current?.id!==uid||revision!==rev)return;if(!data){if(!silent)storyMessage('Aún no hay guion guardado en tu cuenta. Puedes crear uno ahora.');return}const s=Number(data.duration_seconds),v=data.scenes;if(!Number.isInteger(s)||s<5||s>60||s%5||!Array.isArray(v)||v.length!==s/5||v.some(t=>typeof t!=='string'))throw Error('Formato del guion guardado no válido');$('storyTitle').value=String(data.title||'Mi video').slice(0,100);$('storyDuration').value=String(s);$('storyRatio').value=data.aspect_ratio==='9:16'?'9:16':'16:9';renderStoryScenes(v);clearStoryQuote('Guion recuperado. Pulsa Calcular créditos para ver la estimación.');storyMessage('Guion recuperado: '+s+' segundos y '+v.length+' escenas. Último guardado: '+date(data.updated_at)+'. No se generó video.')}catch(e){if(current?.id===uid)storyMessage('No se pudo recuperar el guion: '+err(e),true)}finally{button.disabled=!current}}
+async function deleteStoryboard(){if(!current)return;if(!window.confirm('¿Eliminar el guion guardado en tu cuenta? El texto que ves en el editor seguirá aquí, pero no podrás recuperar la copia eliminada.'))return;const uid=current.id,rev=revision,button=$('storyDelete');button.disabled=true;storyMessage('Eliminando el guion guardado…');try{const {error}=await db.from('video_storyboards').delete().eq('user_id',uid);if(error)throw error;if(current?.id!==uid||revision!==rev)return;clearStoryQuote('Guion guardado eliminado. No hay un presupuesto vigente.');storyMessage('Copia guardada eliminada. El texto actual del editor no se borró. No hubo gastos.')}catch(e){if(current?.id===uid)storyMessage('No se pudo eliminar la copia guardada: '+err(e),true)}finally{button.disabled=!current}}
+$('storySave').onclick=saveStoryboard;
+$('storyLoad').onclick=()=>loadStoryboard(false);
+$('storyDelete').onclick=deleteStoryboard;
+renderStoryScenes(['','','']);
+
+
+// Montaje local: el navegador lee archivos File. No se envían a fal.ai ni Supabase.
+const MERGE_CDN='https://cdn.jsdelivr.net/npm';
+let mergedObjectURL=null, mergeBusy=false;
+function setMergeStatus(message,error=false){msg('mergeStatus',message,error)}
+function forgetMergedResult(){
+ if(mergedObjectURL){URL.revokeObjectURL(mergedObjectURL);mergedObjectURL=null}
+ $('mergeVideo').removeAttribute('src');$('mergeVideo').load();
+ $('mergeDownload').removeAttribute('href');$('mergeResult').classList.add('hidden');
+}
+$('mergeMode').onchange=()=>{
+ const multiple=$('mergeMode').value==='multiple';
+ $('mergeFiles').multiple=multiple;
+ $('mergeFiles').value='';
+ forgetMergedResult();
+ $('mergeHelp').textContent=multiple?
+   'Elige entre 2 y 12 MP4 a la vez, preferiblemente generados con el mismo motor y formato. Se unirán en el orden de selección.':
+   'Selecciona un solo MP4 de 5 segundos. El video se repetirá 3 veces para probar un montaje aproximado de 15 segundos.';
+ setMergeStatus('Selecciona el archivo o los clips. El proceso será local y sin créditos.');
+};
+$('mergeClear').onclick=()=>{if(mergeBusy)return;forgetMergedResult();$('mergeFiles').value='';setMergeStatus('Resultado limpiado. Los archivos originales del teléfono siguen intactos.');};
+function loadMergeScript(){
+ return new Promise((resolve,reject)=>{
+  if(window.FFmpegWASM?.FFmpeg){resolve();return}
+  const script=document.createElement('script');
+  script.src=`${MERGE_CDN}/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js`;
+  script.crossOrigin='anonymous';
+  script.onload=()=>window.FFmpegWASM?.FFmpeg?resolve():reject(Error('FFMPEG_LIBRARY_MISSING'));
+  script.onerror=()=>reject(Error('No se pudo descargar la biblioteca de procesamiento. Comprueba la conexión.'));
+  document.head.append(script);
+ });
+}
+async function blobFromCdn(url,type){
+ const response=await fetch(url,{mode:'cors',credentials:'omit'});
+ if(!response.ok)throw Error('No se pudo descargar un componente del motor (HTTP '+response.status+').');
+ const b=await response.blob();
+ return URL.createObjectURL(new Blob([b],{type}));
+}
+async function loadLocalFFmpeg(){
+ await loadMergeScript();
+ // ESM worker importado desde CDN; el blob evita bloquear la creación por origen cruzado.
+ const moduleWorker=`import '${MERGE_CDN}/@ffmpeg/ffmpeg@0.12.15/dist/esm/worker.js';`;
+ const workerUrl=URL.createObjectURL(new Blob([moduleWorker],{type:'text/javascript'}));
+ const coreBase=`${MERGE_CDN}/@ffmpeg/core@0.12.10/dist/esm`;
+ let coreUrl,wasmUrl;
+ try{
+  coreUrl=await blobFromCdn(coreBase+'/ffmpeg-core.js','text/javascript');
+  wasmUrl=await blobFromCdn(coreBase+'/ffmpeg-core.wasm','application/wasm');
+  const ffmpeg=new window.FFmpegWASM.FFmpeg();
+  await ffmpeg.load({classWorkerURL:workerUrl,coreURL:coreUrl,wasmURL:wasmUrl});
+  return ffmpeg;
+ }finally{
+  // The worker retains references to loaded resources; Blob URLs can be revoked after load.
+  URL.revokeObjectURL(workerUrl);
+  if(coreUrl)URL.revokeObjectURL(coreUrl);
+  if(wasmUrl)URL.revokeObjectURL(wasmUrl);
+ }
+}
+function readVideoInfo(file){
+ return new Promise((resolve,reject)=>{
+  const url=URL.createObjectURL(file);
+  const v=document.createElement('video');v.preload='metadata';v.muted=true;
+  let finished=false;
+  const end=(error)=>{if(finished)return;finished=true;URL.revokeObjectURL(url);v.removeAttribute('src');v.load();error?reject(error):resolve(true)};
+  v.onloadedmetadata=()=>{
+    const duration=Number(v.duration),w=v.videoWidth,h=v.videoHeight;
+    if(!Number.isFinite(duration)||duration<=0||!w||!h){end(Error('Un MP4 no tiene duración o imagen válida.'));return}
+    const info={duration,width:w,height:h};
+    if(finished)return;
+    finished=true;URL.revokeObjectURL(url);v.removeAttribute('src');v.load();resolve(info);
+  };
+  v.onerror=()=>end(Error('No se pudo leer uno de los MP4. Comprueba el archivo descargado.'));
+  v.src=url;
+ });
+}
+// Montaje guiado por el plan privado: solo lectura de metadatos, archivos locales File.
+let assemblyPlan=null;
+function clearAssemblyPlan(message='Carga tu último plan para elegir clips por escena.'){
+ assemblyPlan=null;
+ $('sceneAssemblyInputs').replaceChildren();
+ $('sceneAssemblyStart').disabled=true;
+ $('sceneAssemblyClear').disabled=true;
+ msg('sceneAssemblyStatus',message);
+}
+function assemblySelectedFiles(){
+ if(!assemblyPlan)return [];
+ return [...$('sceneAssemblyInputs').querySelectorAll('input[type="file"]')].map(input=>input.files?.[0]||null);
+}
+function updateAssemblyReady({silent=false}={}){
+ const selected=assemblySelectedFiles(),complete=selected.filter(Boolean).length;
+ const ready=!!current&&!!assemblyPlan&&complete===assemblyPlan.scene_count;
+ $('sceneAssemblyStart').disabled=mergeBusy||!ready;
+ $('sceneAssemblyClear').disabled=mergeBusy||!assemblyPlan||complete===0;
+ if(!mergeBusy&&assemblyPlan&&!silent){
+   msg('sceneAssemblyStatus','Plan: '+assemblyPlan.title+' · '+complete+' de '+assemblyPlan.scene_count+
+   ' clips seleccionados. '+(ready?'Listo para unir en el orden del guion.':'Selecciona un MP4 para cada escena.')+' Sin gastos.');
+ }
+}
+async function loadAssemblyPlan(silent=false){
+ if(!current){clearAssemblyPlan('Inicia sesión y prepara un plan privado.');return}
+ const uid=current.id,rev=revision,btn=$('sceneAssemblyLoad');btn.disabled=true;
+ if(!silent)msg('sceneAssemblyStatus','Consultando tu plan privado en Supabase…');
+ try{
+  const {data,error}=await db.from('video_render_plans')
+   .select('id,title,scene_count,duration_seconds,aspect_ratio,status')
+   .eq('user_id',uid).order('created_at',{ascending:false}).limit(1);
+  if(error)throw error;
+  if(current?.id!==uid||revision!==rev)return;
+  if(!data?.length){clearAssemblyPlan('No hay plan de producción todavía. Guarda el guion y pulsa «Preparar plan de escenas» en la sección Guion 60 s.');return}
+  const plan=data[0];
+  if(plan.status!=='PLANNED'||!Number.isInteger(Number(plan.scene_count))||Number(plan.scene_count)<1||Number(plan.scene_count)>12||Number(plan.scene_count)*5!==Number(plan.duration_seconds))
+    throw Error('PLAN_INVALID');
+  const {data:scenes,error:scError}=await db.from('video_render_plan_scenes')
+    .select('scene_number,prompt,status')
+    .eq('plan_id',plan.id).order('scene_number',{ascending:true});
+  if(scError)throw scError;
+  if(current?.id!==uid||revision!==rev)return;
+  if(!Array.isArray(scenes)||scenes.length!==Number(plan.scene_count)||scenes.some((x,i)=>Number(x.scene_number)!==i+1||x.status!=='PLANNED'))throw Error('SCENES_INCOMPLETE');
+  assemblyPlan={id:plan.id,title:String(plan.title||'Mi video').slice(0,100),scene_count:Number(plan.scene_count),aspect_ratio:plan.aspect_ratio};
+  const host=$('sceneAssemblyInputs');host.replaceChildren();
+  for(const scene of scenes){
+    const block=document.createElement('div');block.className='assembly-scene';
+    const label=document.createElement('label');label.htmlFor='assemblyScene'+scene.scene_number;
+    label.textContent='Escena '+scene.scene_number+' · '+(scene.scene_number-1)*5+'–'+scene.scene_number*5+' segundos';
+    const summary=document.createElement('span');summary.className='small';
+    summary.textContent=String(scene.prompt||'').slice(0,145);
+    const input=document.createElement('input');input.type='file';input.accept='.mp4,video/mp4';
+    input.id='assemblyScene'+scene.scene_number;input.setAttribute('aria-label','MP4 de la escena '+scene.scene_number);
+    input.addEventListener('change',updateAssemblyReady);
+    block.append(label,summary,input);host.append(block);
+  }
+  updateAssemblyReady();
+ }catch(e){if(current?.id===uid&&revision===rev)clearAssemblyPlan('No se pudo cargar el plan: '+err(e)+'. Ningún archivo fue enviado.');}
+ finally{btn.disabled=!current||mergeBusy}
+}
+$('sceneAssemblyLoad').onclick=()=>loadAssemblyPlan(false);
+$('sceneAssemblyClear').onclick=()=>{
+ if(mergeBusy||!assemblyPlan)return;
+ for(const input of $('sceneAssemblyInputs').querySelectorAll('input[type="file"]'))input.value='';
+ updateAssemblyReady();
+};
+
+async function mergeLocalFiles(files,{byPlan=false,plan=null}={}){
+ if(mergeBusy)return;
+ const report=(message,error=false)=>{
+   if(byPlan)msg('sceneAssemblyStatus',message,error);
+   else setMergeStatus(message,error);
+ };
+ if(files.length<(byPlan?1:2)||files.length>12){report('Necesitas el mismo número de MP4 que escenas del plan, de 1 a 12.',true);return}
+ let totalBytes=0;
+ for(const f of files){
+  if(!f||(!/\.mp4$/i.test(f.name)&&f.type!=='video/mp4')||f.size===0||f.size>20*1024*1024){
+   report('Cada MP4 debe ser válido y pesar hasta 20 MB.',true);return;
+  }
+  totalBytes+=f.size;
+ }
+ if(totalBytes>90*1024*1024){report('Los clips suman más de 90 MB. Reduce la selección.',true);return}
+ mergeBusy=true;
+ for(const id of ['mergeStart','mergeClear','sceneAssemblyStart','sceneAssemblyClear','sceneAssemblyLoad'])$(id).disabled=true;
+ forgetMergedResult();
+ let engine=null;
+ try{
+  report('Verificando la duración y resolución de cada archivo en tu teléfono…');
+  const infos=await Promise.all(files.map(readVideoInfo));
+  const seconds=infos.reduce((s,x)=>s+x.duration,0);
+  if(seconds>60.5)throw Error('La duración supera el límite de 60 segundos.');
+  if(infos.some(x=>x.width!==infos[0].width||x.height!==infos[0].height))
+    throw Error('Las resoluciones no coinciden. Usa MP4 con el mismo ancho y alto.');
+  if(byPlan){
+    if(!plan||plan.scene_count!==files.length)throw Error('La cantidad de archivos no coincide con el plan.');
+    if(infos.some(x=>x.duration<3.8||x.duration>6.2))throw Error('Cada MP4 debe durar alrededor de 5 segundos (entre 3.8 y 6.2 s).');
+    const target=plan.aspect_ratio==='9:16'?9/16:16/9;
+    if(Math.abs(infos[0].width/infos[0].height-target)>0.2)throw Error('El formato del MP4 no corresponde al formato horizontal o vertical del plan.');
+  }
+  report('Archivos revisados: '+files.length+' escenas, '+infos[0].width+'×'+infos[0].height+', '+seconds.toFixed(1)+' s. Cargando montaje local…');
+  engine=await loadLocalFFmpeg();
+  const list=[];
+  for(let i=0;i<files.length;i++){
+   report('Cargando escena '+(i+1)+' de '+files.length+' en el teléfono; sin gastos…');
+   const filename='scene'+String(i+1).padStart(2,'0')+'.mp4';
+   await engine.writeFile(filename,new Uint8Array(await files[i].arrayBuffer()));
+   list.push("file '"+filename+"'");
+  }
+  await engine.writeFile('lista.txt',new TextEncoder().encode(list.join('\n')+'\n'));
+  report('Uniendo '+files.length+' MP4 en orden, sin recodificación…');
+  const code=await engine.exec(['-f','concat','-safe','0','-i','lista.txt','-c','copy','-movflags','+faststart','IMPERIO-unido.mp4'],90000);
+  if(code!==0)throw Error('No fue posible unir estos MP4; quizás los códecs o pistas de audio son distintos.');
+  const bytes=await engine.readFile('IMPERIO-unido.mp4');
+  if(!(bytes instanceof Uint8Array)||bytes.byteLength<1024)throw Error('El resultado MP4 está vacío o no es válido.');
+  const resultBuffer=bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength);
+  mergedObjectURL=URL.createObjectURL(new Blob([resultBuffer],{type:'video/mp4'}));
+  $('mergeVideo').src=mergedObjectURL;
+  $('mergeDownload').href=mergedObjectURL;
+  $('mergeDownload').download=byPlan?'IMPERIO_AI_VIDEO_escenas_'+files.length+'.mp4':'IMPERIO_AI_VIDEO_montaje.mp4';
+  $('mergeResult').classList.remove('hidden');
+  report('Montaje terminado: '+files.length+' fragmentos en orden, '+seconds.toFixed(1)+' segundos aproximadamente. Pulsa «Descargar MP4 unido» abajo. No se gastaron créditos.');
+  $('mergeResult').scrollIntoView({behavior:'smooth',block:'start'});
+ }catch(e){
+  forgetMergedResult();
+  report('No se pudo completar el montaje: '+(e?.message||String(e)).slice(0,240)+'. No se gastaron créditos.',true);
+ }finally{
+  if(engine){try{engine.terminate()}catch{}}
+  mergeBusy=false;
+  $('mergeStart').disabled=false;$('mergeClear').disabled=false;
+  $('sceneAssemblyLoad').disabled=!current;
+  updateAssemblyReady({silent:true});
+ }
+}
+async function mergeSelectedVideos(){
+ if(mergeBusy)return;
+ const isRepeat=$('mergeMode').value==='repeat';
+ const selected=[...$('mergeFiles').files];
+ if((isRepeat&&selected.length!==1)||(!isRepeat&&(selected.length<2||selected.length>12))){
+   setMergeStatus(isRepeat?'Selecciona un MP4 para repetirlo tres veces.':'Selecciona de 2 a 12 MP4.',true);return;
+ }
+ const files=isRepeat?[selected[0],selected[0],selected[0]]:selected;
+ await mergeLocalFiles(files);
+}
+$('mergeStart').onclick=mergeSelectedVideos;
+$('sceneAssemblyStart').onclick=async()=>{
+ if(mergeBusy||!current||!assemblyPlan)return;
+ const plan={...assemblyPlan};
+ const files=assemblySelectedFiles();
+ if(files.length!==plan.scene_count||files.some(x=>!x)){
+  msg('sceneAssemblyStatus','Elige un MP4 por cada escena del plan.',true);return;
+ }
+ await mergeLocalFiles(files,{byPlan:true,plan});
+};
+
+
+function resetStorySimulation(note='Inicia sesión para simular el plan guardado.'){
+  $('simulationDetails').replaceChildren();
+  msg('simulationStatus',note);
+}
+const simulationBlockers={
+  INVALID_SCENES:'Alguna escena no cumple los requisitos de duración o descripción.',
+  INVALID_PRICE:'La tarifa de créditos del modelo necesita revisión.',
+  WALLET_UNAVAILABLE:'No se pudo verificar el saldo de créditos.',
+  INSUFFICIENT_CREDITS:'El saldo de créditos es insuficiente para generar todas las escenas.',
+  PROVIDER_COST_UNCONFIRMED:'Falta confirmar el costo del motor del proveedor.',
+  PUBLIC_GENERATION_DISABLED:'La generación pública continúa desactivada.',
+  MODEL_DISABLED:'El motor de video todavía está deshabilitado.',
+  PROVIDER_BUDGET_DISABLED:'El presupuesto diario del proveedor permanece en cero.',
+  EXISTING_JOBS_REQUIRE_RECONCILIATION:'Hay trabajos asociados que deben revisarse antes de generar de nuevo.',
+  LIVE_MULTI_SCENE_WORKER_LOCKED:'El envío real del motor de escenas continúa bloqueado por código.'
+};
+async function simulateSavedScenes(){
+  if(!current)return;
+  const uid=current.id,rev=revision,btn=$('simulateStory');
+  btn.disabled=true;
+  resetStorySimulation('Consultando el plan privado y simulando el flujo sin gastar créditos…');
+  try{
+    const d=await call('imperio-simular-flujo-escenas',{action:'simulate'});
+    if(current?.id!==uid||rev!==revision)return;
+    if(d.ok!==true||d.simulation!==true||d.read_only!==true||
+       d.no_charge!==true||d.provider_called!==false||d.can_generate!==false||
+       !Array.isArray(d.scene_checks)||!Array.isArray(d.blockers)){
+      throw Error('SIMULATION_RESPONSE_INVALID');
+    }
+    const total=Number(d.total_credits_estimated);
+    const missing=d.missing_credits==null?'no disponible':String(d.missing_credits);
+    msg('simulationStatus','Simulación completada: '+d.scene_count+' escenas, '+
+      d.duration_seconds+' segundos. Se necesitarían '+total+
+      ' créditos; saldo: '+(d.current_balance_credits??'no disponible')+
+      '; faltan: '+missing+'. Requisitos pendientes: '+d.blockers.length+
+      '. Ningún video generado; ningún crédito gastado.');
+    const host=$('simulationDetails');host.replaceChildren();
+    for(const part of d.scene_checks){
+      const item=document.createElement('div');item.className='history-row';
+      const label=document.createElement('div');
+      const title=document.createElement('strong');
+      title.textContent='Escena '+part.scene_number+' · '+part.from_seconds+'–'+part.to_seconds+' s';
+      const detail=document.createElement('span');detail.className='small';
+      detail.textContent=(part.prompt_valid?'Descripción válida':'Revisar descripción')+
+        ' · '+(part.simulated_order==='PRIMERA'?'Primera en la secuencia':'Espera la escena anterior')+
+        ' · sin generar';
+      label.append(title,detail);
+      const amount=document.createElement('strong');
+      amount.textContent=part.credits_estimated+' créditos';
+      item.append(label,amount);host.append(item);
+    }
+    const heading=document.createElement('h3');heading.textContent='Requisitos pendientes';
+    host.append(heading);
+    for(const code of [...new Set(d.blockers)]){
+      const item=document.createElement('p');item.className='small';
+      item.textContent='• '+(simulationBlockers[code]||'Requisito técnico pendiente: '+String(code).slice(0,60));
+      host.append(item);
+    }
+  }catch(e){
+    if(current?.id===uid&&revision===rev)resetStorySimulation(
+      'No se pudo completar la simulación: '+err(e)+'. No hubo gastos.');
+  }finally{btn.disabled=!current}
+}
+$('simulateStory').onclick=simulateSavedScenes;
+
+
+// Auditoría privada de recuperación: solo lectura, nunca reintentar ni reembolsar.
+const recoveryStageLabels={
+ PLANNED:'Planeada · sin trabajo enviado',
+ READY:'Preparada · todavía no enviada',
+ SUBMITTING:'Envío en verificación',
+ QUEUED:'En cola del proveedor',
+ RUNNING:'Procesándose',
+ COMPLETED:'Completada',
+ REFUNDED:'Reembolsada',
+ FAILED_NO_CHARGE:'Fallida, pendiente de revisión',
+ REVIEW:'Requiere revisión',
+ LINK_OR_CREDIT_MISMATCH:'Datos del trabajo y créditos no coinciden',
+ STATE_MISMATCH:'Estado del trabajo y reserva inconsistente',
+ UNKNOWN:'Trabajo sin información confirmada'
+};
+const recoveryActionLabels={
+ NONE:'Todavía no hay generación ni reserva para esta escena.',
+ CHECK_PRIVATE_MP4:'Comprobar que el MP4 privado esté disponible.',
+ NO_RETRY_FROM_THIS_PLAN:'El trabajo fue reembolsado; no se reintentará desde este plan.',
+ AWAIT_WORKER_REVIEW:'Trabajo reservado sin envío confirmado; requiere coordinación segura.',
+ WAIT_FOR_PROVIDER:'Esperar el resultado del proveedor sin duplicar la solicitud.',
+ REVIEW_PROVIDER_ACCEPTANCE:'Verificar con fal.ai si la solicitud fue recibida antes de cualquier cambio.',
+ MANUAL_REVIEW_BEFORE_REFUND:'Revisar manualmente el proveedor y el saldo antes de devolver créditos.',
+ DO_NOT_RETRY:'No reintentar hasta comprobar la integridad del trabajo.'
+};
+function resetRecoveryAudit(note='Consulta el estado de recuperación sin gastar créditos.'){
+ $('recoveryAuditDetails').replaceChildren();
+ msg('recoveryAuditStatus',note);
+}
+let recoveryAuditBusy=false;
+async function runRecoveryAudit(){
+ if(!current||recoveryAuditBusy)return;
+ const uid=current.id,rev=revision,button=$('recoveryAudit');
+ recoveryAuditBusy=true;button.disabled=true;
+ resetRecoveryAudit('Revisando trabajos y reservas de tus escenas. Esta consulta no genera videos ni cobra créditos…');
+ try{
+  const d=await call('imperio-auditoria-recuperacion-escenas',{action:'audit'});
+  if(current?.id!==uid||revision!==rev)return;
+  if(d.read_only!==true||d.no_spend!==true||d.provider_called!==false||
+     !Array.isArray(d.scenes)||d.refunds_triggered===true||d.retries_triggered===true||
+     d.can_generate===true)throw Error('Respuesta de auditoría inesperada; no se habilitó ninguna generación.');
+  if(d.project_exists===false){
+   msg('recoveryAuditStatus','Todavía no hay plan. Guarda un guion y prepara su plan. No hubo cargos.');
+   return;
+  }
+  const n=Number(d.scene_count);
+  if(!Number.isInteger(n)||n<1||n>12||d.scenes.length!==n||
+     d.scenes.some((x,i)=>x.scene_number!==i+1||typeof x.stage!=='string'||typeof x.action!=='string'||typeof x.review_required!=='boolean'))
+    throw Error('La auditoría devolvió una secuencia inesperada.');
+  const pending=d.scenes.filter(x=>x.review_required).length;
+  msg('recoveryAuditStatus','Plan: '+String(d.project_title||'Mi video').slice(0,100)+'. '+
+      d.scene_count+' escenas. '+(pending?pending+' escena(s) necesitan revisión manual.':'Sin incidencias que exijan revisión manual actualmente.')+
+      '\nSolo lectura: ningún reembolso, generación ni reintento ejecutado.');
+  const host=$('recoveryAuditDetails');host.replaceChildren();
+  for(const item of d.scenes){
+   const block=document.createElement('div');block.className='item';
+   const label=document.createElement('strong');label.textContent='Escena '+item.scene_number+' · '+
+       (item.review_required?'Revisión necesaria':'Sin alerta de revisión');
+   const stage=document.createElement('p');stage.className='small';
+   stage.textContent='Estado: '+(recoveryStageLabels[item.stage]||String(item.stage).slice(0,50));
+   const hint=document.createElement('p');hint.className='small';
+   hint.textContent=recoveryActionLabels[item.action]||'Verificación técnica pendiente antes de continuar.';
+   block.append(label,stage,hint);host.append(block);
+  }
+ }catch(e){
+  if(current?.id===uid&&revision===rev)
+    resetRecoveryAudit('No se pudo consultar la auditoría: '+err(e)+'. No se inició ninguna generación.');
+ }finally{recoveryAuditBusy=false;button.disabled=!current;}
+}
+$('recoveryAudit').onclick=runRecoveryAudit;
+
+// Ejemplos locales. No hay llamadas a proveedores ni cargos.
+const ideaSamples={"naturaleza":{"es":"Amanecer en una playa tropical de Haití. Palmas moviéndose con la brisa, olas suaves y arena dorada. Plano cinematográfico realista de 5 segundos, movimiento de cámara lento y sonido natural del mar.","ht":"Solèy ap leve sou yon bèl plaj ann Ayiti. Pye kokoye ap souke dousman, ti vag ap rive sou sab la. Yon videyo sinematografik reyalis 5 segonn, kamera ap deplase dousman ak son lanmè a.","en":"Sunrise on a tropical beach in Haiti. Palm trees sway in the breeze, gentle waves meet golden sand. Realistic cinematic five-second shot, slow camera movement and natural ocean sounds.","fr":"Lever du soleil sur une plage tropicale en Haïti. Les palmiers bougent doucement, les vagues caressent le sable doré. Plan cinématographique réaliste de cinq secondes, caméra lente et son naturel de la mer."},"infantil":{"es":"Un pequeño elefante de dibujos animados saluda alegremente a una jirafa en la sabana. Colores vivos, movimientos suaves, estilo educativo infantil, plano de 5 segundos y música instrumental alegre.","ht":"Yon ti elefan desen anime ap salye yon jiraf nan savann nan. Koulè vivan, mouvman dous, estil edikatif pou timoun, videyo 5 segonn ak mizik enstrimantal ki kontan.","en":"A cute cartoon baby elephant cheerfully greets a giraffe on the savanna. Bright colors, gentle motion, educational kids animation, a five-second scene and playful instrumental music.","fr":"Un petit éléphant de dessin animé salue joyeusement une girafe dans la savane. Couleurs vives, mouvements doux, animation éducative pour enfants, scène de cinq secondes et musique instrumentale joyeuse."},"musical":{"es":"Un cantante caribeño interpreta una canción romántica en un escenario elegante, micrófono en mano. Luces cálidas, guitarra suave y ritmo instrumental de konpa. Video musical cinematográfico de 5 segundos.","ht":"Yon chantè karayib ap chante yon mizik lanmou sou yon bèl sèn, mikwo nan men li. Limyè cho, gita dous ak rit enstrimantal konpa. Yon videyo mizikal sinematografik 5 segonn.","en":"A Caribbean singer performs a romantic song on an elegant stage, holding a microphone. Warm lights, gentle guitar and an instrumental konpa groove. Cinematic five-second music video.","fr":"Un chanteur caribéen interprète une chanson romantique sur une scène élégante, micro à la main. Lumières chaleureuses, guitare douce et rythme instrumental konpa. Clip cinématographique de cinq secondes."},"publicidad":{"es":"Presentación elegante de un perfume sin marca sobre una mesa de mármol. Reflejos suaves, luz dorada, cámara girando lentamente alrededor del frasco. Publicidad cinematográfica realista de 5 segundos.","ht":"Yon boutèy pafen san mak sou yon tab mab elegant. Limyè dore, refle dous, kamera ap vire tou dousman otou boutèy la. Yon ti piblisite sinematografik reyalis 5 segonn.","en":"An elegant unbranded perfume bottle on a marble table. Soft reflections, golden lighting, camera slowly circling the bottle. A realistic cinematic five-second product advertisement.","fr":"Un flacon de parfum sans marque posé sur une table en marbre. Reflets doux, lumière dorée, caméra tournant lentement autour du flacon. Publicité cinématographique réaliste de cinq secondes."},"motivacion":{"es":"Una joven emprendedora abre las puertas de su pequeño negocio al amanecer con una sonrisa de esperanza. Luz inspiradora, cámara suave, estilo cinematográfico realista de 5 segundos y música instrumental positiva.","ht":"Yon jèn fanm antreprenè ap ouvri ti biznis li bonè nan maten ak yon souri espwa. Limyè enspiran, kamera dous, stil sinematografik reyalis 5 segonn ak mizik enstrimantal pozitif.","en":"A young entrepreneur opens the doors of her small business at sunrise with a hopeful smile. Inspirational light, smooth camera motion, realistic five-second cinematic style and uplifting instrumental music.","fr":"Une jeune entrepreneuse ouvre les portes de sa petite entreprise au lever du soleil avec un sourire plein d’espoir. Lumière inspirante, caméra douce, style cinématographique réaliste de cinq secondes et musique instrumentale positive."}};
+function updateIdeaCounter(){$('length').textContent=$('prompt').value.length+' / 1000 caracteres'}
+$('useIdea').onclick=()=>{
+ const cat=$('ideaCategory').value,lang=$('ideaLanguage').value;
+ const example=ideaSamples[cat]?.[lang];if(!example)return;
+ if($('prompt').value.trim()&&!window.confirm('¿Reemplazar la descripción del editor? El borrador guardado en tu cuenta no cambia hasta que pulses Guardar borrador.'))return;
+ $('prompt').value=example;$('ratio').value=cat==='publicidad'?'9:16':'16:9';updateIdeaCounter();
+ msg('promptStatus','Ejemplo cargado en '+$('ideaLanguage').selectedOptions[0].text+'. Puedes editarlo. No se guardó ni generó video; pulsa Guardar borrador si deseas conservarlo.');
+};
+$('clearPrompt').onclick=()=>{
+ if($('prompt').value.trim()&&!window.confirm('¿Limpiar la descripción visible? El borrador guardado seguirá intacto.'))return;
+ $('prompt').value='';updateIdeaCounter();
+ msg('promptStatus','Editor vacío. Tu último borrador guardado en Supabase no se ha borrado. Pulsa Recuperar borrador para restaurarlo.');
+};
+$('prompt').addEventListener('input',updateIdeaCounter);
+$('audioFilter').addEventListener('change',()=>{if(current)renderLibrary(current.id)});
+$('save').onclick=saveDraft;$('recover').onclick=()=>loadDraft(false);$('validate').onclick=validate;$('refreshLibrary').onclick=library;$('verifyStorage').onclick=verifyStorage;$('refreshJobs').onclick=jobs;$('refreshBalance').onclick=()=>Promise.allSettled([quote(),history()]);$('refreshHistory').onclick=history;$('checkClient').onclick=checkClientReadiness;$('inspect').onclick=inspect;$('privacyCheck').onclick=checkPrivacy;
+$('loginForm').onsubmit=async e=>{e.preventDefault();if(!db)return;$('login').disabled=true;$('signup').disabled=true;try{const {data,error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;$('password').value='';await account(data.user);msg('authStatus','Sesión activa. Tus videos y borradores están protegidos.')}catch(e){msg('authStatus',authErrorMessage(e,'signin'),true)}finally{$('login').disabled=false;$('signup').disabled=false}};
+$('signup').onclick=async()=>{if(!db)return;const email=$('email').value.trim(),pass=$('password').value;if(!$('email').checkValidity()||!strongPassword(pass)){msg('authStatus','Para crear una cuenta, utiliza un correo válido y una contraseña de mínimo 12 caracteres con mayúsculas, minúsculas, números y símbolos admitidos y sin espacios.',true);return}$('signup').disabled=true;$('login').disabled=true;msg('authStatus','Solicitando registro. Revisa luego el correo de confirmación; no se inicia ningún pago.');try{const {data,error}=await db.auth.signUp({email,password:pass,options:{emailRedirectTo:new URL('./estudio-v1-20.html',location.href).href}});if(error)throw error;$('password').value='';if(data.session)await account(data.user);msg('authStatus',data.session?'Cuenta creada e iniciada.':'Si corresponde, recibirás un correo de confirmación. Abre el enlace y vuelve al estudio para iniciar sesión. Revisa también Spam. No se cobra dinero por registrarse.')}catch(e){msg('authStatus',authErrorMessage(e,'signup'),true)}finally{$('signup').disabled=false;$('login').disabled=false}};
+$('logout').onclick=async()=>{try{const {error}=await db.auth.signOut();if(error)throw error;await account(null);msg('authStatus','Sesión cerrada.')}catch(e){msg('authStatus','No se pudo cerrar sesión: '+err(e),true)}};
+(async()=>{if(!db){msg('authStatus','No fue posible cargar Supabase. Comprueba tu conexión.',true);return}try{const {data,error}=await db.auth.getUser();if(error&&error.name!=='AuthSessionMissingError')throw error;await account(data.user||null);msg('authStatus',data.user?'Sesión activa. Puedes consultar tu biblioteca.':'Inicia sesión para ver tus videos.');db.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY')return;if((session?.user?.id||null)!==(current?.id||null))Promise.resolve().then(()=>account(session?.user||null))})}catch(e){msg('authStatus','Error al comprobar la sesión: '+err(e),true)}})();
+})();
+</script>
+</body>
+</html>
