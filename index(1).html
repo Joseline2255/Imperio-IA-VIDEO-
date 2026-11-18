@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1022">
+  <meta name="description" content="IMPERIO AI VIDEO: estudio creativo de videos con inteligencia artificial. Acceso anticipado para guardar guiones, planificar escenas y consultar videos privados.">
+  <meta name="robots" content="index,follow">
+  <title>IMPERIO AI VIDEO · Estudio creativo</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080d1c;--panel:#17223b;--field:#101b31;--edge:#324264;--text:#f6f8ff;--sub:#bfcbe0;--mint:#70e1d8;--lilac:#b8a9ff;--gold:#ffd89a}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-width:300px;color:var(--text);background:radial-gradient(ellipse 65% 27% at 82% 5%,#31204b 0%,transparent 78%),radial-gradient(ellipse 55% 28% at 8% 38%,#113b46 0%,transparent 85%),var(--bg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:inherit} a:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+    .container{width:min(1100px,calc(100% - 36px));margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 0 12px}
+    .brand{text-decoration:none;display:flex;align-items:center;gap:12px;font-size:15px;letter-spacing:.055em;font-weight:800}
+    .mark{background:linear-gradient(135deg,#8f73f4,#40d4d5);width:43px;height:43px;border-radius:12px;display:grid;place-items:center;color:#091525;font-size:23px}
+    .nav{display:flex;gap:17px;flex-wrap:wrap;align-items:center}.nav a{font-size:14px;text-decoration:none;color:var(--sub)}.nav a:hover{color:var(--text)}
+    main{padding:70px 0 60px}.hero{max-width:810px}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid #3e5973;border-radius:30px;background:#10263a;color:#c5f3ed;font-size:13px;font-weight:700;letter-spacing:.015em}
+    .dot{width:7px;height:7px;display:inline-block;background:var(--mint);border-radius:50%}
+    h1{font-size:clamp(2.55rem,7vw,5.7rem);letter-spacing:-.055em;line-height:1.04;margin:27px 0 22px;max-width:900px}
+    h1 em{font-style:normal;background:linear-gradient(110deg,var(--lilac),var(--mint));background-clip:text;-webkit-background-clip:text;color:transparent}
+    .lead{font-size:clamp(17px,2.6vw,21px);color:var(--sub);max-width:760px;margin:0 0 29px;line-height:1.7}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin:0 0 26px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 24px;border-radius:14px;text-decoration:none;font-weight:800;font-size:16px;text-align:center;transition:transform .15s ease}
+    .button:hover{transform:translateY(-2px)}
+    .primary{background:linear-gradient(105deg,#baa6ff,#73dfd4);color:#091627}
+    .secondary{border:1px solid #556584;background:#18243a;color:#f2f5ff}
+    .notice{max-width:780px;border-left:4px solid var(--mint);background:#102b39;border-radius:0 13px 13px 0;padding:15px 18px;color:#d7f7f2;font-size:14px;line-height:1.65}
+    .notice strong{color:white}
+    section{margin-top:83px}h2{font-size:clamp(1.7rem,3.5vw,2.45rem);letter-spacing:-.035em;line-height:1.2;margin:0 0 16px}.section-intro{max-width:740px;color:var(--sub);margin:0 0 29px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+    .card{border:1px solid var(--edge);border-radius:22px;background:linear-gradient(160deg,#1a2641,#111b30);padding:25px;min-height:206px}
+    .card .glyph{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#27365a;color:var(--mint);font-size:22px;margin-bottom:23px}
+    .card h3{font-size:19px;margin:0 0 8px;letter-spacing:-.018em}.card p{margin:0;color:var(--sub);font-size:15px}
+    .status{display:grid;grid-template-columns:1.1fr 1fr;gap:35px;background:#17223b;border:1px solid var(--edge);border-radius:24px;padding:35px;align-items:start}
+    .status p{color:var(--sub);margin:0}.checks{padding:0;margin:0;list-style:none;display:grid;gap:13px}.checks li{padding:12px 15px;border:1px solid #3a4d68;background:#102038;border-radius:12px;font-size:14px;display:flex;gap:11px;align-items:center}.ready{color:var(--mint);font-weight:900}.pending{color:var(--gold);font-weight:900}
+    .small{font-size:13px;color:var(--sub)}footer{border-top:1px solid #2b3850;padding:25px 0 35px;color:var(--sub);font-size:13px}footer .inner{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:720px){header{align-items:flex-start}.nav{gap:11px}.nav a{font-size:13px}main{padding-top:47px}.grid,.status{grid-template-columns:1fr}.status{padding:23px}.card{min-height:auto}section{margin-top:63px}.brand{font-size:13px}}
+    @media(max-width:420px){.container{width:min(1100px,calc(100% - 30px))}.nav{max-width:135px;justify-content:flex-end}.button{width:100%}main{padding-top:40px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="./index.html" aria-label="IMPERIO AI VIDEO, inicio">
+        <span class="mark" aria-hidden="true">▶</span><span>IMPERIO AI VIDEO</span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#funciones">Funciones</a>
+        <a href="#estado">Estado del servicio</a>
+        <a href="./estudio-v1-33.html">Estudio</a>
+      </nav>
+    </header>
+    <main>
+      <div class="hero">
+        <span class="eyebrow"><span class="dot" aria-hidden="true"></span> ACCESO ANTICIPADO · VERSIÓN WEB</span>
+        <h1>Convierte tus ideas en <em>historias visuales.</em></h1>
+        <p class="lead">Un espacio creativo para preparar tus videos con inteligencia artificial, diseñar escenas, guardar guiones y consultar tus producciones desde el teléfono o la computadora.</p>
+        <div class="actions">
+          <a class="button primary" href="./estudio-v1-33.html">Entrar al estudio</a>
+          <a class="button secondary" href="#estado">Ver qué está disponible</a>
+        </div>
+        <div class="notice" role="note"><strong>Servicio en preparación.</strong> Puedes acceder al estudio y a las funciones de planificación. La generación pública de videos y los pagos reales todavía no están habilitados. No realizamos cobros desde esta portada.</div>
+      </div>
+      <section id="funciones" aria-labelledby="funciones-titulo">
+        <h2 id="funciones-titulo">Todo comienza con una idea.</h2>
+        <p class="section-intro">Estas herramientas de preparación ya están incorporadas en nuestro estudio web. La generación comercial se habilitará después de completar sus pruebas de seguridad y facturación.</p>
+        <div class="grid">
+          <article class="card"><span class="glyph" aria-hidden="true">✎</span><h3>Escribe tu guion</h3><p>Prepara historias, guarda tus descripciones y vuelve a editarlas cuando quieras.</p></article>
+          <article class="card"><span class="glyph" aria-hidden="true">▣</span><h3>Organiza escenas</h3><p>Planifica clips de 5 segundos y consulta la estimación provisional de créditos.</p></article>
+          <article class="card"><span class="glyph" aria-hidden="true">▷</span><h3>Consulta tu biblioteca</h3><p>Accede con tu cuenta a los videos privados que ya hayas generado durante las pruebas autorizadas.</p></article>
+        </div>
+      </section>
+      <section id="estado" aria-labelledby="estado-titulo">
+        <div class="status">
+          <div><h2 id="estado-titulo">Preparando el lanzamiento.</h2><p>Preferimos abrir un producto que funcione bien y proteja a sus clientes. Por eso el pago real y la generación pública permanecerán cerrados mientras verificamos el costo de IA y la entrega completa de los videos.</p><p class="small" style="margin-top:18px">El Estudio 1.33 está disponible como versión de acceso anticipado. Si ya tienes una cuenta, utiliza el mismo inicio de sesión en el estudio.</p></div>
+          <ul class="checks" aria-label="Estado de las funciones">
+            <li><span class="ready" aria-hidden="true">✓</span> Inicio de sesión y guiones privados</li>
+            <li><span class="ready" aria-hidden="true">✓</span> Planificación de escenas y biblioteca</li>
+            <li><span class="pending" aria-hidden="true">○</span> Generación comercial de videos · pendiente</li>
+            <li><span class="pending" aria-hidden="true">○</span> Pagos reales y compra de créditos · pendiente</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer><div class="inner"><span>© IMPERIO AI VIDEO · Estudio creativo</span><span>Acceso anticipado. Los precios y funciones comerciales aún están sujetos a verificación.</span></div></footer>
+  </div>
+</body>
+</html>
